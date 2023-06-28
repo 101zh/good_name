@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public class player_movement : MonoBehaviour
 {
     // Start is called before the first frame update
     Rigidbody2D rb;
@@ -20,8 +20,8 @@ public class Movement : MonoBehaviour
 
         if (moving)
         {
-            float movementX = Input.GetAxis("Horizontal");
-            float movementY = Input.GetAxis("Vertical");
+            float movementX = Input.GetAxisRaw("Horizontal");
+            float movementY = Input.GetAxisRaw("Vertical");
             rb.velocity = new Vector2(movementX*moveSpeed, movementY*moveSpeed);
         }else
         {
