@@ -22,7 +22,7 @@ public class player_movement : MonoBehaviour
         {
             float movementX = Input.GetAxisRaw("Horizontal");
             float movementY = Input.GetAxisRaw("Vertical");
-            rb.velocity = new Vector2(movementX*moveSpeed, movementY*moveSpeed);
+            rb.velocity = new Vector2(movementX, movementY).normalized*moveSpeed;
         }else
         {
             rb.velocity= new Vector2(0,0);
