@@ -16,8 +16,24 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float dirX = Input.GetAxis("Horizontal");
-        float dirY = Input.GetAxis("Vertical");
-        rb.velocity = new Vector2(moveSpeed*dirX, moveSpeed*dirY);
+        bool moving = Input.GetButton("Horizontal") || Input.GetButton("Vertical");
+
+        if (moving)
+        {
+            float movementX = Input.GetAxis("Horizontal");
+            float movementY = Input.GetAxis("Vertical");
+            rb.velocity = new Vector2(movementX*moveSpeed, movementY*moveSpeed);
+        }else
+        {
+            rb.velocity= new Vector2(0,0);
+        }
+
     }
 }
+
+
+
+
+
+// [fail]: OmniSharp.MSBuild.ProjectManager
+        // Failure while loading the analyzer reference 'Unity.SourceGenerators': Could not load file or assembly 'netstandard, Version=2.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51' or one of its dependencies. The system cannot find the file specified.
