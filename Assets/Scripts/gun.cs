@@ -7,17 +7,19 @@ public class gun : MonoBehaviour
     // Start is called before the first frame update
 
     private Camera mainCam;
+    GameObject player;
     void Start()
     {
         mainCam=Camera.main;
+        player = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //Makes Gun follow the player, so it looks like the player is always holding it
+        transform.position= player.transform.position;
         gunRotate();
-
     }
 
     private void gunRotate()
