@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 256071405}
   - component: {fileID: 256071404}
   m_Layer: 0
-  m_Name: Player
+  m_Name: oPlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -184,12 +184,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d852bfe764ae17c4a9f8622990c2d22c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 257cd253a0e791c44aa0178949f31bb1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -242,18 +242,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.009486854, y: 0}
+  m_Offset: {x: -0.07409471, y: -0.06460774}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.88, y: 2.68}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4436082, y: 2.2246346}
+  m_Size: {x: 1.217481, y: 1.8046844}
   m_EdgeRadius: 0
 --- !u!50 &256071405
 Rigidbody2D:
@@ -399,7 +399,7 @@ GameObject:
   - component: {fileID: 1407643643}
   - component: {fileID: 1407643645}
   m_Layer: 0
-  m_Name: Gun
+  m_Name: oHeldGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -446,12 +446,12 @@ SpriteRenderer:
   m_SortingLayerID: 32831741
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 30b03a3417b77b2428d188b5dc8c8fd5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a0e362295fa7f4047a702463644ba6e8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -465,7 +465,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1407643642}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.99, y: 1.93, z: 0}
+  m_LocalPosition: {x: -4, y: 1.77, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
