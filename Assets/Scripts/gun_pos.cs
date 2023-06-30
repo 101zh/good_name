@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class gun : MonoBehaviour
+public class gun_pos : MonoBehaviour
 {
     // Start is called before the first frame update
 
