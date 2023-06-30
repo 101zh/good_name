@@ -18,8 +18,7 @@ public class gun : MonoBehaviour
     void Update()
     {
         //Makes Gun follow the player, so it looks like the player is always holding it
-        transform.position.x= player.transform.position.x-4;
-        transform.position.y= player.transform.position.y;
+        transform.position = new Vector2(player.transform.position.x+0.5f, player.transform.position.y-0.5f);
         gunRotate();
     }
 
