@@ -7,7 +7,7 @@ public class gun_pos : MonoBehaviour
     // Start is called before the first frame update
 
     private Camera mainCam;
-    GameObject player;
+    private GameObject player;
     void Start()
     {
         mainCam=Camera.main;
