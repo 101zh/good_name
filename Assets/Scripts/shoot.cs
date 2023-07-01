@@ -6,7 +6,7 @@ public class shoot : MonoBehaviour
 {
     [SerializeField] Transform firePoint;
     [SerializeField] GameObject bulletPrefab;
-
+    public GameObject bullet;
     [SerializeField] float bulletSpeed= 8f;
     // Start is called before the first frame update
     void Start()
@@ -27,6 +27,6 @@ public class shoot : MonoBehaviour
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation); //creates/spawns bullet
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        
+        rb.AddForce(firePoint.up*bulletSpeed, ForceMode2D.Impulse);
     }
 }

@@ -7,6 +7,7 @@ public class player_movement : MonoBehaviour
     // Start is called before the first frame update
     private Rigidbody2D rb;
     [SerializeField] private float moveSpeed;
+    shoot shootScript;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -27,7 +28,11 @@ public class player_movement : MonoBehaviour
         {
             rb.velocity= new Vector2(0,0);
         }
+    }
 
+    void ignoreBullet(){
+        var bullet = shootScript.bullet;
+        Physics2D.IgnoreCollision(bullet.GetComponent<BoxCollider2D>(), GetComponent<BoxCollider2D>(), true);
     }
 }
 
