@@ -214,7 +214,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &225130626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyWalkSp: 8
-  Player: {fileID: 256071401}
+  playerTransform: {fileID: 256071403}
 --- !u!212 &225130627
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -454,7 +454,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &256071406
 MonoBehaviour:
   m_ObjectHideFlags: 0

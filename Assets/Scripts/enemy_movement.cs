@@ -6,7 +6,7 @@ public class enemy_movement : MonoBehaviour
 { 
     
     [SerializeField] private float enemyWalkSp;
-    [SerializeField] private GameObject Player;
+    [SerializeField] private Transform playerTransform;
     private Rigidbody2D enemyrb;
     // Start is called before the first frame update
     void Start()
@@ -19,8 +19,8 @@ public class enemy_movement : MonoBehaviour
     {
         //enemyrb.velocity = new Vector2.MoveTowards(Player.transform.position.x, Player.transform.position.y).normalized*enemyWalkSp;
         //Debug.Log(Player.transform.position.x);
-        Vector3 PlayerPosition = Player.transform.position;
-        enemyrb.AddForce(PlayerPosition, ForceMode2D.Force);
+        float movement = enemyWalkSp * Time.deltaTime;
+        transform.position = Vector2.MoveTowards(transform.position,new Vector2(playerTransform.position.x,playerTransform.position.y),movement);
     }
 }
 
