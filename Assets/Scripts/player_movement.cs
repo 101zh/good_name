@@ -14,7 +14,7 @@ public class player_movement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         bool moving = Input.GetButton("Horizontal") || Input.GetButton("Vertical");
 
