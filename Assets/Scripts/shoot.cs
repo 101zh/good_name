@@ -17,7 +17,7 @@ public class shoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1")) //checks if player has pressed the shoot button
+        if (Input.GetButtonDown("Fire1") && !pause_menu.gamePaused) //checks if player has pressed the shoot button
         {
             shootBullet();
         }   

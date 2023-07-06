@@ -17,9 +17,12 @@ public class gun_pos : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!pause_menu.gamePaused)
+        {
         //Makes Gun follow the player, so it looks like the player is always holding it
         transform.position = new Vector2(player.transform.position.x+0.5f, player.transform.position.y-0.5f);
         gunRotate();
+        }
     }
 
     private void gunRotate()
