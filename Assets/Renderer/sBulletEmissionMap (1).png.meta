@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 87c8c9f5026fcdc46afb1509fa137091
+guid: 2b2e63e06f5e2174a8b96e9adcabe424
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sBullet_0
+      name: sBulletEmissionMap (1)_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,8 +137,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 86888101fc10f5244aace93ffdd878c1
-      internalID: 95383468
+      spriteID: c8c1c099e5e18154687924123826de58
+      internalID: -1432527441
       vertices: []
       indices: 
       edges: []
@@ -147,16 +147,14 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
-    secondaryTextures:
-    - texture: {fileID: 2800000, guid: f6f914874b0058e4c9ce9cd49622ebcb, type: 3}
-      name: _Emission
+    secondaryTextures: []
     nameFileIdTable:
-      sBullet_0: 95383468
+      sBulletEmissionMap (1)_0: -1432527441
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
