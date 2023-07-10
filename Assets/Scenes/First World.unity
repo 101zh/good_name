@@ -133,13 +133,13 @@ GameObject:
   m_Component:
   - component: {fileID: 225130628}
   - component: {fileID: 225130627}
+  - component: {fileID: 225130629}
   - component: {fileID: 225130626}
   - component: {fileID: 225130625}
   - component: {fileID: 225130624}
-  - component: {fileID: 225130629}
   m_Layer: 0
   m_Name: oEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd220b8146de6fa46acc8dcb286977e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyWalkSp: 8
+  enemyWalkSp: 4
   playerTransform: {fileID: 256071403}
 --- !u!212 &225130627
 SpriteRenderer:
@@ -271,7 +271,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ef1c2d0a0afdeb449af4d390c3a8cb86, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8010ad330ba5a5a48a9020504e239878, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -306,18 +306,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 225130623}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0380405bda224374c80e367454190496, type: 3}
+  m_Script: {fileID: 11500000, guid: b671530cbc42c21468d6eec3345f1975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb2d: {fileID: 225130625}
-  strength: 16
-  delay: 0.15
-  OnBegin:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDone:
-    m_PersistentCalls:
-      m_Calls: []
+  currentHealth: 2
+  maxHealth: 2
+  isDead: 0
 --- !u!1 &256071401
 GameObject:
   m_ObjectHideFlags: 0
@@ -1425,10 +1419,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.059578367
-    y: 0.12809917
-    width: 0.8799267
-    height: 0.74380165
+    x: 0.053072628
+    y: 0.0018416207
+    width: 0.89385474
+    height: 0.9944751
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
