@@ -176,18 +176,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0356884, y: -0.002797246}
+  m_Offset: {x: -0.031909943, y: 0.042268395}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9286232, y: 0.8572471}
+  m_Size: {x: 1.0638199, y: 1.0975974}
   m_EdgeRadius: 0
 --- !u!50 &225130625
 Rigidbody2D:
@@ -325,6 +325,8 @@ GameObject:
   - component: {fileID: 256071406}
   - component: {fileID: 256071405}
   - component: {fileID: 256071404}
+  - component: {fileID: 256071407}
+  - component: {fileID: 256071408}
   m_Layer: 0
   m_Name: oPlayer
   m_TagString: Player
@@ -432,18 +434,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0056388676, y: -0.004708886}
+  m_Offset: {x: -0.005638778, y: -0.1894486}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6698343, y: 0.8291888}
+  m_Size: {x: 1.228159, y: 1.3464603}
   m_EdgeRadius: 0
 --- !u!50 &256071405
 Rigidbody2D:
@@ -485,6 +487,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 7
+--- !u!95 &256071407
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256071401}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c33a9ded27a220a48ad02ed09b86e94c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &256071408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256071401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4ae39aaefddcac43bbaa3b8587d1d89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &280700342
 GameObject:
   m_ObjectHideFlags: 0
@@ -1419,10 +1454,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.053072628
-    y: 0.0018416207
-    width: 0.89385474
-    height: 0.9944751
+    x: 0.087628864
+    y: 0.15006468
+    width: 0.82474226
+    height: 0.698577
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
