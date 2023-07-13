@@ -28,7 +28,7 @@ public class player_movement : MonoBehaviour
         {
             rb.velocity= new Vector2(0,0);
         }
-        animControllerScript.updateAnimation(movementX);
+        animControllerScript.updateAnimation(movementX, movementY);
     }
 
 }

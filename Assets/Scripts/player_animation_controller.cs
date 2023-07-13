@@ -16,7 +16,7 @@ public class player_animation_controller : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
     }
 
-    public void updateAnimation(float dirX)
+    public void updateAnimation(float dirX, float dirY)
     {
         string state;
         Debug.Log("Updated!");
@@ -26,7 +26,11 @@ public class player_animation_controller : MonoBehaviour
         } else if (dirX<0){
             sprite.flipX=true;
             state=nameof(animState.witch_walk);
-        } else {
+        }
+        else if (dirY>0 || dirY<0){
+            state=nameof(animState.witch_walk);
+        }
+        else {
             state=nameof(animState.witch_idle);
         }
         changeAnimationState(state);
