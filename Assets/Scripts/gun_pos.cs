@@ -8,10 +8,12 @@ public class gun_pos : MonoBehaviour
 
     private Camera mainCam;
     private GameObject player;
+    private SpriteRenderer sprite;
     void Start()
     {
         mainCam=Camera.main;
         player = GameObject.FindWithTag("Player");
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -20,7 +22,7 @@ public class gun_pos : MonoBehaviour
         if (!pause_menu.gamePaused)
         {
         //Makes Gun follow the player, so it looks like the player is always holding it
-        transform.position = new Vector2(player.transform.position.x+0.5f, player.transform.position.y-0.5f);
+        transform.position = new Vector2(player.transform.position.x, player.transform.position.y-0.5f);
         gunRotate();
         }
     }
@@ -33,5 +35,10 @@ public class gun_pos : MonoBehaviour
         float angle = Mathf.Atan2(dir.y, dir.x)*Mathf.Rad2Deg;
         // Rotates the gun using math
         transform.rotation = Quaternion.AngleAxis(angle,Vector3.forward);
+        if (!(angle<=90 && angle>=-90)) {
+            sprite.flipY=true;
+        } else{
+            sprite.flipY=false;
+        }
     }
 }
