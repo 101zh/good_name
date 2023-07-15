@@ -1270,10 +1270,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.04887218
-    y: 0.08715597
-    width: 0.90225565
-    height: 0.8256881
+    x: 0.11661342
+    y: 0.15006468
+    width: 0.76677316
+    height: 0.698577
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -2304,7 +2304,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1407643644}
   - component: {fileID: 1407643643}
-  - component: {fileID: 1407643645}
   - component: {fileID: 1407643646}
   m_Layer: 0
   m_Name: oHeldGun
@@ -2381,7 +2380,7 @@ Transform:
   m_Father: {fileID: 2124616289}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1407643645
+--- !u!114 &1407643646
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2393,21 +2392,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a17cd3c1e75a7764ba5581271c9f65be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1407643646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1407643642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c794a4be8f595d7409d8515cbae7aa57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   firePoint: {fileID: 2094429582}
   bulletPrefab: {fileID: 8518284227580658630, guid: 93de7c8ee0fa6c24696106fc1a993ba3, type: 3}
-  player: {fileID: 256071401}
   bulletSpeed: 20
 --- !u!1 &1464846263
 GameObject:
