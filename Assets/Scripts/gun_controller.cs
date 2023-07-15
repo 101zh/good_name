@@ -25,7 +25,7 @@ public class gun_pos : MonoBehaviour
         if (!pause_menu.gamePaused)
         {
             //Makes Gun follow the player, so it looks like the player is always holding it
-            transform.position = new Vector2(player.transform.position.x, player.transform.position.y-0.5f);
+            transform.position = new Vector2(player.transform.position.x+0.25f, player.transform.position.y-0.75f);
             gunRotate();
             if (Input.GetButtonDown("Fire1")) //checks if player has pressed the shoot button
             {
@@ -42,11 +42,11 @@ public class gun_pos : MonoBehaviour
         float angle = Mathf.Atan2(dir.y, dir.x)*Mathf.Rad2Deg;
         // Rotates the gun using math
         transform.rotation = Quaternion.AngleAxis(angle,Vector3.forward);
-        // if (!(angle<=90 && angle>=-90)) {
-        //     sprite.flipY=true;
-        // } else{
-        //     sprite.flipY=false;
-        // }
+        if (!(angle<=90 && angle>=-90)) {
+            sprite.flipY=true;
+        } else{
+            sprite.flipY=false;
+        }
     }
 
     private void shootBullet()
