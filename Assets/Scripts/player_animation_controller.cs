@@ -19,7 +19,7 @@ public class player_animation_controller : MonoBehaviour
     public void updateAnimation(float dirX, float dirY)
     {
         string state;
-        Debug.Log("Updated!");
+       // Debug.Log("Updated!");
         if (dirX>0){
             sprite.flipX= false;
             state=nameof(animState.witch_walk);
