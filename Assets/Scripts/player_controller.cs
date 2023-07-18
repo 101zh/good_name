@@ -8,6 +8,7 @@ public class player_movement : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField] private float moveSpeed;
     player_animation_controller animControllerScript;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -20,7 +21,11 @@ public class player_movement : MonoBehaviour
         bool moving = Input.GetButton("Horizontal") || Input.GetButton("Vertical");
         float movementX = Input.GetAxisRaw("Horizontal");
         float movementY = Input.GetAxisRaw("Vertical");
+        playerMove(movementX, movementY, moving); 
+        animControllerScript.updateAnimation(movementX, movementY);
+    }
 
+    private void playerMove(float movementX, float movementY, bool moving){
         if (moving)
         {
             rb.velocity = new Vector2(movementX, movementY).normalized*moveSpeed;
@@ -28,7 +33,6 @@ public class player_movement : MonoBehaviour
         {
             rb.velocity= new Vector2(0,0);
         }
-        animControllerScript.updateAnimation(movementX, movementY);
     }
 
 }
