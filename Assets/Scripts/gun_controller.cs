@@ -12,6 +12,7 @@ public class gun_pos : MonoBehaviour
     [SerializeField] Transform firePoint;
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] float bulletSpeed;
+    bool held=false;
     private void Awake()
     {
         mainCam=Camera.main;
@@ -22,15 +23,24 @@ public class gun_pos : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (!pause_menu.gamePaused)
+        if (!pause_menu.gamePaused && held)
         {
-            //Makes Gun follow the player, so it looks like the player is always holding it
-            transform.position = new Vector2(player.transform.position.x+0.25f, player.transform.position.y-0.75f);
             gunRotate();
             if (Input.GetButtonDown("Fire1")) //checks if player has pressed the shoot button
             {
                 shootBullet();
             }   
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        // Allows player to pickup gun by pressing interact button (set to "e")
+        if (collision.gameObject.tag=="Player" && Input.GetButtonDown("Interact")){
+            //Makes Gun follow the player, so it looks like the player is always holding it
+            transform.SetParent(player.transform, false);
+            held=true;
+            transform.position= new Vector2(transform.position.x, transform.position.y);
         }
     }
 
@@ -56,6 +66,7 @@ public class gun_pos : MonoBehaviour
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>(); 
         rb.AddForce(firePoint.up*bulletSpeed, ForceMode2D.Impulse);
 
+        Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>(), true);
         Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), player.GetComponent<Collider2D>(), true);
     }
 }
