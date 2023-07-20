@@ -9,9 +9,11 @@ public class gun_pos : MonoBehaviour
     private Camera mainCam;
     private GameObject player;
     private SpriteRenderer sprite;
-    [SerializeField] Transform firePoint;
-    [SerializeField] GameObject bulletPrefab;
-    [SerializeField] float bulletSpeed;
+    [SerializeField] private Transform firePoint;
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private float bulletSpeed;
+    [SerializeField] private float coolDown; //each
+    private float coolDownTimer;
     bool held = false;
     private Renderer gunRenderer;
     private void Awake()
@@ -20,17 +22,23 @@ public class gun_pos : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         sprite = GetComponent<SpriteRenderer>();
         gunRenderer = GetComponent<Renderer>();
+
     }
 
     // Update is called once per frame
     private void Update()
     {
-        if (!pause_menu.gamePaused && held)
+        if (!pause_menu.gamePaused)
         {
-            gunRotate();
-            if (Input.GetButtonDown("Fire1")) //checks if player has pressed the shoot button
+            if (coolDownTimer>0){coolDownTimer= Mathf.Max(coolDownTimer-Time.deltaTime, 0f);}
+            if (held)
             {
-                shootBullet();
+                gunRotate();
+                if (Input.GetButtonDown("Fire1") && coolDownTimer == 0) //checks if player has pressed the shoot button
+                {
+                    shootBullet();
+                    coolDownTimer = coolDown;
+                }
             }
         }
     }
@@ -42,7 +50,7 @@ public class gun_pos : MonoBehaviour
         if (collision.gameObject.tag == "Player" && Input.GetButtonDown("Interact"))
         {
             //Makes Gun follow the player, so it looks like the player is always holding it
-            transform.SetParent(player.transform, false);
+            transform.SetParent(player.transform, true);
             held = true;
             transform.position = new Vector2(player.transform.position.x, player.transform.position.y - 0.5f);
         }
