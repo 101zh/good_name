@@ -13,16 +13,18 @@ public class gun_pos : MonoBehaviour
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] float bulletSpeed;
     bool held=false;
+    private Renderer gunRenderer;
     private void Awake()
     {
         mainCam=Camera.main;
         player = GameObject.FindWithTag("Player");
         sprite = GetComponent<SpriteRenderer>();
+        gunRenderer = GetComponent<Renderer>();
     }
 
     // Update is called once per frame
     private void Update()
-    {
+    {   
         if (!pause_menu.gamePaused && held)
         {
             gunRotate();
@@ -33,15 +35,20 @@ public class gun_pos : MonoBehaviour
         }
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
+        if (!held) {gunRenderer.material.SetFloat("_Thickness",0.06f);} else {gunRenderer.material.SetFloat("_Thickness",0.0f);}
         // Allows player to pickup gun by pressing interact button (set to "e")
         if (collision.gameObject.tag=="Player" && Input.GetButtonDown("Interact")){
             //Makes Gun follow the player, so it looks like the player is always holding it
             transform.SetParent(player.transform, false);
             held=true;
-            transform.position= new Vector2(transform.position.x, transform.position.y);
+            transform.position= new Vector2(player.transform.position.x, player.transform.position.y-0.5f);
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision){
+        gunRenderer.material.SetFloat("_Thickness", 0.0f);
     }
 
     private void gunRotate()
