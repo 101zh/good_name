@@ -14,8 +14,8 @@ public class player_stats : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            health-=1;
+            health -= 1;
             health_bar.setValue(health, maxHealth);
-        }  
+        }
     }
 }
