@@ -8,6 +8,7 @@ public class player_movement : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField] private float moveSpeed;
     player_animation_controller animControllerScript;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -20,15 +21,20 @@ public class player_movement : MonoBehaviour
         bool moving = Input.GetButton("Horizontal") || Input.GetButton("Vertical");
         float movementX = Input.GetAxisRaw("Horizontal");
         float movementY = Input.GetAxisRaw("Vertical");
+        playerMove(movementX, movementY, moving);
+        animControllerScript.updateAnimation(movementX, movementY);
+    }
 
+    private void playerMove(float movementX, float movementY, bool moving)
+    {
         if (moving)
         {
-            rb.velocity = new Vector2(movementX, movementY).normalized*moveSpeed;
-        }else
-        {
-            rb.velocity= new Vector2(0,0);
+            rb.velocity = new Vector2(movementX, movementY).normalized * moveSpeed;
         }
-        animControllerScript.updateAnimation(movementX, movementY);
+        else
+        {
+            rb.velocity = new Vector2(0, 0);
+        }
     }
 
 }
@@ -38,4 +44,4 @@ public class player_movement : MonoBehaviour
 
 
 // [fail]: OmniSharp.MSBuild.ProjectManager
-        // Failure while loading the analyzer reference 'Unity.SourceGenerators': Could not load file or assembly 'netstandard, Version=2.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51' or one of its dependencies. The system cannot find the file specified.
+// Failure while loading the analyzer reference 'Unity.SourceGenerators': Could not load file or assembly 'netstandard, Version=2.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51' or one of its dependencies. The system cannot find the file specified.

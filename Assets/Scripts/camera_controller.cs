@@ -10,10 +10,10 @@ public class camera_controller : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 desiredPos=target.position+offset;
-        desiredPos.z=transform.position.z;
-        Vector3 smoothedPos= Vector3.SmoothDamp(transform.position, desiredPos, ref velocity, smoothSpeed);
-        transform.position= smoothedPos;
+        Vector3 desiredPos = target.position + offset;
+        desiredPos.z = transform.position.z;
+        Vector3 smoothedPos = Vector3.SmoothDamp(transform.position, desiredPos, ref velocity, smoothSpeed);
+        transform.position = smoothedPos;
     }
 
 }
