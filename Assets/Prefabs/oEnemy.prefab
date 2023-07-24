@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7235251226645825920}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.1855707, y: 2.7495081, z: -6.6735935}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -102,6 +102,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 2
   maxHealth: 2
+  CoinPrefab: {fileID: 0}
+  EnemyTransform: {fileID: 6597655696149719535}
   isDead: 0
 --- !u!114 &3465810242365493432
 MonoBehaviour:
@@ -116,7 +118,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyWalkSp: 4
-  playerTransform: {fileID: 3426446881638201302, guid: 79b19eb4e00a64c43b4ff62335c1c447, type: 3}
 --- !u!50 &6522500781018167238
 Rigidbody2D:
   serializedVersion: 4

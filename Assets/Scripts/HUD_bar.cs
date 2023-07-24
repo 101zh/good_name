@@ -23,6 +23,5 @@ public class HUD_bar : MonoBehaviour
     {
         fill.value = health;
         text.text = health.ToString() + "/" + maxHealth.ToString();
-        Debug.Log(text.text);
     }
 }
