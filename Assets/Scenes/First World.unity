@@ -11200,6 +11200,10 @@ PrefabInstance:
       value: GM
       objectReference: {fileID: 0}
     - target: {fileID: 2716190251166367881, guid: 63c956cc11527a54bb5224817962cb1e, type: 3}
+      propertyPath: timeBetweenWaves
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2716190251166367881, guid: 63c956cc11527a54bb5224817962cb1e, type: 3}
       propertyPath: waves.Array.data[0].enemy
       value: 
       objectReference: {fileID: 6597655696149719535, guid: 7d1abdd11828782428c7e52498e7fbf1, type: 3}
