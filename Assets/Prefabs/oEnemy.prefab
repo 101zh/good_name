@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 6597655696149719535}
   - component: {fileID: 161780308901142802}
   - component: {fileID: 3459352833525201629}
-  - component: {fileID: 3465810242365493432}
   - component: {fileID: 6522500781018167238}
   - component: {fileID: 6724227681327610084}
+  - component: {fileID: 6643743282120436562}
   m_Layer: 0
   m_Name: oEnemy
   m_TagString: Enemy
@@ -105,19 +105,6 @@ MonoBehaviour:
   CoinPrefab: {fileID: 0}
   EnemyTransform: {fileID: 6597655696149719535}
   isDead: 0
---- !u!114 &3465810242365493432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7235251226645825920}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd220b8146de6fa46acc8dcb286977e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyWalkSp: 4
 --- !u!50 &6522500781018167238
 Rigidbody2D:
   serializedVersion: 4
@@ -190,3 +177,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.0638199, y: 1.0975974}
   m_EdgeRadius: 0
+--- !u!114 &6643743282120436562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7235251226645825920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3265191363b3d244ad8ef36f8d9a410, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyWalkSp: 0
+  attackRange: 8
+  dangerRange: 4
