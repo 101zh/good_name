@@ -189,6 +189,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3265191363b3d244ad8ef36f8d9a410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyWalkSp: 0
+  enemyWalkSp: 3
   attackRange: 8
   dangerRange: 4
+  desiredPos: {x: 0, y: 0, z: 0}
+  currentMovementState: 0
