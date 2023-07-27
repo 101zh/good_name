@@ -4,12 +4,42 @@ using UnityEngine;
 
 public class CoinController : MonoBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D collision)
+    Rigidbody2D rb;
+    GameObject player;
+    Vector2 playerDir;
+    float timeStamp;
+    bool flyToPlayer;
+    coinText coinTextScript;
+
+    void Start()
     {
-        if (collision.gameObject.tag == "Magnet")
+        rb = GetComponent<Rigidbody2D>();
+        player = GameObject.FindWithTag("Player");
+        coinTextScript = GameObject.FindWithTag("CoinUI").GetComponentInChildren<coinText>();
+    }
+
+    void Update()
+    {
+        if (flyToPlayer)
         {
-            transform.position = Vector2.MoveTowards(transform.position, collision.transform.position,5f);
-            Debug.Log("A");
+            playerDir = -(transform.position - player.transform.position).normalized;
+            rb.velocity = new Vector2(playerDir.x, playerDir.y) * 7.5f * (Time.deltaTime / timeStamp);
         }
     }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag.Equals("Magnet"))
+        {
+            timeStamp = Time.deltaTime;
+            flyToPlayer = true;
+        }
+        else if (collider.gameObject.tag.Equals("CoinCollector"))
+        {
+            coinTextScript.incrementCoins(1);
+            Destroy(gameObject);
+        }
+    }
+
+
 }
