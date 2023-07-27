@@ -7,8 +7,6 @@ public class player_movement : MonoBehaviour
     // Start is called before the first frame update
     private Rigidbody2D rb;
     [SerializeField] private float moveSpeed;
-    player_animation_controller animControllerScript;
-
     private Animator animator;
     private SpriteRenderer sprite;
     private enum animState { witch_idle, witch_walk };
@@ -17,7 +15,6 @@ public class player_movement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        animControllerScript = GetComponent<player_animation_controller>();
         animator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
     }
