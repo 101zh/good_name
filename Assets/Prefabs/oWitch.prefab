@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5894714841714741473}
   - component: {fileID: 2052450956726315291}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CoinCollector
   m_TagString: CoinCollector
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7127535254576705758}
   - component: {fileID: 7797903617677872878}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4654920736706143824}
   - component: {fileID: 5585283595611928493}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Coin Magnet
   m_TagString: Magnet
   m_Icon: {fileID: 0}
@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 7548742555818670972}
   - component: {fileID: 348249743384261347}
   - component: {fileID: 2495478945518949679}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: oWitch
   m_TagString: Player
   m_Icon: {fileID: 0}

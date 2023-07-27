@@ -13,13 +13,13 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Gun
+  - player
   - Water
   - UI
-  - 
-  - 
-  - 
-  - player_ignore
+  - gun
+  - bullet
+  - coin
+  - walls
   - post
   - 
   - 

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5376399632413441262}
   - component: {fileID: 1216138512635087234}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 6395386854789860861}
   - component: {fileID: -3959902546912379854}
   - component: {fileID: 8818231943474299955}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: oBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 456
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -249,7 +249,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 456
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0

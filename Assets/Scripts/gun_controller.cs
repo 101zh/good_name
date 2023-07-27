@@ -9,10 +9,13 @@ public class gun_pos : MonoBehaviour
     private Camera mainCam;
     private GameObject player;
     private SpriteRenderer sprite;
+    [SerializeField] private float bulletSpeed;
+    [SerializeField] private int bulletsPerShot;
+    [SerializeField] private float Bulletspread;
+    [SerializeField] private float coolDown; //after each shot
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private float bulletSpeed;
-    [SerializeField] private float coolDown; //each
+    float angle;
     private float coolDownTimer;
     bool held = false;
     private Renderer gunRenderer;
@@ -69,7 +72,7 @@ public class gun_pos : MonoBehaviour
         // finds the position of the mouse using camera (has to be relative to it) and position of gun
         Vector2 dir = mainCam.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         // Finding the angle to rotate using math
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         // Rotates the gun using math
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         if (!(angle <= 90 && angle >= -90))
@@ -84,12 +87,19 @@ public class gun_pos : MonoBehaviour
 
     private void shootBullet()
     {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation); //creates/spawns bullet
+        for (int i = 0; i<bulletsPerShot; i++){
+            float RNG= Random.Range(-Bulletspread, Bulletspread);
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation); //creates/spawns bullet
+            bullet.transform.Rotate(bullet.transform.rotation.x,bullet.transform.rotation.y, bullet.transform.rotation.z+RNG, Space.Self);
+            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            rb.AddForce(bullet.transform.up * bulletSpeed, ForceMode2D.Impulse);
+        }
+        // GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation); //creates/spawns bullet
 
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
+        // Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        // rb.AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
 
-        Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>(), true);
-        Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), player.GetComponent<Collider2D>(), true);
+        // Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>(), true);
+        // Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), player.GetComponent<Collider2D>(), true);
     }
 }
