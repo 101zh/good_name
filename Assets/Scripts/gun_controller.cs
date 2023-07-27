@@ -30,7 +30,7 @@ public class gun_pos : MonoBehaviour
     {
         if (!pause_menu.gamePaused)
         {
-            if (coolDownTimer>0){coolDownTimer= Mathf.Max(coolDownTimer-Time.deltaTime, 0f);}
+            if (coolDownTimer > 0) { coolDownTimer = Mathf.Max(coolDownTimer - Time.deltaTime, 0f); }
             if (held)
             {
                 gunRotate();
@@ -45,14 +45,17 @@ public class gun_pos : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (!held) { gunRenderer.material.SetFloat("_Thickness", 0.06f); } else { gunRenderer.material.SetFloat("_Thickness", 0.0f); }
-        // Allows player to pickup gun by pressing interact button (set to "e")
-        if (collision.gameObject.tag == "Player" && Input.GetButtonDown("Interact"))
+        if (collision.gameObject.tag.Equals("Player"))
         {
-            //Makes Gun follow the player, so it looks like the player is always holding it
-            transform.SetParent(player.transform, true);
-            held = true;
-            transform.position = new Vector2(player.transform.position.x, player.transform.position.y - 0.5f);
+            if (!held) { gunRenderer.material.SetFloat("_Thickness", 0.06f); } else { gunRenderer.material.SetFloat("_Thickness", 0.0f); }
+            // Allows player to pickup gun by pressing interact button (set to "e")
+            if (Input.GetButtonDown("Interact"))
+            {
+                //Makes Gun follow the player, so it looks like the player is always holding it
+                transform.SetParent(player.transform, true);
+                held = true;
+                transform.position = new Vector2(player.transform.position.x, player.transform.position.y - 0.5f);
+            }
         }
     }
 
