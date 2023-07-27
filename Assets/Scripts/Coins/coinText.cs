@@ -18,6 +18,7 @@ public class coinText : MonoBehaviour
 
     public void incrementCoins(int amount)
     {
+        coinNumber+=amount;
         coinCounter.text = "Coins: " + coinNumber.ToString();
     }
 }
