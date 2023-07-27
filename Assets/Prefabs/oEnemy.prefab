@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6597655696149719535}
   - component: {fileID: 161780308901142802}
+  - component: {fileID: 6643743282120436562}
   - component: {fileID: 3459352833525201629}
   - component: {fileID: 6522500781018167238}
   - component: {fileID: 6724227681327610084}
-  - component: {fileID: 6643743282120436562}
   m_Layer: 0
   m_Name: oEnemy
   m_TagString: Enemy
@@ -34,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &161780308901142802
 SpriteRenderer:
@@ -88,6 +88,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6643743282120436562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7235251226645825920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3265191363b3d244ad8ef36f8d9a410, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyWalkSp: 3
+  attackRange: 8
+  dangerRange: 4
+  desiredPos: {x: 0, y: 0}
+  currentMovementState: 0
+  movementSpeed: 0
 --- !u!114 &3459352833525201629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,20 +195,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.0638199, y: 1.0975974}
   m_EdgeRadius: 0
---- !u!114 &6643743282120436562
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7235251226645825920}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3265191363b3d244ad8ef36f8d9a410, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyWalkSp: 3
-  attackRange: 8
-  dangerRange: 4
-  desiredPos: {x: 0, y: 0, z: 0}
-  currentMovementState: 0

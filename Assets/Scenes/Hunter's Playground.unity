@@ -270,7 +270,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8.0625
+  orthographic size: 7.7708335
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -41610,7 +41610,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: oWitch
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 638890704370942200, guid: 79b19eb4e00a64c43b4ff62335c1c447, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
