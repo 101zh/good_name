@@ -7,7 +7,6 @@ public class gun_pos : MonoBehaviour
     // Start is called before the first frame update
 
     private Camera mainCam;
-    private GameObject player;
     private SpriteRenderer sprite;
     [SerializeField] private float bulletSpeed;
     [SerializeField] private int bulletsPerShot;
@@ -15,14 +14,13 @@ public class gun_pos : MonoBehaviour
     [SerializeField] private float coolDown; //after each shot
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private bool held;
     float angle;
     private float coolDownTimer;
-    bool held = false;
     private Renderer gunRenderer;
     private void Awake()
     {
         mainCam = Camera.main;
-        player = GameObject.FindWithTag("Player");
         sprite = GetComponent<SpriteRenderer>();
         gunRenderer = GetComponent<Renderer>();
 
@@ -55,9 +53,9 @@ public class gun_pos : MonoBehaviour
             if (Input.GetButtonDown("Interact"))
             {
                 //Makes Gun follow the player, so it looks like the player is always holding it
-                transform.SetParent(player.transform, true);
+                transform.SetParent(collision.gameObject.transform, true);
                 held = true;
-                transform.position = new Vector2(player.transform.position.x, player.transform.position.y - 0.5f);
+                transform.position = new Vector2(collision.gameObject.transform.position.x, collision.gameObject.transform.position.y - 0.5f);
             }
         }
     }
