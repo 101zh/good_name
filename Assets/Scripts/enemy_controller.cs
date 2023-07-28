@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemy_movement : MonoBehaviour
+public class enemy_controller : MonoBehaviour
 {
 
     [SerializeField] private float movementSpeed;
-    private GameObject player;
+    public static GameObject player;
     private Rigidbody2D enemyrb;
-    [SerializeField] private float attackRange = 5;
-    [SerializeField] private float dangerRange = 2.5f;
-    Vector3 desiredPos;
-    private enum movementState { chase, safe, runAway };
-    movementState currentMovementState;
+    [SerializeField] private float attackRange;
+    [SerializeField] private float dangerRange;
+    [SerializeField] Vector3 desiredPos;
+    public enum movementState { chase, safe, runAway };
+    public static movementState currentMovementState;
 
     // Start is called before the first frame update
     void Start()
@@ -26,19 +26,19 @@ public class enemy_movement : MonoBehaviour
     void FixedUpdate()
     {
         currentMovementState = movementLogic();
-        movementSpeed = movementSpeed * Time.deltaTime;
+        float frameSpeed = movementSpeed * Time.deltaTime;
         desiredPos = pickPosition(currentMovementState);
 
         if (currentMovementState == movementState.runAway)
         {
-            movementSpeed = -Mathf.Abs(movementSpeed);
+            frameSpeed = -Mathf.Abs(frameSpeed);
         }
         else
         {
-            movementSpeed = Mathf.Abs(movementSpeed);
+            frameSpeed = Mathf.Abs(frameSpeed);
         }
 
-        enemyrb.transform.position = Vector2.MoveTowards(enemyrb.transform.position, desiredPos, movementSpeed);
+        enemyrb.transform.position = Vector2.MoveTowards(enemyrb.transform.position, desiredPos, frameSpeed);
 
     }
 
