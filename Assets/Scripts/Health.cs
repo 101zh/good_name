@@ -6,15 +6,16 @@ using UnityEngine.Events;
 public class Health : MonoBehaviour
 {
     [SerializeField]
-    private int currentHealth, maxHealth;
-    public GameObject CoinPrefab;
-    public Transform EnemyTransform;
+    public int currentHealth, maxHealth;
+    [SerializeField] private GameObject coinPrefab;
 
     [SerializeField]
     private bool isDead = false;
     private Material matWhite;
     private Material matDefault;
     SpriteRenderer sr;
+    public delegate void GetHit();
+    public static event GetHit onHitEvent;
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -24,8 +25,8 @@ public class Health : MonoBehaviour
     }
     void DropCoin() 
     {
-       Vector2 position = EnemyTransform.position;
-       Instantiate(CoinPrefab, position,Quaternion.identity);
+       Vector2 position = transform.position;
+       Instantiate(coinPrefab, position,Quaternion.identity);
    }
     public void InitializeHealth(int healthValue)
     {
@@ -34,8 +35,9 @@ public class Health : MonoBehaviour
         isDead = false;
     }
 
-    public void GetHit(int amount)
+    public void onHit(int amount)
     {
+        if (onHitEvent != null){onHitEvent();}
         if (currentHealth <= 0)
         {
             isDead = true;

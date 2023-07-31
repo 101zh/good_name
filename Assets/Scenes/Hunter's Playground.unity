@@ -41609,6 +41609,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1876776474}
   m_CullTransparentMesh: 1
+--- !u!1 &1963099720 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7761284378859072885, guid: 79b19eb4e00a64c43b4ff62335c1c447, type: 3}
+  m_PrefabInstance: {fileID: 1409028625851144524}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1963099727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963099720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b671530cbc42c21468d6eec3345f1975, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 6
+  maxHealth: 6
+  coinPrefab: {fileID: 0}
+  isDead: 0
 --- !u!1 &2008001902
 GameObject:
   m_ObjectHideFlags: 0
@@ -41740,15 +41761,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6706363112934519951, guid: 79b19eb4e00a64c43b4ff62335c1c447, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 1048709223}
     - target: {fileID: 7761284378859072885, guid: 79b19eb4e00a64c43b4ff62335c1c447, type: 3}
       propertyPath: m_Name
       value: oWitch
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 638890704370942200, guid: 79b19eb4e00a64c43b4ff62335c1c447, type: 3}
+    - {fileID: 2495478945518949679, guid: 79b19eb4e00a64c43b4ff62335c1c447, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7761284378859072885, guid: 79b19eb4e00a64c43b4ff62335c1c447, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1963099727}
   m_SourcePrefab: {fileID: 100100000, guid: 79b19eb4e00a64c43b4ff62335c1c447, type: 3}
 --- !u!1001 &4160430982120164253
 PrefabInstance:

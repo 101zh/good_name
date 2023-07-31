@@ -11,12 +11,15 @@ public class player_controller : MonoBehaviour
     private SpriteRenderer sprite;
     private enum animState { witch_idle, witch_walk };
     private string currentState = "";
+    [SerializeField] private HUD_bar healthBar;
+    private Health health;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
+        health = GetComponent<Health>();
     }
 
     // Update is called once per frame
@@ -74,6 +77,18 @@ public class player_controller : MonoBehaviour
         animator.Play(newState);
 
         currentState = newState;
+    }
+    
+    private void updateHUD(){
+        healthBar.setValue(health.currentHealth, health.maxHealth);
+    }
+
+    private void OnEnable(){
+        Health.onHitEvent+=updateHUD;
+    }
+
+    private void OnDisable(){
+        Health.onHitEvent-=updateHUD;
     }
 
 }
