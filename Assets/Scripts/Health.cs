@@ -23,11 +23,17 @@ public class Health : MonoBehaviour
         matDefault = sr.material;
         InitializeHealth(maxHealth);
     }
-    void DropCoin() 
+    private void DropCoin()
     {
-       Vector2 position = transform.position;
-       Instantiate(coinPrefab, position,Quaternion.identity);
-   }
+        int RNG = Random.Range(1, 7);
+        for (int i = 0; i < RNG; i++)
+        {
+            float randOffsetX = Random.Range(-2f, 2f);
+            float randOffsetY = Random.Range(-2f, 2f);
+            Vector2 position = new Vector2(transform.position.x+randOffsetX, transform.position.y+randOffsetY);
+            Instantiate(coinPrefab, position, Quaternion.identity);
+        }
+    }
     public void InitializeHealth(int healthValue)
     {
         currentHealth = healthValue;
@@ -37,7 +43,7 @@ public class Health : MonoBehaviour
 
     public void onHit(int amount)
     {
-        if (onHitEvent != null){onHitEvent();}
+        if (onHitEvent != null) { onHitEvent(); }
         if (currentHealth <= 0)
         {
             isDead = true;
@@ -54,7 +60,7 @@ public class Health : MonoBehaviour
             Debug.Log(currentHealth);
             return;
         }
-        
+
     }
     void ResetMaterial()
     {

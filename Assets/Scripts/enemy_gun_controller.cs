@@ -14,6 +14,7 @@ public class enemy_gun_controller : MonoBehaviour
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private bool held = true;
+    [SerializeField] private bool passive;
     float angle;
     private float coolDownTimer;
     private Renderer gunRenderer;
@@ -27,7 +28,7 @@ public class enemy_gun_controller : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (!pause_menu.gamePaused)
+        if (!pause_menu.gamePaused && !passive)
         {
             if (coolDownTimer > 0) { coolDownTimer = Mathf.Max(coolDownTimer - Time.deltaTime, 0f); }
             if (held)
