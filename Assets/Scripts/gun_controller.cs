@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using TMPro;
 
@@ -11,6 +12,7 @@ public class gun_controller : MonoBehaviour
     private SpriteRenderer sprite;
     [SerializeField] private float bulletSpeed;
     [SerializeField] private int bulletsPerShot;
+    [SerializeField] private float bulletdelay;
     [SerializeField] private float Bulletspread;
     [SerializeField] private float coolDown; //after each shot
     [SerializeField] private Transform firePoint;
@@ -63,11 +65,12 @@ public class gun_controller : MonoBehaviour
             // Allows player to pickup gun by pressing interact button (set to right click on mouse)
             if (Input.GetButtonDown("Interact"))
             {
-                Transform currentHeldWeapon=weaponInventory.GetChild(script.heldWeaponIndex);
-                if (weaponInventory.childCount >=  2)
+                Transform currentHeldWeapon = weaponInventory.GetChild(script.heldWeaponIndex);
+                if (weaponInventory.childCount >= 2)
                 {
-                    currentHeldWeapon.SetParent(gameObjects, false);
-                    currentHeldWeapon.GetComponent<gun_controller>().held=false;
+                    currentHeldWeapon.SetParent(gameObjects, true);
+                    currentHeldWeapon.GetComponent<gun_controller>().held = false;
+                    currentHeldWeapon.GetComponent<SpriteRenderer>().sortingOrder=2;
                 }
                 else
                 {
@@ -78,6 +81,7 @@ public class gun_controller : MonoBehaviour
                 transform.SetParent(weaponInventory, true);
                 script.heldWeaponIndex = transform.GetSiblingIndex();
                 held = true;
+                sprite.sortingOrder=0;
                 transform.position = new Vector2(collision.gameObject.transform.position.x, collision.gameObject.transform.position.y - 0.5f);
                 script.SelectWeapon();
             }
@@ -109,20 +113,18 @@ public class gun_controller : MonoBehaviour
 
     private void shootBullet()
     {
-        for (int i = 0; i < bulletsPerShot; i++)
+        for (int i = 1; i <= bulletsPerShot; i++)
         {
-            float RNG = Random.Range(-Bulletspread, Bulletspread);
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation); //creates/spawns bullet
-            bullet.transform.Rotate(bullet.transform.rotation.x, bullet.transform.rotation.y, bullet.transform.rotation.z + RNG, Space.Self);
-            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-            rb.AddForce(bullet.transform.up * bulletSpeed, ForceMode2D.Impulse);
+            Invoke("FireBullet", bulletdelay*i);
         }
-        // GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation); //creates/spawns bullet
+    }
 
-        // Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        // rb.AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
-
-        // Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>(), true);
-        // Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), player.GetComponent<Collider2D>(), true);
+    private void FireBullet()
+    {
+        float RNG = Random.Range(-Bulletspread, Bulletspread);
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation); //creates/spawns bullet
+        bullet.transform.Rotate(bullet.transform.rotation.x, bullet.transform.rotation.y, bullet.transform.rotation.z + RNG, Space.Self);
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        rb.AddForce(bullet.transform.up * bulletSpeed, ForceMode2D.Impulse);
     }
 }
