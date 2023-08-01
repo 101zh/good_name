@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class gun_controller : MonoBehaviour
 {
@@ -14,16 +15,17 @@ public class gun_controller : MonoBehaviour
     [SerializeField] private float coolDown; //after each shot
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private bool held;
+    [SerializeField] private bool held; //is hte player holding the gun
     float angle;
     private float coolDownTimer;
     private Renderer gunRenderer;
-    private void Awake()
+    Transform gameObjects;
+    private void Start()
     {
         mainCam = Camera.main;
         sprite = GetComponent<SpriteRenderer>();
         gunRenderer = GetComponent<Renderer>();
-
+        gameObjects = GameObject.FindGameObjectWithTag("GameObjects").GetComponent<Transform>();
     }
 
     // Update is called once per frame
@@ -48,14 +50,36 @@ public class gun_controller : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
-            if (!held) { gunRenderer.material.SetFloat("_Thickness", 0.06f); } else { gunRenderer.material.SetFloat("_Thickness", 0.0f); }
-            // Allows player to pickup gun by pressing interact button (set to "e")
+            Transform weaponInventory = collision.gameObject.transform.GetChild(2);
+            weapon_switching script = weaponInventory.GetComponent<weapon_switching>();
+            if (!held)
+            {
+                gunRenderer.material.SetFloat("_Thickness", 0.06f);
+            }
+            else
+            {
+                gunRenderer.material.SetFloat("_Thickness", 0.0f);
+            }
+            // Allows player to pickup gun by pressing interact button (set to right click on mouse)
             if (Input.GetButtonDown("Interact"))
             {
+                Transform currentHeldWeapon=weaponInventory.GetChild(script.heldWeaponIndex);
+                if (weaponInventory.childCount >=  2)
+                {
+                    currentHeldWeapon.SetParent(gameObjects, false);
+                    currentHeldWeapon.GetComponent<gun_controller>().held=false;
+                }
+                else
+                {
+                    currentHeldWeapon.gameObject.SetActive(false);
+                }
+
                 //Makes Gun follow the player, so it looks like the player is always holding it
-                transform.SetParent(collision.gameObject.transform, true);
+                transform.SetParent(weaponInventory, true);
+                script.heldWeaponIndex = transform.GetSiblingIndex();
                 held = true;
                 transform.position = new Vector2(collision.gameObject.transform.position.x, collision.gameObject.transform.position.y - 0.5f);
+                script.SelectWeapon();
             }
         }
     }
@@ -85,10 +109,11 @@ public class gun_controller : MonoBehaviour
 
     private void shootBullet()
     {
-        for (int i = 0; i<bulletsPerShot; i++){
-            float RNG= Random.Range(-Bulletspread, Bulletspread);
+        for (int i = 0; i < bulletsPerShot; i++)
+        {
+            float RNG = Random.Range(-Bulletspread, Bulletspread);
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation); //creates/spawns bullet
-            bullet.transform.Rotate(bullet.transform.rotation.x,bullet.transform.rotation.y, bullet.transform.rotation.z+RNG, Space.Self);
+            bullet.transform.Rotate(bullet.transform.rotation.x, bullet.transform.rotation.y, bullet.transform.rotation.z + RNG, Space.Self);
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             rb.AddForce(bullet.transform.up * bulletSpeed, ForceMode2D.Impulse);
         }

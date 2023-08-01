@@ -45,7 +45,7 @@ public class player_controller : MonoBehaviour
     }
 
 
-    public void updateAnimation(float dirX, float dirY)
+    private void updateAnimation(float dirX, float dirY)
     {
         string state;
         // Debug.Log("Updated!");
@@ -78,17 +78,20 @@ public class player_controller : MonoBehaviour
 
         currentState = newState;
     }
-    
-    private void updateHUD(){
+
+    private void updateHUD()
+    {
         healthBar.setValue(health.currentHealth, health.maxHealth);
     }
 
-    private void OnEnable(){
-        Health.onHitEvent+=updateHUD;
+    private void OnEnable()
+    {
+        Health.onHitEvent += updateHUD;
     }
 
-    private void OnDisable(){
-        Health.onHitEvent-=updateHUD;
+    private void OnDisable()
+    {
+        Health.onHitEvent -= updateHUD;
     }
 
 }
