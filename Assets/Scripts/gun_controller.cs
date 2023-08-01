@@ -22,12 +22,16 @@ public class gun_controller : MonoBehaviour
     private float coolDownTimer;
     private Renderer gunRenderer;
     Transform gameObjects;
+    Transform gunName;
+    TMP_Text gunNameText;
     private void Start()
     {
         mainCam = Camera.main;
         sprite = GetComponent<SpriteRenderer>();
         gunRenderer = GetComponent<Renderer>();
         gameObjects = GameObject.FindGameObjectWithTag("GameObjects").GetComponent<Transform>();
+        gunName = transform.GetChild(1);
+        TMP_Text gunNameText = gunName.GetComponent<TMP_Text>();
     }
 
     // Update is called once per frame
@@ -57,10 +61,12 @@ public class gun_controller : MonoBehaviour
             if (!held)
             {
                 gunRenderer.material.SetFloat("_Thickness", 0.06f);
+                gunName.gameObject.SetActive(true);
             }
             else
             {
                 gunRenderer.material.SetFloat("_Thickness", 0.0f);
+                gunName.gameObject.SetActive(false);
             }
             // Allows player to pickup gun by pressing interact button (set to right click on mouse)
             if (Input.GetButtonDown("Interact"))
@@ -91,6 +97,7 @@ public class gun_controller : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         gunRenderer.material.SetFloat("_Thickness", 0.0f);
+        gunName.gameObject.SetActive(false);
     }
 
     private void gunRotate()

@@ -58,11 +58,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: PressStart2P-Regular SDF
+  m_Name: Uncommon Gun
   m_EditorClassIdentifier: 
-  hashCode: -801186333
+  hashCode: -1458849750
   material: {fileID: 1945599234534507576}
-  materialHashCode: -1858621597
+  materialHashCode: 725193674
   m_Version: 1.1.0
   m_SourceFontFileGUID: 9401e10d32c98b840a4a85135f5795f4
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 9401e10d32c98b840a4a85135f5795f4, type: 3}
@@ -2501,10 +2501,11 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PressStart2P-Regular SDF Material
-  m_Shader: {fileID: 4800000, guid: 68e6db2ebdc24f95958faec2be5558d6, type: 3}
+  m_Shader: {fileID: 4800000, guid: 9ce87b73eb4437c48b0db9c1613941e3, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - GLOW_ON
   - UNDERLAY_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -2564,7 +2565,7 @@ Material:
     - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0.2
+    - _OutlineWidth: 0.108
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
     - _ScaleRatioA: 0.8333333
@@ -2593,7 +2594,7 @@ Material:
     m_Colors:
     - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
     - _EnvMatrixRotation: {r: 0, g: 0, b: 0, a: 0}
-    - _FaceColor: {r: 1, g: 1, b: 1, a: 1}
+    - _FaceColor: {r: 0.33333334, g: 1, b: 0.33333334, a: 1}
     - _GlowColor: {r: 0.66490316, g: 2, b: 0.66490316, a: 1}
     - _MaskCoord: {r: 0, g: 0, b: 32767, a: 32767}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
