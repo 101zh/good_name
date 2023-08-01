@@ -76,7 +76,7 @@ public class gun_controller : MonoBehaviour
                 {
                     currentHeldWeapon.SetParent(gameObjects, true);
                     currentHeldWeapon.GetComponent<gun_controller>().held = false;
-                    currentHeldWeapon.GetComponent<SpriteRenderer>().sortingOrder=2;
+                    currentHeldWeapon.GetComponent<SpriteRenderer>().sortingOrder=0;
                 }
                 else
                 {
@@ -87,7 +87,7 @@ public class gun_controller : MonoBehaviour
                 transform.SetParent(weaponInventory, true);
                 script.heldWeaponIndex = transform.GetSiblingIndex();
                 held = true;
-                sprite.sortingOrder=0;
+                sprite.sortingOrder=2;
                 transform.position = new Vector2(collision.gameObject.transform.position.x, collision.gameObject.transform.position.y - 0.5f);
                 script.SelectWeapon();
             }

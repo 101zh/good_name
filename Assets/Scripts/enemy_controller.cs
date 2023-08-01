@@ -6,7 +6,7 @@ public class enemy_controller : MonoBehaviour
 {
 
     [SerializeField] private float movementSpeed;
-    public static GameObject player;
+    public GameObject player;
     private Rigidbody2D enemyrb;
     [SerializeField] private float attackRange;
     [SerializeField] private float dangerRange;

@@ -18,11 +18,13 @@ public class enemy_gun_controller : MonoBehaviour
     float angle;
     private float coolDownTimer;
     private Renderer gunRenderer;
+    enemy_controller enemyControllerScript;
+    GameObject player;
     private void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
         gunRenderer = GetComponent<Renderer>();
-
+        enemyControllerScript = GetComponentInParent<enemy_controller>();
     }
 
     // Update is called once per frame
@@ -45,7 +47,7 @@ public class enemy_gun_controller : MonoBehaviour
 
     private void gunRotate()
     {   
-        GameObject player = enemy_controller.player;
+        player = enemyControllerScript.player;
         // finds the position of the mouse using camera (has to be relative to it) and position of gun
         Vector2 dir = player.transform.position - transform.position;
         // Finding the angle to rotate using math

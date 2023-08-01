@@ -38899,11 +38899,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5050599371445128256, guid: e3e5fff947454cc459bc8ca0ffdfa50a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.44
+      value: -7.53
       objectReference: {fileID: 0}
     - target: {fileID: 5050599371445128256, guid: e3e5fff947454cc459bc8ca0ffdfa50a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.65
+      value: -1.94
       objectReference: {fileID: 0}
     - target: {fileID: 5050599371445128256, guid: e3e5fff947454cc459bc8ca0ffdfa50a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -41725,18 +41725,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3525341681906911766, guid: 79b19eb4e00a64c43b4ff62335c1c447, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6557612784347263931, guid: 79b19eb4e00a64c43b4ff62335c1c447, type: 3}
-      propertyPath: m_SortingLayer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6557612784347263931, guid: 79b19eb4e00a64c43b4ff62335c1c447, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 6706363112934519951, guid: 79b19eb4e00a64c43b4ff62335c1c447, type: 3}
       propertyPath: healthBar
       value: 
@@ -41830,7 +41818,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1032658622522891608, guid: 63c956cc11527a54bb5224817962cb1e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2716190251166367881, guid: 63c956cc11527a54bb5224817962cb1e, type: 3}
       propertyPath: timeBetweenWaves
