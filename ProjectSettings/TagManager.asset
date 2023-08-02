@@ -12,6 +12,7 @@ TagManager:
   - GameObjects
   - Gun
   - Spear
+  - Sword
   layers:
   - Default
   - TransparentFX
