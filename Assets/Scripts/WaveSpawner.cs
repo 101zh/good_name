@@ -3,7 +3,7 @@ using System.Collections;
 
 public class WaveSpawner : MonoBehaviour
 {
-
+    public CountdownTimer script;
     public enum SpawnState { SPAWNING, WAITING, COUNTING };
 
     [System.Serializable]
@@ -41,9 +41,11 @@ public class WaveSpawner : MonoBehaviour
 
     void Start()
     {
+        script = GameObject.FindWithTag("Canvas").GetComponent<CountdownTimer>();
         if (spawnPoints.Length == 0)
         {
             Debug.LogError("No spawn points referenced.");
+            
         }
 
         waveCountdown = timeBetweenWaves;
@@ -55,6 +57,7 @@ public class WaveSpawner : MonoBehaviour
         {
             if (!EnemyIsAlive())
             {
+                script.currentTime = 20;
                 WaveCompleted();
             }
             else
