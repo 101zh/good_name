@@ -13,6 +13,7 @@ TagManager:
   - Gun
   - Spear
   - Sword
+  - Canvas
   layers:
   - Default
   - TransparentFX

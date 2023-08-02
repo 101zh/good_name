@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 4852388188154727463}
   m_Layer: 6
   m_Name: oSword
-  m_TagString: Spear
+  m_TagString: Sword
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
