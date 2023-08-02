@@ -10,6 +10,8 @@ TagManager:
   - CoinUI
   - CoinCollector
   - GameObjects
+  - Gun
+  - Spear
   layers:
   - Default
   - TransparentFX

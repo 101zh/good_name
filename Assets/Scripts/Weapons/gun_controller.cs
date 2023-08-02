@@ -16,7 +16,7 @@ public class gun_controller : MonoBehaviour
     [SerializeField] private float coolDown; //after each shot
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private bool held; //is hte player holding the gun
+    public bool held; //is hte player holding the gun
     float angle;
     private float coolDownTimer;
     private Renderer gunRenderer;
@@ -87,8 +87,10 @@ public class gun_controller : MonoBehaviour
         Transform currentHeldWeapon = weaponInventory.GetChild(script.heldWeaponIndex);
         if (weaponInventory.childCount >= 2)
         {
+            if (currentHeldWeapon.tag.Equals("Gun")) { currentHeldWeapon.GetComponent<gun_controller>().held = false; }
+            else if (currentHeldWeapon.tag.Equals("Spear")) { currentHeldWeapon.GetComponent<spear_controller>().held = false; }
+            else { currentHeldWeapon.GetComponent<sword_controller>().held = false; }
             currentHeldWeapon.SetParent(gameObjects, true);
-            currentHeldWeapon.GetComponent<gun_controller>().held = false;
             currentHeldWeapon.GetComponent<SpriteRenderer>().sortingOrder = 0;
         }
         else
