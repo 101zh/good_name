@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 5045791610815488085}
   m_Layer: 6
   m_Name: oShotgun
-  m_TagString: Untagged
+  m_TagString: Gun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -347,7 +347,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 1}
+    oldSize: {x: 2.125, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
