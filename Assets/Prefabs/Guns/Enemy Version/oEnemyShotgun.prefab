@@ -303,7 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa2706544bde39d46978b98084e643b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 8
+  bulletSpeed: 4
   bulletsPerShot: 5
   Bulletspread: 20
   coolDown: 1

@@ -498,7 +498,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 2
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -11268,6 +11268,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: oRangedEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7235251226645825920, guid: 7d1abdd11828782428c7e52498e7fbf1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11602,7 +11606,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2.845581, y: 0}
+  m_AnchoredPosition: {x: -2.84552, y: 0}
   m_SizeDelta: {x: -737.5292, y: -687.4665}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1464846265
@@ -41818,7 +41822,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1032658622522891608, guid: 63c956cc11527a54bb5224817962cb1e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2716190251166367881, guid: 63c956cc11527a54bb5224817962cb1e, type: 3}
       propertyPath: timeBetweenWaves

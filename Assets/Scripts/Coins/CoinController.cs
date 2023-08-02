@@ -7,6 +7,8 @@ public class CoinController : MonoBehaviour
     Rigidbody2D rb;
     GameObject player;
     Vector2 playerDir;
+    [SerializeField] float moveSpeed;
+    float acceleration;
     float timeStamp;
     bool flyToPlayer;
     coinText coinTextScript;
@@ -22,8 +24,9 @@ public class CoinController : MonoBehaviour
     {
         if (flyToPlayer)
         {
+            acceleration= Time.deltaTime/timeStamp;
             playerDir = -(transform.position - player.transform.position).normalized;
-            rb.velocity = new Vector2(playerDir.x, playerDir.y) * 7.5f * (Time.deltaTime / timeStamp);
+            rb.velocity = new Vector2(playerDir.x, playerDir.y) * moveSpeed *acceleration;
         }
     }
 
@@ -31,7 +34,7 @@ public class CoinController : MonoBehaviour
     {
         if (collider.gameObject.tag.Equals("Magnet"))
         {
-            timeStamp = Time.deltaTime;
+            timeStamp=Time.deltaTime;
             flyToPlayer = true;
         }
         else if (collider.gameObject.tag.Equals("CoinCollector"))

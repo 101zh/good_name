@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 using TMPro;
 
@@ -21,6 +20,8 @@ public class gun_controller : MonoBehaviour
     float angle;
     private float coolDownTimer;
     private Renderer gunRenderer;
+    Transform playerTransform;
+    bool nearTo;
     Transform gameObjects;
     Transform gunName;
     TMP_Text gunNameText;
@@ -40,6 +41,7 @@ public class gun_controller : MonoBehaviour
         if (!pause_menu.gamePaused)
         {
             if (coolDownTimer > 0) { coolDownTimer = Mathf.Max(coolDownTimer - Time.deltaTime, 0f); }
+            if (nearTo && Input.GetButtonDown("Interact")) { PickUpGun(playerTransform); }
             if (held)
             {
                 gunRotate();
@@ -56,8 +58,6 @@ public class gun_controller : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
-            Transform weaponInventory = collision.gameObject.transform.GetChild(2);
-            weapon_switching script = weaponInventory.GetComponent<weapon_switching>();
             if (!held)
             {
                 gunRenderer.material.SetFloat("_Thickness", 0.06f);
@@ -68,29 +68,8 @@ public class gun_controller : MonoBehaviour
                 gunRenderer.material.SetFloat("_Thickness", 0.0f);
                 gunName.gameObject.SetActive(false);
             }
-            // Allows player to pickup gun by pressing interact button (set to right click on mouse)
-            if (Input.GetButtonDown("Interact"))
-            {
-                Transform currentHeldWeapon = weaponInventory.GetChild(script.heldWeaponIndex);
-                if (weaponInventory.childCount >= 2)
-                {
-                    currentHeldWeapon.SetParent(gameObjects, true);
-                    currentHeldWeapon.GetComponent<gun_controller>().held = false;
-                    currentHeldWeapon.GetComponent<SpriteRenderer>().sortingOrder=0;
-                }
-                else
-                {
-                    currentHeldWeapon.gameObject.SetActive(false);
-                }
-
-                //Makes Gun follow the player, so it looks like the player is always holding it
-                transform.SetParent(weaponInventory, true);
-                script.heldWeaponIndex = transform.GetSiblingIndex();
-                held = true;
-                sprite.sortingOrder=2;
-                transform.position = new Vector2(collision.gameObject.transform.position.x, collision.gameObject.transform.position.y - 0.5f);
-                script.SelectWeapon();
-            }
+            playerTransform = collision.gameObject.transform;
+            nearTo = true;
         }
     }
 
@@ -98,6 +77,32 @@ public class gun_controller : MonoBehaviour
     {
         gunRenderer.material.SetFloat("_Thickness", 0.0f);
         gunName.gameObject.SetActive(false);
+        nearTo = false;
+    }
+
+    private void PickUpGun(Transform player)
+    {
+        Transform weaponInventory = player.GetChild(2);
+        weapon_switching script = weaponInventory.GetComponent<weapon_switching>();
+        Transform currentHeldWeapon = weaponInventory.GetChild(script.heldWeaponIndex);
+        if (weaponInventory.childCount >= 2)
+        {
+            currentHeldWeapon.SetParent(gameObjects, true);
+            currentHeldWeapon.GetComponent<gun_controller>().held = false;
+            currentHeldWeapon.GetComponent<SpriteRenderer>().sortingOrder = 0;
+        }
+        else
+        {
+            currentHeldWeapon.gameObject.SetActive(false);
+        }
+
+        //Makes Gun follow the player, so it looks like the player is always holding it
+        transform.SetParent(weaponInventory, true);
+        script.heldWeaponIndex = transform.GetSiblingIndex();
+        held = true;
+        sprite.sortingOrder = 2;
+        transform.position = new Vector2(player.position.x, player.position.y - 0.5f);
+        script.SelectWeapon();
     }
 
     private void gunRotate()
@@ -122,7 +127,7 @@ public class gun_controller : MonoBehaviour
     {
         for (int i = 1; i <= bulletsPerShot; i++)
         {
-            Invoke("FireBullet", bulletdelay*i);
+            Invoke("FireBullet", bulletdelay * i);
         }
     }
 
