@@ -14,8 +14,8 @@ public class sword_controller : MonoBehaviour
     [SerializeField] private float swingDelay; // delay between swings of one click
     [SerializeField] private float swingTime; // amount of time sword is swinging
     [SerializeField] private float coolDown; //after each click
-    [SerializeField] private string idleAnimName;
-    [SerializeField] private string swingAnimName;
+    [SerializeField] private string idleAnimName = "blood_blade_idle";
+    [SerializeField] private string swingAnimName = "blooad_blade_swing";
     public bool held; //is hte player holding the gun
     float angle;
     private float coolDownTimer;
@@ -144,10 +144,10 @@ public class sword_controller : MonoBehaviour
 
     private void Swing()
     {
+        Debug.Log("Swing");
         hitBox.gameObject.SetActive(true);
-        sprite.flipX = i%2==0;
-        animator.Play(swingAnimName);
         Invoke("Hold", swingTime);
+        animator.Play(swingAnimName);
     }
 
     private void Hold()
