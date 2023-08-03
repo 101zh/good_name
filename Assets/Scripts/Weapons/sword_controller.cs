@@ -9,28 +9,34 @@ public class sword_controller : MonoBehaviour
 
     private Camera mainCam;
     private SpriteRenderer sprite;
-    [SerializeField] private float thrustSpeed;
-    [SerializeField] private int thrustsPerClick;
-    [SerializeField] private float thrustDelay;
-    [SerializeField] private float thrustLength;
-    [SerializeField] private float coolDown; //after each shot
+    private Animator animator;
+    [SerializeField] private int swingsPerClick;
+    [SerializeField] private float swingDelay; // delay between swings of one click
+    [SerializeField] private float swingTime; // amount of time sword is swinging
+    [SerializeField] private float coolDown; //after each click
+    [SerializeField] private string idleAnimName;
+    [SerializeField] private string swingAnimName;
     public bool held; //is hte player holding the gun
     float angle;
     private float coolDownTimer;
-    private Renderer gunRenderer;
+    private Renderer swordRenderer;
     Transform playerTransform;
+    Transform hitBox;
     bool nearTo;
     Transform gameObjects;
-    Transform gunName;
-    TMP_Text gunNameText;
+    Transform swordName;
+    TMP_Text swordNameText;
     private void Start()
     {
         mainCam = Camera.main;
         sprite = GetComponent<SpriteRenderer>();
-        gunRenderer = GetComponent<Renderer>();
+        swordRenderer = GetComponent<Renderer>();
         gameObjects = GameObject.FindGameObjectWithTag("GameObjects").GetComponent<Transform>();
-        gunName = transform.GetChild(1);
-        TMP_Text gunNameText = gunName.GetComponent<TMP_Text>();
+        swordName = transform.GetChild(1);
+        TMP_Text gunNameText = swordName.GetComponent<TMP_Text>();
+        hitBox = transform.GetChild(0);
+        animator = GetComponent<Animator>();
+        swingDelay += swingTime;
     }
 
     // Update is called once per frame
@@ -45,7 +51,7 @@ public class sword_controller : MonoBehaviour
                 Rotate();
                 if (Input.GetButtonDown("Fire1") && coolDownTimer == 0) //checks if player has pressed the shoot button
                 {
-                    Thrust();
+                    Swinging();
                     coolDownTimer = coolDown;
                 }
             }
@@ -58,13 +64,13 @@ public class sword_controller : MonoBehaviour
         {
             if (!held)
             {
-                gunRenderer.material.SetFloat("_Thickness", 0.06f);
-                gunName.gameObject.SetActive(true);
+                swordRenderer.material.SetFloat("_Thickness", 0.06f);
+                swordName.gameObject.SetActive(true);
             }
             else
             {
-                gunRenderer.material.SetFloat("_Thickness", 0.0f);
-                gunName.gameObject.SetActive(false);
+                swordRenderer.material.SetFloat("_Thickness", 0.0f);
+                swordName.gameObject.SetActive(false);
             }
             playerTransform = collision.gameObject.transform;
             nearTo = true;
@@ -73,8 +79,8 @@ public class sword_controller : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        gunRenderer.material.SetFloat("_Thickness", 0.0f);
-        gunName.gameObject.SetActive(false);
+        swordRenderer.material.SetFloat("_Thickness", 0.0f);
+        swordName.gameObject.SetActive(false);
         nearTo = false;
     }
 
@@ -102,7 +108,7 @@ public class sword_controller : MonoBehaviour
         script.heldWeaponIndex = transform.GetSiblingIndex();
         held = true;
         sprite.sortingOrder = 2;
-        transform.position = new Vector2(player.position.x, player.position.y - 0.5f);
+        transform.position = new Vector2(player.position.x+0.45f, player.position.y - 0.55f);
         script.SelectWeapon();
     }
 
@@ -117,23 +123,36 @@ public class sword_controller : MonoBehaviour
         if (!(angle <= -90 && angle >= 90))
         {
             sprite.flipY = true;
+            transform.position = new Vector2(playerTransform.position.x-0.45f, playerTransform.position.y - 0.55f);
         }
         else
         {
             sprite.flipY = false;
+            transform.position = new Vector2(playerTransform.position.x+0.45f, playerTransform.position.y - 0.55f);
         }
     }
 
-    private IEnumerator Thrust()
+    int i;
+    private void Swinging()
     {
-        Debug.Log("Thrust");
-        var radians = angle*Mathf.Deg2Rad;
-        Vector2 destination = new Vector2(Mathf.Cos(radians), Mathf.Sin(radians));
-        destination*=thrustLength;
-        while(new Vector2(transform.position.x, transform.position.y)==destination){
-            transform.position = Vector2.Lerp(transform.position, destination, thrustSpeed);
-            yield return null;
+        for (i = 0; i < swingsPerClick; i++)
+        {
+            Invoke("Swing", swingDelay * i);
+            Debug.Log(i);
         }
-        yield return null;
+    }
+
+    private void Swing()
+    {
+        hitBox.gameObject.SetActive(true);
+        sprite.flipX = i%2==0;
+        animator.Play(swingAnimName);
+        Invoke("Hold", swingTime);
+    }
+
+    private void Hold()
+    {
+        animator.Play(idleAnimName);
+        hitBox.gameObject.SetActive(false);
     }
 }

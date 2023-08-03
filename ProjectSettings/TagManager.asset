@@ -21,12 +21,12 @@ TagManager:
   - player
   - Water
   - UI
-  - gun
+  - weapon
   - bullet
   - coin
   - walls
   - enemy
-  - 
+  - swordHitbox
   - 
   - 
   - 

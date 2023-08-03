@@ -127,7 +127,7 @@ public class gun_controller : MonoBehaviour
 
     private void shootBullet()
     {
-        for (int i = 1; i <= bulletsPerShot; i++)
+        for (int i = 0; i < bulletsPerShot; i++)
         {
             Invoke("FireBullet", bulletdelay * i);
         }

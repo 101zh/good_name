@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.1, y: 0.4}
+  m_AnchoredPosition: {x: 1.26, y: 0.56}
   m_SizeDelta: {x: 2.4644, y: 0.476}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &6309443652971581059
@@ -182,13 +182,14 @@ GameObject:
   m_Component:
   - component: {fileID: 6090616485559714731}
   - component: {fileID: 1241065724429283124}
-  m_Layer: 6
+  - component: {fileID: 8425147641722026659}
+  m_Layer: 11
   m_Name: oHitbox
-  m_TagString: Untagged
+  m_TagString: Sword
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6090616485559714731
 Transform:
   m_ObjectHideFlags: 0
@@ -216,10 +217,10 @@ PolygonCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1152
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 1352
+    m_Bits: 328
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -233,7 +234,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -248,13 +249,29 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.7, y: 1}
-      - {x: 0, y: 1.35}
-      - {x: -0.7, y: 1}
-      - {x: -1.25, y: 0.2}
-      - {x: 0, y: -0.35}
-      - {x: 1.25, y: 0.2}
+    - - {x: 0.2682128, y: 0.008693218}
+      - {x: -0.36353713, y: 1.6705794}
+      - {x: 0.1, y: 2}
+      - {x: 0.93716955, y: 1.8577485}
+      - {x: 1.6130128, y: 1.289073}
+      - {x: 2.019295, y: 0.054869443}
+      - {x: 1.6972909, y: -1.0355444}
+      - {x: 0.9634824, y: -1.7456293}
+      - {x: 0.1, y: -2}
+      - {x: -0.29999954, y: -1.6308689}
   m_UseDelaunayMesh: 0
+--- !u!114 &8425147641722026659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7352959365014341921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 819bb6f8578e4084e90713b1db71fbd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8539025767995496924
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,6 +284,7 @@ GameObject:
   - component: {fileID: 225442914259106253}
   - component: {fileID: 4565009711985542031}
   - component: {fileID: 4852388188154727463}
+  - component: {fileID: 7027376297945924712}
   m_Layer: 6
   m_Name: oSword
   m_TagString: Sword
@@ -331,7 +349,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 8889aedcf546b8e4e914b540ed1f7344, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -375,18 +393,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0037829876, y: 0.072458744}
+  m_Offset: {x: 0.74130654, y: 0.0019545555}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.5, y: 2}
+    pivot: {x: 0.25, y: 0.5}
+    oldSize: {x: 3, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.3843493, y: 2.4595823}
+  m_Size: {x: 2.6844182, y: 1.0117617}
   m_EdgeRadius: 0
 --- !u!114 &4852388188154727463
 MonoBehaviour:
@@ -400,9 +418,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f6bbc7d5e81ee5419f3bed128b04cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrustSpeed: 0
-  thrustsPerClick: 0
-  thrustDelay: 0
-  thrustLength: 0
-  coolDown: 0
+  swingsPerClick: 1
+  swingDelay: 0.1
+  swingTime: 0.5
+  coolDown: 0.15
+  idleAnimName: bood_blade_idle
+  swingAnimName: bood_blade_swing
   held: 0
+--- !u!95 &7027376297945924712
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8539025767995496924}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ef7f196c8d720624ca3dfc3debb8b869, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
