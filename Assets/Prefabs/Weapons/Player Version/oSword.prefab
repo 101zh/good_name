@@ -189,7 +189,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6090616485559714731
 Transform:
   m_ObjectHideFlags: 0
@@ -249,16 +249,17 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.2682128, y: 0.008693218}
-      - {x: -0.36353713, y: 1.6705794}
-      - {x: 0.1, y: 2}
-      - {x: 0.93716955, y: 1.8577485}
-      - {x: 1.6130128, y: 1.289073}
-      - {x: 2.019295, y: 0.054869443}
-      - {x: 1.6972909, y: -1.0355444}
-      - {x: 0.9634824, y: -1.7456293}
-      - {x: 0.1, y: -2}
-      - {x: -0.29999954, y: -1.6308689}
+    - - {x: -1.4662625, y: -0.905268}
+      - {x: 0.2682128, y: 0.008693218}
+      - {x: -0.26018867, y: 1.8590382}
+      - {x: 0.28237885, y: 2.3647594}
+      - {x: 1.3201663, y: 2.0948417}
+      - {x: 1.8683443, y: 1.3741835}
+      - {x: 2.24423, y: 0.1460594}
+      - {x: 1.8249564, y: -0.85924417}
+      - {x: 0.9270065, y: -1.4173461}
+      - {x: 0.14255482, y: -1.6413208}
+      - {x: -1.4915464, y: -1.1445245}
   m_UseDelaunayMesh: 0
 --- !u!114 &8425147641722026659
 MonoBehaviour:
@@ -299,7 +300,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8539025767995496924}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
   m_LocalPosition: {x: -6.46, y: -6.68, z: -6.6735935}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -308,7 +309,7 @@ Transform:
   - {fileID: 7049535998719448938}
   m_Father: {fileID: 0}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
 --- !u!212 &225442914259106253
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -418,9 +419,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f6bbc7d5e81ee5419f3bed128b04cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swingsPerClick: 1
+  swingsPerClick: 4
   swingDelay: 0.1
-  swingTime: 0.5
+  swingTime: 0.75
   coolDown: 0.15
   idleAnimName: bood_blade_idle
   swingAnimName: bood_blade_swing
