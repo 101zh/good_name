@@ -14,6 +14,9 @@ public class gun_controller : MonoBehaviour
     [SerializeField] private float bulletdelay;
     [SerializeField] private float Bulletspread;
     [SerializeField] private float coolDown; //after each shot
+    [SerializeField] private int cost;
+    [SerializeField] private bool sold;
+    [SerializeField] private string gunName;
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject bulletPrefab;
     public bool held; //is hte player holding the gun
@@ -23,16 +26,17 @@ public class gun_controller : MonoBehaviour
     Transform playerTransform;
     bool nearTo;
     Transform gameObjects;
-    Transform gunName;
+    Transform nameTransform;
     TMP_Text gunNameText;
+    private bool isErrorMessage;
     private void Start()
     {
         mainCam = Camera.main;
         sprite = GetComponent<SpriteRenderer>();
         gunRenderer = GetComponent<Renderer>();
         gameObjects = GameObject.FindGameObjectWithTag("GameObjects").GetComponent<Transform>();
-        gunName = transform.GetChild(1);
-        TMP_Text gunNameText = gunName.GetComponent<TMP_Text>();
+        nameTransform = transform.GetChild(1);
+        gunNameText = nameTransform.GetComponent<TMP_Text>();
     }
 
     // Update is called once per frame
@@ -41,7 +45,7 @@ public class gun_controller : MonoBehaviour
         if (!pause_menu.gamePaused)
         {
             if (coolDownTimer > 0) { coolDownTimer = Mathf.Max(coolDownTimer - Time.deltaTime, 0f); }
-            if (nearTo && Input.GetButtonDown("Interact")) { PickUpGun(playerTransform); }
+            if (nearTo && Input.GetButtonDown("Interact")) { PickUpGun(); }
             if (held)
             {
                 gunRotate();
@@ -58,15 +62,26 @@ public class gun_controller : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
-            if (!held)
+            if (isErrorMessage)
             {
-                gunRenderer.material.SetFloat("_Thickness", 0.06f);
-                gunName.gameObject.SetActive(true);
+                // Do nothing
+            }
+            else if (!sold)
+            {
+                gunNameText.text = gunName + " <color=yellow>" + cost.ToString() + "</color>";
             }
             else
             {
-                gunRenderer.material.SetFloat("_Thickness", 0.0f);
-                gunName.gameObject.SetActive(false);
+                gunNameText.text = gunName;
+            }
+
+            if (!held)
+            {
+                RevealName();
+            }
+            else
+            {
+                HideName();
             }
             playerTransform = collision.gameObject.transform;
             nearTo = true;
@@ -75,14 +90,34 @@ public class gun_controller : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        gunRenderer.material.SetFloat("_Thickness", 0.0f);
-        gunName.gameObject.SetActive(false);
+        HideName();
         nearTo = false;
     }
 
-    private void PickUpGun(Transform player)
+    private void PickUpGun()
     {
-        Transform weaponInventory = player.GetChild(2);
+        if (!sold)
+        {
+            player_controller playerScript = playerTransform.GetComponent<player_controller>();
+            if (playerScript.coins <= cost && isErrorMessage)
+            {
+                return;
+            }
+            else if (playerScript.coins <= cost)
+            {
+                gunNameText.text = "<color=red>Not Enough Money</color>";
+                RevealName();
+                isErrorMessage = true;
+                Invoke("DisableErrorMessage", 1.5f);
+                return;
+            }
+            else
+            {
+                sold = true;
+                playerScript.incrementCoins(-cost);
+            }
+        }
+        Transform weaponInventory = playerTransform.GetChild(2);
         weapon_switching script = weaponInventory.GetComponent<weapon_switching>();
         Transform currentHeldWeapon = weaponInventory.GetChild(script.heldWeaponIndex);
         if (weaponInventory.childCount >= 2)
@@ -103,7 +138,7 @@ public class gun_controller : MonoBehaviour
         script.heldWeaponIndex = transform.GetSiblingIndex();
         held = true;
         sprite.sortingOrder = 2;
-        transform.position = new Vector2(player.position.x, player.position.y - 0.5f);
+        transform.position = new Vector2(playerTransform.position.x, playerTransform.position.y - 0.5f);
         script.SelectWeapon();
     }
 
@@ -141,4 +176,22 @@ public class gun_controller : MonoBehaviour
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(bullet.transform.up * bulletSpeed, ForceMode2D.Impulse);
     }
+
+    private void HideName()
+    {
+        gunRenderer.material.SetFloat("_Thickness", 0.0f);
+        nameTransform.gameObject.SetActive(false);
+    }
+
+    private void RevealName()
+    {
+        gunRenderer.material.SetFloat("_Thickness", 0.06f);
+        nameTransform.gameObject.SetActive(true);
+    }
+
+    private void DisableErrorMessage()
+    {
+        isErrorMessage = false;
+    }
+
 }

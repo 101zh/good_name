@@ -13,7 +13,7 @@ public class player_controller : MonoBehaviour
     private string currentState = "";
     [SerializeField] private HUD_bar healthBar;
     private Health health;
-    [SerializeField] private int coins;
+    public int coins;
     coinText coinTextScript;
 
     void Start()

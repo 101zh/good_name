@@ -14,9 +14,12 @@ public class sword_controller : MonoBehaviour
     [SerializeField] private float swingDelay; // delay between swings of one click
     [SerializeField] private float swingTime; // amount of time sword is swinging
     [SerializeField] private float coolDown; //after each click
+    [SerializeField] private int cost;
+    [SerializeField] private bool sold;
+    [SerializeField] private string swordName;
     [SerializeField] private string idleAnimName = "blood_blade_idle";
     [SerializeField] private string swingAnimName = "blooad_blade_swing";
-    public bool held; //is hte player holding the gun
+    public bool held; //is hte player holding the sword
     float angle;
     private float coolDownTimer;
     private Renderer swordRenderer;
@@ -24,16 +27,17 @@ public class sword_controller : MonoBehaviour
     Transform hitBox;
     bool nearTo;
     Transform gameObjects;
-    Transform swordName;
+    Transform nameTransform;
     TMP_Text swordNameText;
+    private bool isErrorMessage;
     private void Start()
     {
         mainCam = Camera.main;
         sprite = GetComponent<SpriteRenderer>();
         swordRenderer = GetComponent<Renderer>();
         gameObjects = GameObject.FindGameObjectWithTag("GameObjects").GetComponent<Transform>();
-        swordName = transform.GetChild(1);
-        TMP_Text gunNameText = swordName.GetComponent<TMP_Text>();
+        nameTransform = transform.GetChild(1);
+        swordNameText = nameTransform.GetComponent<TMP_Text>();
         hitBox = transform.GetChild(0);
         animator = GetComponent<Animator>();
         swingDelay += swingTime;
@@ -45,7 +49,7 @@ public class sword_controller : MonoBehaviour
         if (!pause_menu.gamePaused)
         {
             if (coolDownTimer > 0) { coolDownTimer = Mathf.Max(coolDownTimer - Time.deltaTime, 0f); }
-            if (nearTo && Input.GetButtonDown("Interact")) { PickUpGun(playerTransform); }
+            if (nearTo && Input.GetButtonDown("Interact")) { PickUpsword(); }
             if (held)
             {
                 Rotate();
@@ -62,15 +66,26 @@ public class sword_controller : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
-            if (!held)
+            if (isErrorMessage)
             {
-                swordRenderer.material.SetFloat("_Thickness", 0.06f);
-                swordName.gameObject.SetActive(true);
+                // Do nothing
+            }
+            else if (!sold)
+            {
+                swordNameText.text = swordName + " <color=yellow>" + cost.ToString() + "</color>";
             }
             else
             {
-                swordRenderer.material.SetFloat("_Thickness", 0.0f);
-                swordName.gameObject.SetActive(false);
+                swordNameText.text = swordName;
+            }
+
+            if (!held)
+            {
+                RevealName();
+            }
+            else
+            {
+                HideName();
             }
             playerTransform = collision.gameObject.transform;
             nearTo = true;
@@ -79,20 +94,40 @@ public class sword_controller : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        swordRenderer.material.SetFloat("_Thickness", 0.0f);
-        swordName.gameObject.SetActive(false);
+        HideName();
         nearTo = false;
     }
 
-    private void PickUpGun(Transform player)
+    private void PickUpsword()
     {
-        Transform weaponInventory = player.GetChild(2);
+        if (!sold)
+        {
+            player_controller playerScript = this.playerTransform.GetComponent<player_controller>();
+            if (playerScript.coins <= cost && isErrorMessage)
+            {
+                return;
+            }
+            else if (playerScript.coins <= cost)
+            {
+                swordNameText.text = "<color=red>Not Enough Money</color>";
+                RevealName();
+                isErrorMessage = true;
+                Invoke("DisableErrorMessage", 1.5f);
+                return;
+            }
+            else
+            {
+                sold = true;
+                playerScript.incrementCoins(-cost);
+            }
+        }
+        Transform weaponInventory = playerTransform.GetChild(2);
         weapon_switching script = weaponInventory.GetComponent<weapon_switching>();
         Transform currentHeldWeapon = weaponInventory.GetChild(script.heldWeaponIndex);
 
         if (weaponInventory.childCount >= 2)
         {
-            if (currentHeldWeapon.tag.Equals("Gun")) { currentHeldWeapon.GetComponent<gun_controller>().held = false; }
+            if (currentHeldWeapon.tag.Equals("sword")) { currentHeldWeapon.GetComponent<sword_controller>().held = false; }
             else if (currentHeldWeapon.tag.Equals("Spear")) { currentHeldWeapon.GetComponent<spear_controller>().held = false; }
             else { currentHeldWeapon.GetComponent<sword_controller>().held = false; }
             currentHeldWeapon.SetParent(gameObjects, true);
@@ -103,48 +138,45 @@ public class sword_controller : MonoBehaviour
             currentHeldWeapon.gameObject.SetActive(false);
         }
 
-        //Makes Gun follow the player, so it looks like the player is always holding it
+        //Makes sword follow the player, so it looks like the player is always holding it
         transform.SetParent(weaponInventory, true);
         script.heldWeaponIndex = transform.GetSiblingIndex();
         held = true;
         sprite.sortingOrder = 2;
-        transform.position = new Vector2(player.position.x+0.45f, player.position.y - 0.55f);
+        transform.position = new Vector2(playerTransform.position.x + 0.45f, playerTransform.position.y - 0.55f);
         script.SelectWeapon();
     }
 
     private void Rotate()
     {
-        // finds the position of the mouse using camera (has to be relative to it) and position of gun
+        // finds the position of the mouse using camera (has to be relative to it) and position of sword
         Vector2 dir = mainCam.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         // Finding the angle to rotate using math
         angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        // Rotates the gun using math
+        // Rotates the sword using math
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         if (!(angle <= -90 && angle >= 90))
         {
             sprite.flipY = true;
-            transform.position = new Vector2(playerTransform.position.x-0.45f, playerTransform.position.y - 0.55f);
+            transform.position = new Vector2(playerTransform.position.x - 0.45f, playerTransform.position.y - 0.55f);
         }
         else
         {
             sprite.flipY = false;
-            transform.position = new Vector2(playerTransform.position.x+0.45f, playerTransform.position.y - 0.55f);
+            transform.position = new Vector2(playerTransform.position.x + 0.45f, playerTransform.position.y - 0.55f);
         }
     }
 
-    int i;
     private void Swinging()
     {
-        for (i = 0; i < swingsPerClick; i++)
+        for (int i = 0; i < swingsPerClick; i++)
         {
             Invoke("Swing", swingDelay * i);
-            Debug.Log(i);
         }
     }
 
     private void Swing()
     {
-        Debug.Log("Swing");
         hitBox.gameObject.SetActive(true);
         Invoke("Hold", swingTime);
         animator.Play(swingAnimName);
@@ -155,4 +187,22 @@ public class sword_controller : MonoBehaviour
         animator.Play(idleAnimName);
         hitBox.gameObject.SetActive(false);
     }
+
+    private void HideName()
+    {
+        swordRenderer.material.SetFloat("_Thickness", 0.0f);
+        nameTransform.gameObject.SetActive(false);
+    }
+
+    private void RevealName()
+    {
+        swordRenderer.material.SetFloat("_Thickness", 0.06f);
+        nameTransform.gameObject.SetActive(true);
+    }
+
+    private void DisableErrorMessage()
+    {
+        isErrorMessage = false;
+    }
+
 }
