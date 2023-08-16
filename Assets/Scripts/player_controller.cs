@@ -13,6 +13,8 @@ public class player_controller : MonoBehaviour
     private string currentState = "";
     [SerializeField] private HUD_bar healthBar;
     private Health health;
+    [SerializeField] private int coins;
+    coinText coinTextScript;
 
     void Start()
     {
@@ -20,6 +22,7 @@ public class player_controller : MonoBehaviour
         animator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
         health = GetComponent<Health>();
+        coinTextScript = GameObject.FindWithTag("CoinUI").GetComponentInChildren<coinText>();
     }
 
     // Update is called once per frame
@@ -43,7 +46,6 @@ public class player_controller : MonoBehaviour
             rb.velocity = new Vector2(0, 0);
         }
     }
-
 
     private void updateAnimation(float dirX, float dirY)
     {
@@ -78,7 +80,11 @@ public class player_controller : MonoBehaviour
 
         currentState = newState;
     }
-
+    public void incrementCoins(int amount)
+    {
+        coins+=amount;
+        coinTextScript.UpdateCoins(coins);
+    }
     private void updateHUD()
     {
         healthBar.setValue(health.currentHealth, health.maxHealth);

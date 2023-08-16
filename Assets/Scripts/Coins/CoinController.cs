@@ -11,13 +11,13 @@ public class CoinController : MonoBehaviour
     float acceleration;
     float timeStamp;
     bool flyToPlayer;
-    coinText coinTextScript;
+    player_controller player_script;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player");
-        coinTextScript = GameObject.FindWithTag("CoinUI").GetComponentInChildren<coinText>();
+        player_script= player.GetComponent<player_controller>();
     }
 
     void Update()
@@ -39,7 +39,7 @@ public class CoinController : MonoBehaviour
         }
         else if (collider.gameObject.tag.Equals("CoinCollector"))
         {
-            coinTextScript.incrementCoins(1);
+            player_script.incrementCoins(1);
             Destroy(gameObject);
         }
     }
