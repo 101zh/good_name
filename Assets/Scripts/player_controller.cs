@@ -80,15 +80,16 @@ public class player_controller : MonoBehaviour
 
         currentState = newState;
     }
+
     public void incrementCoins(int amount)
     {
         coins+=amount;
         coinTextScript.UpdateCoins(coins);
     }
+
     private void updateHUD()
     {
         healthBar.setValue(health.currentHealth, health.maxHealth);
-        
     }
 
     private void OnEnable()
