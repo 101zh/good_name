@@ -250,7 +250,7 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: -1.4662625, y: -0.905268}
-      - {x: 0.2682128, y: 0.008693218}
+      - {x: -0.24683452, y: 0.008693196}
       - {x: -0.26018867, y: 1.8590382}
       - {x: 0.28237885, y: 2.3647594}
       - {x: 1.3201663, y: 2.0948417}
@@ -423,8 +423,8 @@ MonoBehaviour:
   swingDelay: 0.1
   swingTime: 0.75
   coolDown: 0.15
-  idleAnimName: bood_blade_idle
-  swingAnimName: bood_blade_swing
+  idleAnimName: blood_idle
+  swingAnimName: blood_swing
   held: 0
 --- !u!95 &7027376297945924712
 Animator:
