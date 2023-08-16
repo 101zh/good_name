@@ -16,7 +16,7 @@ public class sword_hitbox : MonoBehaviour
         if (collider.tag.Equals("Enemy") || collider.tag.Equals("Player"))
         {
             healthscript = collider.gameObject.GetComponent<Health>();
-            healthscript.onHit(1);
+            healthscript.OnChangeHealth(1);
             Debug.Log("I've been hit!");
         }
         if(collider.gameObject.layer==7){

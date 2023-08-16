@@ -82,6 +82,7 @@ public class player_controller : MonoBehaviour
     private void updateHUD()
     {
         healthBar.setValue(health.currentHealth, health.maxHealth);
+        
     }
 
     private void OnEnable()

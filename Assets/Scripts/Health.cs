@@ -41,10 +41,9 @@ public class Health : MonoBehaviour
         isDead = false;
     }
 
-    public void onHit(int amount)
+    public void OnChangeHealth(int amount) /// Negative values increase health, positive values take away health. 
     {
-        if (onHitEvent != null) { onHitEvent(); }
-        if (currentHealth <= 0)
+        if (currentHealth <= 0) 
         {
             isDead = true;
             Destroy(gameObject);
@@ -59,8 +58,12 @@ public class Health : MonoBehaviour
             Invoke("ResetMaterial", .1f);
             Debug.Log(currentHealth);
             return;
+        
         }
-
+        if (onHitEvent != null) 
+        {
+            onHitEvent();
+        }
     }
     void ResetMaterial()
     {

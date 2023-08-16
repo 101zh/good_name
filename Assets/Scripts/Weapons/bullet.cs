@@ -18,7 +18,7 @@ public class bullet : MonoBehaviour
         if (collision.collider.tag.Equals("Enemy") || collision.collider.tag.Equals("Player"))
         {
             healthscript = collision.gameObject.GetComponent<Health>();
-            healthscript.onHit(1);
+            healthscript.OnChangeHealth(1);
             Debug.Log("I've been hit!");
         }
         rb.constraints = RigidbodyConstraints2D.FreezePosition;
