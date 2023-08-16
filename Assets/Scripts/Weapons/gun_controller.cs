@@ -27,7 +27,7 @@ public class gun_controller : MonoBehaviour
     bool nearTo;
     Transform gameObjects;
     Transform nameTransform;
-    TMP_Text gunNameText;
+    TMP_Text nameText;
     private bool isErrorMessage;
     private void Start()
     {
@@ -36,7 +36,7 @@ public class gun_controller : MonoBehaviour
         gunRenderer = GetComponent<Renderer>();
         gameObjects = GameObject.FindGameObjectWithTag("GameObjects").GetComponent<Transform>();
         nameTransform = transform.GetChild(1);
-        gunNameText = nameTransform.GetComponent<TMP_Text>();
+        nameText = nameTransform.GetComponent<TMP_Text>();
     }
 
     // Update is called once per frame
@@ -68,11 +68,11 @@ public class gun_controller : MonoBehaviour
             }
             else if (!sold)
             {
-                gunNameText.text = gunName + " <color=yellow>" + cost.ToString() + "</color>";
+                nameText.text = gunName + " <color=yellow>" + cost.ToString() + "</color>";
             }
             else
             {
-                gunNameText.text = gunName;
+                nameText.text = gunName;
             }
 
             if (!held)
@@ -105,7 +105,7 @@ public class gun_controller : MonoBehaviour
             }
             else if (playerScript.coins <= cost)
             {
-                gunNameText.text = "<color=red>Not Enough Money</color>";
+                nameText.text = "<color=red>Not Enough Money</color>";
                 RevealName();
                 isErrorMessage = true;
                 Invoke("DisableErrorMessage", 1.5f);

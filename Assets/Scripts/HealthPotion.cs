@@ -11,25 +11,27 @@ public class HealthPotion : MonoBehaviour
     Transform playerTransform;
     bool nearTo;
     Transform gameObjects;
-    Transform gunName;
-    TMP_Text gunNameText;
+    Transform nameTransform;
+    TMP_Text nameText;
     Health healthtesting;
+    bool isErrorMessage;
+    [SerializeField] private int cost;
+    [SerializeField] private string displayName;
     private void Start()
     {
         mainCam = Camera.main;
         sprite = GetComponent<SpriteRenderer>();
         gunRenderer = GetComponent<Renderer>();
         gameObjects = GameObject.FindGameObjectWithTag("GameObjects").GetComponent<Transform>();
-        gunName = transform.GetChild(1);
-        TMP_Text gunNameText = gunName.GetComponent<TMP_Text>();
+        nameTransform = transform.GetChild(1);
+        nameText = nameTransform.GetComponent<TMP_Text>();
         healthtesting = GameObject.FindWithTag("Player").GetComponent<Health>();
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
-            gunRenderer.material.SetFloat("_Thickness", 0.06f);
-            gunName.gameObject.SetActive(true);
+            RevealName();
             playerTransform = collision.gameObject.transform;
             nearTo = true;
         }
@@ -38,6 +40,24 @@ public class HealthPotion : MonoBehaviour
     {
         if (nearTo && Input.GetButtonDown("Interact"))
         {
+            player_controller playerScript = playerTransform.GetComponent<player_controller>();
+            if (playerScript.coins <= cost && isErrorMessage)
+            {
+                return;
+            }
+            else if (playerScript.coins <= cost)
+            {
+                nameText.text = "<color=red>Not Enough Money</color>";
+                RevealName();
+                isErrorMessage = true;
+                Invoke("DisableErrorMessage", 1.5f);
+                return;
+            }
+            else
+            {
+                playerScript.incrementCoins(-cost);
+            }
+
             healthtesting.OnChangeHealth(-5);
             Destroy(gameObject);
         }
@@ -45,8 +65,25 @@ public class HealthPotion : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        gunRenderer.material.SetFloat("_Thickness", 0.0f);
-        gunName.gameObject.SetActive(false);
+        HideName();
         nearTo = false;
+    }
+
+    private void HideName()
+    {
+        gunRenderer.material.SetFloat("_Thickness", 0.0f);
+        nameTransform.gameObject.SetActive(false);
+    }
+
+    private void RevealName()
+    {
+        gunRenderer.material.SetFloat("_Thickness", 0.06f);
+        nameTransform.gameObject.SetActive(true);
+    }
+
+    private void DisableErrorMessage()
+    {
+        isErrorMessage = false;
+        nameText.text = displayName;
     }
 }

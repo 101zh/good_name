@@ -28,7 +28,7 @@ public class sword_controller : MonoBehaviour
     bool nearTo;
     Transform gameObjects;
     Transform nameTransform;
-    TMP_Text swordNameText;
+    TMP_Text nameText;
     private bool isErrorMessage;
     private void Start()
     {
@@ -37,7 +37,7 @@ public class sword_controller : MonoBehaviour
         swordRenderer = GetComponent<Renderer>();
         gameObjects = GameObject.FindGameObjectWithTag("GameObjects").GetComponent<Transform>();
         nameTransform = transform.GetChild(1);
-        swordNameText = nameTransform.GetComponent<TMP_Text>();
+        nameText = nameTransform.GetComponent<TMP_Text>();
         hitBox = transform.GetChild(0);
         animator = GetComponent<Animator>();
         swingDelay += swingTime;
@@ -72,11 +72,11 @@ public class sword_controller : MonoBehaviour
             }
             else if (!sold)
             {
-                swordNameText.text = swordName + " <color=yellow>" + cost.ToString() + "</color>";
+                nameText.text = swordName + " <color=yellow>" + cost.ToString() + "</color>";
             }
             else
             {
-                swordNameText.text = swordName;
+                nameText.text = swordName;
             }
 
             if (!held)
@@ -109,7 +109,7 @@ public class sword_controller : MonoBehaviour
             }
             else if (playerScript.coins <= cost)
             {
-                swordNameText.text = "<color=red>Not Enough Money</color>";
+                nameText.text = "<color=red>Not Enough Money</color>";
                 RevealName();
                 isErrorMessage = true;
                 Invoke("DisableErrorMessage", 1.5f);
