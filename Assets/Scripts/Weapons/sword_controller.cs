@@ -129,7 +129,7 @@ public class sword_controller : MonoBehaviour
         {
             if (currentHeldWeapon.tag.Equals("sword")) { currentHeldWeapon.GetComponent<sword_controller>().held = false; }
             else if (currentHeldWeapon.tag.Equals("Spear")) { currentHeldWeapon.GetComponent<spear_controller>().held = false; }
-            else { currentHeldWeapon.GetComponent<sword_controller>().held = false; }
+            else { currentHeldWeapon.GetComponent<gun_controller>().held = false; }
             currentHeldWeapon.SetParent(gameObjects, true);
             currentHeldWeapon.GetComponent<SpriteRenderer>().sortingOrder = 0;
         }
@@ -143,7 +143,7 @@ public class sword_controller : MonoBehaviour
         script.heldWeaponIndex = transform.GetSiblingIndex();
         held = true;
         sprite.sortingOrder = 2;
-        transform.position = new Vector2(playerTransform.position.x + 0.45f, playerTransform.position.y - 0.55f);
+        transform.position = new Vector2(playerTransform.position.x + 0.15f, playerTransform.position.y - 0.55f);
         script.SelectWeapon();
     }
 
@@ -155,15 +155,15 @@ public class sword_controller : MonoBehaviour
         angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         // Rotates the sword using math
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        if (!(angle <= -90 && angle >= 90))
+        if (angle <= -90 || angle >= 90)
         {
             sprite.flipY = true;
-            transform.position = new Vector2(playerTransform.position.x - 0.45f, playerTransform.position.y - 0.55f);
+            transform.position = new Vector2(playerTransform.position.x + 0.3f, playerTransform.position.y - 0.55f);
         }
         else
         {
             sprite.flipY = false;
-            transform.position = new Vector2(playerTransform.position.x + 0.45f, playerTransform.position.y - 0.55f);
+            transform.position = new Vector2(playerTransform.position.x + 0.3f, playerTransform.position.y - 0.55f);
         }
     }
 

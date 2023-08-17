@@ -189,7 +189,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6090616485559714731
 Transform:
   m_ObjectHideFlags: 0
@@ -251,14 +251,14 @@ PolygonCollider2D:
     m_Paths:
     - - {x: -1.4662625, y: -0.905268}
       - {x: -0.24683452, y: 0.008693196}
-      - {x: -0.26018867, y: 1.8590382}
-      - {x: 0.28237885, y: 2.3647594}
-      - {x: 1.3201663, y: 2.0948417}
-      - {x: 1.8683443, y: 1.3741835}
+      - {x: -1.5163723, y: 1.0071434}
+      - {x: -0.20854348, y: 2.0904202}
+      - {x: 0.80036616, y: 2.2681081}
+      - {x: 1.767272, y: 1.6485223}
       - {x: 2.24423, y: 0.1460594}
-      - {x: 1.8249564, y: -0.85924417}
-      - {x: 0.9270065, y: -1.4173461}
-      - {x: 0.14255482, y: -1.6413208}
+      - {x: 2.0271008, y: -1.1480215}
+      - {x: 1.2591007, y: -2.0093403}
+      - {x: 0.02704364, y: -1.9300982}
       - {x: -1.4915464, y: -1.1445245}
   m_UseDelaunayMesh: 0
 --- !u!114 &8425147641722026659
@@ -419,12 +419,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f6bbc7d5e81ee5419f3bed128b04cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swingsPerClick: 4
-  swingDelay: 0.1
-  swingTime: 0.75
+  swingsPerClick: 1
+  swingDelay: 0
+  swingTime: 0.3
   coolDown: 0.15
   cost: 20
-  sold: 0
+  sold: 1
   swordName: Blood Katana
   idleAnimName: blood_idle
   swingAnimName: blood_swing
