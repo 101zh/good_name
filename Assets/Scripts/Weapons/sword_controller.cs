@@ -158,7 +158,7 @@ public class sword_controller : MonoBehaviour
         if (angle <= -90 || angle >= 90)
         {
             sprite.flipY = true;
-            transform.position = new Vector2(playerTransform.position.x + 0.3f, playerTransform.position.y - 0.55f);
+            transform.position = new Vector2(playerTransform.position.x - 0.3f, playerTransform.position.y - 0.55f);
         }
         else
         {
