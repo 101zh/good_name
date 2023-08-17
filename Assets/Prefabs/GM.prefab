@@ -106,7 +106,7 @@ MonoBehaviour:
     count: 140
     rate: 3
   - name: Wave 15 (BOSS)
-    enemy: {fileID: 0}
+    enemy: {fileID: 2457979869689399682, guid: 3d68d0e6665ac234193d222b3deb6cda, type: 3}
     count: 1
     rate: 1
   - name: Wave 16

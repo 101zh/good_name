@@ -39,13 +39,17 @@ public class WaveSpawner : MonoBehaviour
         get { return state; }
     }
 
+    public delegate void WaveEvents();
+    public static event WaveEvents OnWaveComplete;
+    public static event WaveEvents OnWaveStart;
+
     void Start()
     {
         script = GameObject.FindWithTag("Canvas").GetComponent<CountdownTimer>();
         if (spawnPoints.Length == 0)
         {
             Debug.LogError("No spawn points referenced.");
-            
+
         }
 
         waveCountdown = timeBetweenWaves;
@@ -65,11 +69,12 @@ public class WaveSpawner : MonoBehaviour
                 return;
             }
         }
-
+        // Starts a wave
         if (waveCountdown <= 0)
         {
             if (state != SpawnState.SPAWNING)
             {
+                TriggerEvent(OnWaveStart);
                 StartCoroutine(SpawnWave(waves[nextWave]));
             }
         }
@@ -82,6 +87,7 @@ public class WaveSpawner : MonoBehaviour
     void WaveCompleted()
     {
         Debug.Log("Wave Completed!");
+        TriggerEvent(OnWaveComplete);
 
         state = SpawnState.COUNTING;
         waveCountdown = timeBetweenWaves;
@@ -133,6 +139,13 @@ public class WaveSpawner : MonoBehaviour
 
         Transform _sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
         Instantiate(_enemy, _sp.position, _sp.rotation);
+    }
+
+    private void TriggerEvent(WaveEvents Event)
+    {
+        if (Event!=null){
+            Event();
+        }
     }
 
 }

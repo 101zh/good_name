@@ -12,29 +12,45 @@ public class shop_controller : MonoBehaviour
         displayTables = transform.GetChild(2);
     }
 
-    void Start(){
-        for (int i = 0; i< 3; i++)
+    void Start()
+    {
+        for (int i = 0; i < 3; i++)
         {
             SpawnRandom(displayTables.GetChild(i));
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    void SetUpShop()
     {
-        if (Input.GetButton("Fire1"))
+        gameObject.SetActive(true);
+        for (int i = 0; i < 3; i++)
         {
-            for (int i = 0; i< 3; i++)
-            {
-                Destroy(displayTables.GetChild(i).GetChild(0).gameObject);
-                SpawnRandom(displayTables.GetChild(i));
-            }
+            Destroy(displayTables.GetChild(i).GetChild(0).gameObject);
+            SpawnRandom(displayTables.GetChild(i));
         }
+    }
+
+    void TakeDownShop()
+    {
+        gameObject.SetActive(false);
     }
 
     void SpawnRandom(Transform tableTransforms)
     {
-        Object random = prefabs[Random.Range(0, prefabs.Length-1)];
+        Object random = prefabs[Random.Range(0, prefabs.Length - 1)];
         Instantiate(random, tableTransforms.position, Quaternion.identity, tableTransforms);
     }
+
+    private void OnEnable()
+    {
+        WaveSpawner.OnWaveComplete += SetUpShop;
+        WaveSpawner.OnWaveStart += TakeDownShop;
+    }
+
+    private void OnDisable()
+    {
+        WaveSpawner.OnWaveComplete -= SetUpShop;
+        WaveSpawner.OnWaveStart -= TakeDownShop;
+    }
+
 }
