@@ -105,6 +105,9 @@ MonoBehaviour:
   bulletdelay: 0.05
   Bulletspread: 0
   coolDown: 0.5
+  cost: 20
+  sold: 0
+  gunName: Assault Rifle
   firePoint: {fileID: 3796869675427718987}
   bulletPrefab: {fileID: 8518284227580658630, guid: 93de7c8ee0fa6c24696106fc1a993ba3, type: 3}
   held: 0
@@ -219,8 +222,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.261, y: 0.6}
-  m_SizeDelta: {x: 2.4644, y: 0.476}
+  m_AnchoredPosition: {x: -0.02, y: 0.61}
+  m_SizeDelta: {x: 3.7091, y: 0.4371}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &823778173756613487
 MeshRenderer:
@@ -293,8 +296,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4283826005
+  m_fontColor: {r: 0.33333334, g: 1, b: 0.33333334, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
