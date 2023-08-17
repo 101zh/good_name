@@ -11993,6 +11993,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6853046694003017996, guid: ed04517a1cb571b459866ec3e580f8e1, type: 3}
   m_PrefabInstance: {fileID: 1340845185}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1340845187 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 455330878452943317, guid: ed04517a1cb571b459866ec3e580f8e1, type: 3}
+  m_PrefabInstance: {fileID: 1340845185}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a5da9a657b09d847a801cd142e26d99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1412735744
 GameObject:
   m_ObjectHideFlags: 0
@@ -42283,10 +42294,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: GM
       objectReference: {fileID: 0}
-    - target: {fileID: 1032658622522891608, guid: 63c956cc11527a54bb5224817962cb1e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 2716190251166367881, guid: 63c956cc11527a54bb5224817962cb1e, type: 3}
+      propertyPath: OnWaveStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1340845187}
+    - target: {fileID: 2716190251166367881, guid: 63c956cc11527a54bb5224817962cb1e, type: 3}
+      propertyPath: OnWaveComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1340845187}
     - target: {fileID: 9148291805220566747, guid: 63c956cc11527a54bb5224817962cb1e, type: 3}
       propertyPath: m_RootOrder
       value: 0

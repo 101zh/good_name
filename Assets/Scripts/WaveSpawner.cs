@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Events;
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -39,9 +40,8 @@ public class WaveSpawner : MonoBehaviour
         get { return state; }
     }
 
-    public delegate void WaveEvents();
-    public static event WaveEvents OnWaveComplete;
-    public static event WaveEvents OnWaveStart;
+    public UnityEvent OnWaveComplete;
+    public UnityEvent OnWaveStart;
 
     void Start()
     {
@@ -74,7 +74,7 @@ public class WaveSpawner : MonoBehaviour
         {
             if (state != SpawnState.SPAWNING)
             {
-                TriggerEvent(OnWaveStart);
+                OnWaveStart.Invoke();
                 StartCoroutine(SpawnWave(waves[nextWave]));
             }
         }
@@ -87,7 +87,7 @@ public class WaveSpawner : MonoBehaviour
     void WaveCompleted()
     {
         Debug.Log("Wave Completed!");
-        TriggerEvent(OnWaveComplete);
+        OnWaveComplete.Invoke();
 
         state = SpawnState.COUNTING;
         waveCountdown = timeBetweenWaves;
@@ -139,13 +139,6 @@ public class WaveSpawner : MonoBehaviour
 
         Transform _sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
         Instantiate(_enemy, _sp.position, _sp.rotation);
-    }
-
-    private void TriggerEvent(WaveEvents Event)
-    {
-        if (Event!=null){
-            Event();
-        }
     }
 
 }

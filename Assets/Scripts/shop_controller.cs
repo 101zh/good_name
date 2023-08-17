@@ -20,9 +20,10 @@ public class shop_controller : MonoBehaviour
         }
     }
 
-    void SetUpShop()
+    public void SetUpShop()
     {
         gameObject.SetActive(true);
+        Debug.Log("Setting Up Shop");
         for (int i = 0; i < 3; i++)
         {
             Destroy(displayTables.GetChild(i).GetChild(0).gameObject);
@@ -30,27 +31,16 @@ public class shop_controller : MonoBehaviour
         }
     }
 
-    void TakeDownShop()
+    public void TakeDownShop()
     {
+        Debug.Log("Taking Down Shop");
         gameObject.SetActive(false);
     }
 
-    void SpawnRandom(Transform tableTransforms)
+    private void SpawnRandom(Transform tableTransforms)
     {
         Object random = prefabs[Random.Range(0, prefabs.Length - 1)];
         Instantiate(random, tableTransforms.position, Quaternion.identity, tableTransforms);
-    }
-
-    private void OnEnable()
-    {
-        WaveSpawner.OnWaveComplete += SetUpShop;
-        WaveSpawner.OnWaveStart += TakeDownShop;
-    }
-
-    private void OnDisable()
-    {
-        WaveSpawner.OnWaveComplete -= SetUpShop;
-        WaveSpawner.OnWaveStart -= TakeDownShop;
     }
 
 }

@@ -56,7 +56,6 @@ public class Health : MonoBehaviour
             currentHealth -= amount;
             sr.material = matWhite;
             Invoke("ResetMaterial", .1f);
-            Debug.Log(currentHealth);
         }
         if (onHitEvent != null) 
         {
