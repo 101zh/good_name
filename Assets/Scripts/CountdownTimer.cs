@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CountdownTimer : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class CountdownTimer : MonoBehaviour
     public float currentTime =  0f;
     float startingTime = 20f;
 
-    [SerializeField] Text countdownText;
+    [SerializeField] TMP_Text countdownText;
     void Start()
     {
         currentTime = startingTime;
