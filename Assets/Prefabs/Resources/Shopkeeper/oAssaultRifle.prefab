@@ -34,7 +34,7 @@ Transform:
   - {fileID: 3796869675427718987}
   - {fileID: 6430588736530190050}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3210380838662897460
 SpriteRenderer:
@@ -182,7 +182,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2155420259331025898}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10.388385}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -214,7 +214,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a4d1f0765ed660145a769502be61d1ca, type: 2}
+  - {fileID: 2100000, guid: 84b9dd56205763f439cbd011de84529b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -258,15 +258,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Assault Rifle
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 319e79209c1ecd546b213241c69ca9d8, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: a4d1f0765ed660145a769502be61d1ca, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3740464e4942cca4cb19c701df1b447a, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 84b9dd56205763f439cbd011de84529b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4283826005
+  m_fontColor: {r: 0.33333334, g: 1, b: 0.33333334, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

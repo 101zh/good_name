@@ -26,7 +26,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4698800741114602085}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10.388385}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a4d1f0765ed660145a769502be61d1ca, type: 2}
+  - {fileID: 1945599234534507576, guid: 3740464e4942cca4cb19c701df1b447a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -102,8 +102,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Health Potion
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 319e79209c1ecd546b213241c69ca9d8, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: a4d1f0765ed660145a769502be61d1ca, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3740464e4942cca4cb19c701df1b447a, type: 2}
+  m_sharedMaterial: {fileID: 1945599234534507576, guid: 3740464e4942cca4cb19c701df1b447a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -237,7 +237,7 @@ Transform:
   - {fileID: 2258017480975287971}
   - {fileID: 5855911927278625679}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7063584119878737615
 SpriteRenderer:
