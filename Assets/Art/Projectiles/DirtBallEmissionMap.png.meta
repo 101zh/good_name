@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5918e9b2d1a67264088d740a9d6c406b
+guid: defb59d8fe5726445b2ceb49175c23c5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,133 +121,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: GroundPoundShockwave_0
-      rect:
-        serializedVersion: 2
-        x: 70
-        y: 0
-        width: 70
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 902f474d2b127b84fbb68bb75bff5eb0
-      internalID: -352377119
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GroundPoundShockwave_1
-      rect:
-        serializedVersion: 2
-        x: 140
-        y: 0
-        width: 70
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1a7f8430980d55f49b44970be430ee88
-      internalID: -2024874169
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GroundPoundShockwave_2
-      rect:
-        serializedVersion: 2
-        x: 210
-        y: 0
-        width: 70
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8817938e81ed3ae4ca2da77bacdb10f5
-      internalID: -1467194074
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GroundPoundShockwave_3
-      rect:
-        serializedVersion: 2
-        x: 280
-        y: 0
-        width: 70
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3ceba267bff37ed4dbd427a814a63399
-      internalID: -814732068
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GroundPoundShockwave_4
-      rect:
-        serializedVersion: 2
-        x: 350
-        y: 0
-        width: 70
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d34cbe9d3907d2444b5d46b9fa4d77c1
-      internalID: 1556769553
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GroundPoundShockwave_5
-      rect:
-        serializedVersion: 2
-        x: 420
-        y: 0
-        width: 70
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2701de57870b6f24faedb70ebc8be532
-      internalID: 95299882
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -258,13 +132,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      GroundPoundShockwave_0: -352377119
-      GroundPoundShockwave_1: -2024874169
-      GroundPoundShockwave_2: -1467194074
-      GroundPoundShockwave_3: -814732068
-      GroundPoundShockwave_4: 1556769553
-      GroundPoundShockwave_5: 95299882
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

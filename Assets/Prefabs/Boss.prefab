@@ -107,7 +107,7 @@ MonoBehaviour:
   movementSpeed: 0
   player: {fileID: 0}
   attackRange: 8
-  dangerRange: 4
+  dangerRange: 0
   desiredPos: {x: 0, y: 0, z: 0}
 --- !u!114 &2886917100708905082
 MonoBehaviour:
