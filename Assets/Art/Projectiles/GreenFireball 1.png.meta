@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3c3ac8add7291224089df8348a325856
+guid: 80b6bad28d70f0c44b998782203f0956
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -84,12 +84,12 @@ TextureImporter:
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
-    overridden: 1
+    overridden: 0
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: greenFireball_0
+      name: GreenFireball 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57ebd190ddd870d47b1b9fdd3c22703b
-      internalID: -1514720052
+      spriteID: fcaec03a291e8be4280152e5b7f017a8
+      internalID: -1164887512
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: greenFireball_1
+      name: GreenFireball 1_1
       rect:
         serializedVersion: 2
         x: 32
@@ -158,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f578100df3320bd4a952e839be0c802d
-      internalID: -484125371
+      spriteID: b19a90dfeede76345b9c529fee972b85
+      internalID: 270583622
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: greenFireball_2
+      name: GreenFireball 1_2
       rect:
         serializedVersion: 2
         x: 64
@@ -179,14 +179,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aa715cc36162d6b4986fc64093fe523d
-      internalID: 1182923376
+      spriteID: 500df05997277154b8f27ce0b7758d0c
+      internalID: 1808331596
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: greenFireball_3
+      name: GreenFireball 1_3
       rect:
         serializedVersion: 2
         x: 96
@@ -200,14 +200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b1c7f87b92f1714589287b193e27c3b
-      internalID: 102029462
+      spriteID: c9464fddede7a814fb944cc7474c1927
+      internalID: -172124347
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: greenFireball_4
+      name: GreenFireball 1_4
       rect:
         serializedVersion: 2
         x: 128
@@ -221,14 +221,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4baadb41cb86fa344b4768d9532ba8e8
-      internalID: -493622103
+      spriteID: 049359ee19e29f84dae65805563f2a39
+      internalID: 197136277
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: greenFireball_5
+      name: GreenFireball 1_5
       rect:
         serializedVersion: 2
         x: 160
@@ -242,8 +242,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a30d76716e425e499c44037bced08a6
-      internalID: 191403159
+      spriteID: 583766e1dc13eb645a469ef2d42d9447
+      internalID: 1597428136
       vertices: []
       indices: 
       edges: []
@@ -259,12 +259,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      greenFireball_0: -1514720052
-      greenFireball_1: -484125371
-      greenFireball_2: 1182923376
-      greenFireball_3: 102029462
-      greenFireball_4: -493622103
-      greenFireball_5: 191403159
+      GreenFireball 1_0: -1164887512
+      GreenFireball 1_1: 270583622
+      GreenFireball 1_2: 1808331596
+      GreenFireball 1_3: -172124347
+      GreenFireball 1_4: 197136277
+      GreenFireball 1_5: 1597428136
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

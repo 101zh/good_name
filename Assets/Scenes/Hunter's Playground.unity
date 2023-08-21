@@ -270,7 +270,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6.25
+  orthographic size: 6.2708335
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -11319,6 +11319,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2124616289}
     m_Modifications:
+    - target: {fileID: 366545871192281393, guid: 3d68d0e6665ac234193d222b3deb6cda, type: 3}
+      propertyPath: m_Name
+      value: Boss
+      objectReference: {fileID: 0}
     - target: {fileID: 2296198213209480223, guid: 3d68d0e6665ac234193d222b3deb6cda, type: 3}
       propertyPath: rotationCenter
       value: 
@@ -11366,10 +11370,6 @@ PrefabInstance:
     - target: {fileID: 2457979869689399682, guid: 3d68d0e6665ac234193d222b3deb6cda, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 366545871192281393, guid: 3d68d0e6665ac234193d222b3deb6cda, type: 3}
-      propertyPath: m_Name
-      value: Boss
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -42211,6 +42211,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2124616289}
     m_Modifications:
+    - target: {fileID: 3995456163015804978, guid: 12254d6cee1191744958b03e7b3b0581, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3995456163015804978, guid: 12254d6cee1191744958b03e7b3b0581, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3995456163015804978, guid: 12254d6cee1191744958b03e7b3b0581, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1164887512, guid: 80b6bad28d70f0c44b998782203f0956, type: 3}
+    - target: {fileID: 3995456163015804978, guid: 12254d6cee1191744958b03e7b3b0581, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5502408913519783309, guid: 12254d6cee1191744958b03e7b3b0581, type: 3}
       propertyPath: m_Name
       value: oGreenFireball
@@ -42221,11 +42237,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9029877721131065487, guid: 12254d6cee1191744958b03e7b3b0581, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 35.61
+      value: -10.53
       objectReference: {fileID: 0}
     - target: {fileID: 9029877721131065487, guid: 12254d6cee1191744958b03e7b3b0581, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.17
+      value: -3.8
       objectReference: {fileID: 0}
     - target: {fileID: 9029877721131065487, guid: 12254d6cee1191744958b03e7b3b0581, type: 3}
       propertyPath: m_LocalPosition.z
