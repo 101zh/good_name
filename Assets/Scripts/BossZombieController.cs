@@ -30,29 +30,33 @@ public class BossZombieController : MonoBehaviour
 
     void FixedUpdate()
     {
-        float frameSpeed = movementSpeed * Time.deltaTime;
-        desiredPos = transform.position;
-        if (coolDownTimer > 0) { coolDownTimer = Mathf.Max(coolDownTimer - Time.deltaTime, 0f); }
-        if (coolDownTimer == 0)
-        {
-            coolDownTimer = coolDown;
-            currentAttackState = DetermineAttack();
-            if (currentAttackState == attackState.groundPound)
-            {
+        // float frameSpeed = movementSpeed * Time.deltaTime;
+        // desiredPos = transform.position;
+        // if (coolDownTimer > 0) { coolDownTimer = Mathf.Max(coolDownTimer - Time.deltaTime, 0f); }
+        // if (coolDownTimer == 0)
+        // {
+        //     coolDownTimer = coolDown;
+        //     currentAttackState = DetermineAttack();
+        //     if (currentAttackState == attackState.groundPound)
+        //     {
 
-            }
-            else if (currentAttackState == attackState.rangeAttack)
-            {
+        //     }
+        //     else if (currentAttackState == attackState.rangeAttack)
+        //     {
 
-            }
-            else
-            {
+        //     }
+        //     else
+        //     {
 
-            }
+        //     }
+        // }
+
+
+        // enemyrb.transform.position = Vector2.MoveTowards(enemyrb.transform.position, desiredPos, frameSpeed);
+
+        if (Input.GetButtonDown("Fire1")){
+            
         }
-
-
-        enemyrb.transform.position = Vector2.MoveTowards(enemyrb.transform.position, desiredPos, frameSpeed);
     }
 
     private void DetermineRange()
@@ -121,6 +125,11 @@ public class BossZombieController : MonoBehaviour
 
     private void GroundPound(){
         groundPoundHitbox.GetComponent<GroundPoundHitbox>().Shockwave();
+        Debug.Log("GroundPound");
+    }
+
+    private void ThrowDirtBall(){
+        
     }
 
     private void OnDrawGizmosSelected()

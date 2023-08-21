@@ -1,57 +1,81 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class GroundPoundHitbox : MonoBehaviour
 {
     Animator animator;
-    CapsuleCollider2D collider;
-    private void Start()
+    CapsuleCollider2D hitbox;
+    private void Awake()
     {
         animator = GetComponent<Animator>();
-        collider = GetComponent<CapsuleCollider2D>();
+        hitbox = GetComponent<CapsuleCollider2D>();
     }
 
     public void Shockwave()
     {
         gameObject.SetActive(true);
         animator.Play("shockwave");
-        Invoke("ShockWaveStage1Hitbox", 0f);
-        Invoke("ShockWaveStage2Hitbox", 0.1f);
-        Invoke("ShockWaveStage3Hitbox", 0.2f);
-        Invoke("ShockWaveStage4Hitbox", 0.3f);
-        Invoke("ShockWaveStage5Hitbox", 0.4f);
-        Invoke("ShockWaveStage3Hitbox", 0.5f);
+        AdjustShockWaveHitbox(ShockwaveStage1Hitbox, 0f);
+        AdjustShockWaveHitbox(ShockwaveStage2Hitbox, 0.1f);
+        AdjustShockWaveHitbox(ShockwaveStage3Hitbox, 0.2f);
+        AdjustShockWaveHitbox(ShockwaveStage4Hitbox, 0.3f);
+        AdjustShockWaveHitbox(ShockwaveStage5Hitbox, 0.4f);
+        AdjustShockWaveHitbox(ShockwaveStage3Hitbox, 0.5f);
+        AdjustShockWaveHitbox(DiableShockwave, 0.6f);
+    }
+
+    private void AdjustShockWaveHitbox(Action func, float delayTime)
+    {
+        StartCoroutine(AdjustShockWaveHitboxEnum(func, delayTime));
+    }
+
+    private IEnumerator AdjustShockWaveHitboxEnum(Action func, float delayTime)
+    {
+        yield return new WaitForSeconds(delayTime);
+        func();
     }
 
     private void ShockwaveStage1Hitbox()
     {
-        collider.offset.Set(0f, 0.2f);
-        collider.size.Set(1.7f, 0.7f);
+        hitbox.offset = new Vector2(0f, 0.2f);
+        hitbox.size = new Vector2(1.7f, 0.7f);
+        Debug.Log("Stage 1");
     }
 
     private void ShockwaveStage2Hitbox()
     {
-        collider.offset.Set(-0.13f, 0.35f);
-        collider.size.Set(1.9f, 0.7f);
+        hitbox.offset = new Vector2(-0.13f, 0.35f);
+        hitbox.size = new Vector2(1.9f, 0.7f);
+        Debug.Log("Stage 2");
     }
 
     private void ShockwaveStage3Hitbox()
     {
-        collider.offset.Set(0, 0.04f);
-        collider.size.Set(2.84f, 1.4f);
+        hitbox.offset = new Vector2(0, 0.04f);
+        hitbox.size = new Vector2(2.84f, 1.4f);
+        Debug.Log("Stage 3");
     }
 
     private void ShockwaveStage4Hitbox()
     {
-        collider.offset.Set(-0.16f, -0.04f);
-        collider.size.Set(3.5f, 2f);
+        hitbox.offset = new Vector2(-0.16f, -0.04f);
+        hitbox.size = new Vector2(3.5f, 2f);
+        Debug.Log("Stage 4");
     }
 
     private void ShockwaveStage5Hitbox()
     {
-        collider.offset.Set(0f, -0.16f);
-        collider.size.Set(4.16f, 2.4f);
+        hitbox.offset = new Vector2(0f, -0.16f);
+        hitbox.size = new Vector2(4.16f, 2.4f);
+        Debug.Log("Stage 5");
+    }
+
+    private void DiableShockwave()
+    {
+        Debug.Log("Disabled");
+        gameObject.SetActive(false);
     }
 
 }

@@ -36,7 +36,7 @@ Transform:
   m_Children:
   - {fileID: 5818190271875743336}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6377150090493548522
 SpriteRenderer:
@@ -192,10 +192,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 0
   player: {fileID: 0}
-  coolDown: 0
-  groundPoundHitbox: {fileID: 0}
-  grondPoundRange: 0
-  rangeAttackRange: 0
+  coolDown: 2.5
+  groundPoundHitbox: {fileID: 5818190271875743336}
+  grondPoundRange: 3.5
+  rangeAttackRange: 8
   desiredPos: {x: 0, y: 0, z: 0}
 --- !u!95 &3344987878987619510
 Animator:
@@ -238,7 +238,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5818190271875743336
 Transform:
   m_ObjectHideFlags: 0
@@ -338,8 +338,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.16, y: -0.04}
-  m_Size: {x: 3.5, y: 2}
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.01, y: 0.01}
   m_Direction: 1
 --- !u!50 &1210779223263926772
 Rigidbody2D:
