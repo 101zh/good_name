@@ -45,32 +45,32 @@ public class GroundPoundHitbox : MonoBehaviour
 
     private void ShockwaveStage1Hitbox()
     {
-        hitbox.offset = new Vector2(0f, 0.2f);
-        hitbox.size = new Vector2(1.7f, 0.7f);
+        hitbox.offset = new Vector2(0f, 0.5f);
+        hitbox.size = new Vector2(3.4f, 1.5f);
     }
 
     private void ShockwaveStage2Hitbox()
     {
-        hitbox.offset = new Vector2(-0.13f, 0.35f);
-        hitbox.size = new Vector2(1.9f, 0.7f);
+        hitbox.offset = new Vector2(-0.25f, 0.75f);
+        hitbox.size = new Vector2(3.75f, 1.5f);
     }
 
     private void ShockwaveStage3Hitbox()
     {
-        hitbox.offset = new Vector2(0, 0.04f);
-        hitbox.size = new Vector2(2.84f, 1.4f);
+        hitbox.offset = new Vector2(0, 0.125f);
+        hitbox.size = new Vector2(5.75f, 3.25f);
     }
 
     private void ShockwaveStage4Hitbox()
     {
-        hitbox.offset = new Vector2(-0.16f, -0.04f);
-        hitbox.size = new Vector2(3.5f, 2f);
+        hitbox.offset = new Vector2(-0.35f, 0f);
+        hitbox.size = new Vector2(7.1f, 4.25f);
     }
 
     private void ShockwaveStage5Hitbox()
     {
-        hitbox.offset = new Vector2(0f, -0.16f);
-        hitbox.size = new Vector2(4.16f, 2.4f);
+        hitbox.offset = new Vector2(0f, -0.15f);
+        hitbox.size = new Vector2(8.25f, 5.25f);
     }
 
     private void DiableShockwave()
