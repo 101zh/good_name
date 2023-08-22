@@ -15,6 +15,7 @@ public class player_controller : MonoBehaviour
     private Health health;
     public int coins;
     coinText coinTextScript;
+    public bool movmentOverride = false;
 
     void Start()
     {
@@ -23,6 +24,7 @@ public class player_controller : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         health = GetComponent<Health>();
         coinTextScript = GameObject.FindWithTag("CoinUI").GetComponentInChildren<coinText>();
+        // rb.GetComponent<PhysicsMaterial2D>().bounciness=1;
     }
 
     // Update is called once per frame
@@ -37,7 +39,11 @@ public class player_controller : MonoBehaviour
 
     private void playerMove(float movementX, float movementY, bool moving)
     {
-        if (moving)
+        if (movmentOverride)
+        {
+
+        }
+        else if (moving)
         {
             rb.velocity = new Vector2(movementX, movementY).normalized * moveSpeed;
         }
@@ -83,7 +89,7 @@ public class player_controller : MonoBehaviour
 
     public void incrementCoins(int amount)
     {
-        coins+=amount;
+        coins += amount;
         coinTextScript.UpdateCoins(coins);
     }
 

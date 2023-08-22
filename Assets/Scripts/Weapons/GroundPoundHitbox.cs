@@ -7,15 +7,21 @@ public class GroundPoundHitbox : MonoBehaviour
 {
     Animator animator;
     CapsuleCollider2D hitbox;
+    Health healthScript;
+    [SerializeField] float knockbackForce;
+    SpriteRenderer spriteRenderer;
     private void Awake()
     {
         animator = GetComponent<Animator>();
         hitbox = GetComponent<CapsuleCollider2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        DiableShockwave();
+
     }
 
     public void Shockwave()
     {
-        gameObject.SetActive(true);
+        EnableShockWave();
         animator.Play("shockwave");
         AdjustShockWaveHitbox(ShockwaveStage1Hitbox, 0f);
         AdjustShockWaveHitbox(ShockwaveStage2Hitbox, 0.1f);
@@ -41,41 +47,73 @@ public class GroundPoundHitbox : MonoBehaviour
     {
         hitbox.offset = new Vector2(0f, 0.2f);
         hitbox.size = new Vector2(1.7f, 0.7f);
-        Debug.Log("Stage 1");
     }
 
     private void ShockwaveStage2Hitbox()
     {
         hitbox.offset = new Vector2(-0.13f, 0.35f);
         hitbox.size = new Vector2(1.9f, 0.7f);
-        Debug.Log("Stage 2");
     }
 
     private void ShockwaveStage3Hitbox()
     {
         hitbox.offset = new Vector2(0, 0.04f);
         hitbox.size = new Vector2(2.84f, 1.4f);
-        Debug.Log("Stage 3");
     }
 
     private void ShockwaveStage4Hitbox()
     {
         hitbox.offset = new Vector2(-0.16f, -0.04f);
         hitbox.size = new Vector2(3.5f, 2f);
-        Debug.Log("Stage 4");
     }
 
     private void ShockwaveStage5Hitbox()
     {
         hitbox.offset = new Vector2(0f, -0.16f);
         hitbox.size = new Vector2(4.16f, 2.4f);
-        Debug.Log("Stage 5");
     }
 
     private void DiableShockwave()
     {
-        Debug.Log("Disabled");
-        gameObject.SetActive(false);
+        animator.Play("Null");
+        spriteRenderer.enabled=false;
+        hitbox.enabled=false;
+    }
+
+    void EnableShockWave()
+    {
+        spriteRenderer.enabled=true;
+        hitbox.enabled=true;
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        Debug.Log("triggered");
+    
+        if (collider.tag.Equals("Player"))
+        {
+            healthScript = collider.gameObject.GetComponent<Health>();
+            healthScript.OnChangeHealth(1);
+            Debug.Log("I've been hit!");
+
+            Rigidbody2D playerRb = collider.GetComponent<Rigidbody2D>();
+            Vector2 dir = hitbox.transform.position - playerRb.transform.position;
+            dir = -dir.normalized;
+            StartCoroutine(OverrideMovement(playerRb));
+            playerRb.AddForce(dir * knockbackForce, ForceMode2D.Impulse);
+            Debug.Log("Made it to end");
+
+        }
+    }
+
+    IEnumerator OverrideMovement(Rigidbody2D rb)
+    {
+        player_controller script = rb.GetComponent<player_controller>();
+        script.movmentOverride = true;
+        Debug.Log("Överride");
+        yield return new WaitForSeconds(0.25f);
+        script.movmentOverride = false;
+        Debug.Log("Returned perms");
     }
 
 }

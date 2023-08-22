@@ -8,7 +8,7 @@ public class BossZombieController : MonoBehaviour
 
     [SerializeField] private float movementSpeed;
     public GameObject player;
-    private Rigidbody2D enemyrb;
+    private Rigidbody2D rb;
     [SerializeField] private float coolDown;
     private float coolDownTimer;
     [SerializeField] Transform groundPoundHitbox;
@@ -19,12 +19,14 @@ public class BossZombieController : MonoBehaviour
     public static movementState currentRange;
     attackState currentAttackState;
     public enum attackState { sprintAttack, rangeAttack, groundPound };
+    Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-        enemyrb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         desiredPos = transform.position;
     }
 
@@ -54,14 +56,15 @@ public class BossZombieController : MonoBehaviour
 
         // enemyrb.transform.position = Vector2.MoveTowards(enemyrb.transform.position, desiredPos, frameSpeed);
 
-        if (Input.GetButtonDown("Fire1")){
-            
+        if (Input.GetButtonDown("Fire1"))
+        {
+            StartCoroutine(GroundPound());
         }
     }
 
     private void DetermineRange()
     {
-        float distanceFromPlayer = Vector2.Distance(player.transform.position, enemyrb.transform.position);
+        float distanceFromPlayer = Vector2.Distance(player.transform.position, rb.transform.position);
 
         movementState state;
         if (distanceFromPlayer <= grondPoundRange)
@@ -123,13 +126,47 @@ public class BossZombieController : MonoBehaviour
         return state;
     }
 
-    private void GroundPound(){
-        groundPoundHitbox.GetComponent<GroundPoundHitbox>().Shockwave();
+    private IEnumerator GroundPound()
+    {
         Debug.Log("GroundPound");
+        animator.Play("boss_zombie_jump");
+        Vector2 up = transform.position;
+        up.y+=1.5f;
+        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), player.GetComponent<Collider2D>(), true);
+        StartCoroutine(MoveWithinTime(transform.position, up, .495f));
+        yield return new WaitForSeconds(.495f);
+        up.y-=1.5f;
+        StartCoroutine(MoveWithinTime(transform.position, up, .165f));
+        yield return new WaitForSeconds(.165f);
+        groundPoundHitbox.GetComponent<GroundPoundHitbox>().Shockwave();
+        yield return new WaitForSeconds(0.65f);
+        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), player.GetComponent<Collider2D>(), false);
+        animator.Play("boss_zombie_idle");
     }
 
-    private void ThrowDirtBall(){
-        
+    IEnumerator MoveWithinTime(Vector2 startPos, Vector2 endPos, float time)
+    {
+        for (float t = 0; t < 1; t += Time.deltaTime / time)
+        {
+            transform.position = Vector2.Lerp(startPos, endPos, t);
+            yield return null;
+        }
+    }
+
+    private void ThrowDirtBall()
+    {
+
+    }
+
+    Health healthScript;
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag.Equals("Player"))
+        {
+            healthScript = collision.gameObject.GetComponent<Health>();
+            healthScript.OnChangeHealth(1);
+            Debug.Log("I've been hit!");
+        }
     }
 
     private void OnDrawGizmosSelected()

@@ -229,16 +229,15 @@ GameObject:
   - component: {fileID: 5818190271875743336}
   - component: {fileID: 5880942923381115614}
   - component: {fileID: 472681136130644090}
-  - component: {fileID: 1210779223263926772}
   - component: {fileID: 2019171396771895773}
   - component: {fileID: 715128925002142535}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: GroundPoundHitbox
-  m_TagString: Untagged
+  m_TagString: GroundPound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5818190271875743336
 Transform:
   m_ObjectHideFlags: 0
@@ -338,36 +337,9 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.01, y: 0.01}
+  m_Offset: {x: 0.042432535, y: -0.13577487}
+  m_Size: {x: 4.071917, y: 2.4256449}
   m_Direction: 1
---- !u!50 &1210779223263926772
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5269158308319638607}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!114 &2019171396771895773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,6 +352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35f93a7e7cd040f4e9c501e36b682451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  knockbackForce: 15
 --- !u!95 &715128925002142535
 Animator:
   serializedVersion: 5
