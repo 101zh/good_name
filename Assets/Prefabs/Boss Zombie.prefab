@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3344987878987619510}
   m_Layer: 10
   m_Name: Boss Zombie
-  m_TagString: Enemy
+  m_TagString: BossZombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -386,17 +386,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2801503104919484802}
     m_Modifications:
+    - target: {fileID: 3622640247667540283, guid: 792142b36d8757a4da8b61d13f46764f, type: 3}
+      propertyPath: Boss
+      value: 
+      objectReference: {fileID: 2801503104919484802}
     - target: {fileID: 5050599371445128256, guid: 792142b36d8757a4da8b61d13f46764f, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5050599371445128256, guid: 792142b36d8757a4da8b61d13f46764f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.73
+      value: 1.32
       objectReference: {fileID: 0}
     - target: {fileID: 5050599371445128256, guid: 792142b36d8757a4da8b61d13f46764f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.08
+      value: 0.04
       objectReference: {fileID: 0}
     - target: {fileID: 5050599371445128256, guid: 792142b36d8757a4da8b61d13f46764f, type: 3}
       propertyPath: m_LocalPosition.z

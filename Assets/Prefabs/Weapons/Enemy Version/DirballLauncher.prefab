@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1248298187306175457}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.505, y: -0.004, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -254,8 +254,5 @@ MonoBehaviour:
   bulletSpread: 0
   firePoint: {fileID: 8822532975527360673}
   bulletPrefab: {fileID: 8518284227580658630, guid: 8ce78ffd2696d5d49a860942a896a575, type: 3}
-  held: 1
-  passive: 0
-  angle: 0
-  aimOverride: 0
+  bulletSpreadON: 0
   Boss: {fileID: 0}

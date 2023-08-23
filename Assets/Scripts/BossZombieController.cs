@@ -23,6 +23,8 @@ public class BossZombieController : MonoBehaviour
     Animator animator;
     [SerializeField] bool targetLock = false;
     [SerializeField] bool movementLock = false;
+    Transform projectileLauncher;
+    string currentAnimationState;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +32,7 @@ public class BossZombieController : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        projectileLauncher = transform.GetChild(1);
         desiredPos = transform.position;
     }
     void Update()
@@ -56,6 +59,7 @@ public class BossZombieController : MonoBehaviour
 
         //     }
         // }
+        updateAnimation();
     }
 
     void FixedUpdate()
@@ -146,7 +150,7 @@ public class BossZombieController : MonoBehaviour
     {
         movementLock = true;
         Debug.Log("GroundPound");
-        animator.Play("boss_zombie_jump");
+        changeAnimationState("boss_zombie_jump");
         Vector2 up = transform.position;
         up.y += 1.5f;
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), player.GetComponent<Collider2D>(), true);
@@ -158,7 +162,7 @@ public class BossZombieController : MonoBehaviour
         groundPoundHitbox.GetComponent<GroundPoundHitbox>().Shockwave();
         yield return new WaitForSeconds(0.65f);
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), player.GetComponent<Collider2D>(), false);
-        animator.Play("boss_zombie_idle");
+        changeAnimationState("boss_zombie_idle");
         movementLock = false;
     }
 
@@ -192,9 +196,14 @@ public class BossZombieController : MonoBehaviour
         }
     }
 
-    private void ThrowDirtBall()
+    private IEnumerator ThrowDirtBall()
     {
-
+        movementLock = true;
+        changeAnimationState("BossZombieThrow");
+        yield return new WaitForSeconds(0.2f);
+        projectileLauncher.GetComponent<BossGunController>().shootBulletAtPlayer();
+        changeAnimationState("boss_zombie_idle");
+        movementLock = false;
     }
 
     Health healthScript;
@@ -206,6 +215,39 @@ public class BossZombieController : MonoBehaviour
             healthScript.OnChangeHealth(1);
             Debug.Log("I've been hit!");
         }
+    }
+
+    private void updateAnimation()
+    {
+        string state;
+        // Debug.Log("Updated!");
+        if (currentAnimationState == "BossZombieThrow" || currentAnimationState == "boss_zombie_jump")
+        {
+            state = currentAnimationState;
+        }
+        else if (targetLock)
+        {
+            state = "BossZombieSprint";
+        }        
+        else if (!movementLock)
+        {
+            state = "BossZombieWalk";
+        }
+        else
+        {
+            state = "boss_zombie_idle";
+        }
+
+        changeAnimationState(state);
+    }
+
+    private void changeAnimationState(string newState)
+    {
+        if (currentAnimationState == newState) return;
+
+        animator.Play(newState);
+
+        currentAnimationState = newState;
     }
 
     private void OnDrawGizmosSelected()

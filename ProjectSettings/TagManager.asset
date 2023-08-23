@@ -15,6 +15,7 @@ TagManager:
   - Sword
   - Canvas
   - GroundPound
+  - BossZombie
   layers:
   - Default
   - TransparentFX
