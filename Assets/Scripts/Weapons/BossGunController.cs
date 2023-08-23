@@ -36,7 +36,7 @@ public class BossGunController : MonoBehaviour
 
     public void shootBulletToAngles(float[] angles)
     {
-        for (int i = 0; i < angles.Length - 1; i++)
+        for (int i = 0; i < angles.Length; i++)
         {
             float RNG = 0;
             if (bulletSpreadON)
