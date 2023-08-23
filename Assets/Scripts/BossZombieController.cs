@@ -41,32 +41,24 @@ public class BossZombieController : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (coolDownTimer > 0) { coolDownTimer = Mathf.Max(coolDownTimer - Time.deltaTime, 0f); }
+        if (coolDownTimer == 0)
         {
-            Dash();
+            coolDownTimer = coolDown;
+            currentAttackState = DetermineAttack();
+            if (currentAttackState == attackState.groundPound)
+            {
+                GroundPound();
+            }
+            else if (currentAttackState == attackState.rangeAttack)
+            {
+                ThrowDirtBall();
+            }
+            else
+            {
+                Dash();
+            }
         }
-        if (Input.GetButtonDown("Interact"))
-        {
-            ThrowDirtBall();
-        }
-        // if (coolDownTimer > 0) { coolDownTimer = Mathf.Max(coolDownTimer - Time.deltaTime, 0f); }
-        // if (coolDownTimer == 0)
-        // {
-        //     coolDownTimer = coolDown;
-        //     currentAttackState = DetermineAttack();
-        //     if (currentAttackState == attackState.groundPound)
-        //     {
-
-        //     }
-        //     else if (currentAttackState == attackState.rangeAttack)
-        //     {
-
-        //     }
-        //     else
-        //     {
-
-        //     }
-        // }
         updateAnimation();
     }
 
@@ -183,15 +175,16 @@ public class BossZombieController : MonoBehaviour
         movementSpeed += dashSpeedIncrease;
         StartCoroutine(DashEnd());
     }
+
     bool check;
     IEnumerator DashEnd()
     {
-        check = Vector2.Distance((Vector2)transform.position, desiredPos)> 0.001;
+        check = Vector2.Distance((Vector2)transform.position, desiredPos) > 1.2;
         StartCoroutine(ThrowDirtBallsPerpendicular());
         while (check)
         {
             Debug.Log("Checking...");
-            check = Vector2.Distance((Vector2)transform.position, desiredPos)> 0.001;
+            check = Vector2.Distance((Vector2)transform.position, desiredPos) > 1.2;
             yield return null;
         }
         Debug.Log("reached position");
@@ -211,7 +204,7 @@ public class BossZombieController : MonoBehaviour
             yield return new WaitForSeconds(.75f);
         }
     }
-    
+
     IEnumerator MoveWithinTime(Vector2 startPos, Vector2 endPos, float time)
     {
         for (float t = 0; t < 1; t += Time.deltaTime / time)

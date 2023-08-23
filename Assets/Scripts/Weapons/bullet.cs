@@ -15,7 +15,7 @@ public class bullet : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.tag.Equals("Enemy") || collision.collider.tag.Equals("Player"))
+        if (collision.gameObject.layer==10 || collision.collider.tag.Equals("Player"))
         {
             healthScript = collision.gameObject.GetComponent<Health>();
             healthScript.OnChangeHealth(1);
