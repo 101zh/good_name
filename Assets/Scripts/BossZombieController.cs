@@ -7,6 +7,7 @@ public class BossZombieController : MonoBehaviour
 {
 
     [SerializeField] private float movementSpeed;
+    [SerializeField] private float dashSpeedIncrease;
     public GameObject player;
     private Rigidbody2D rb;
     [SerializeField] private float coolDown;
@@ -20,6 +21,8 @@ public class BossZombieController : MonoBehaviour
     attackState currentAttackState;
     public enum attackState { sprintAttack, rangeAttack, groundPound };
     Animator animator;
+    [SerializeField] bool targetLock = false;
+    [SerializeField] bool movementLock = false;
 
     // Start is called before the first frame update
     void Start()
@@ -29,11 +32,12 @@ public class BossZombieController : MonoBehaviour
         animator = GetComponent<Animator>();
         desiredPos = transform.position;
     }
-
-    void FixedUpdate()
+    void Update()
     {
-        // float frameSpeed = movementSpeed * Time.deltaTime;
-        // desiredPos = transform.position;
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Dash();
+        }
         // if (coolDownTimer > 0) { coolDownTimer = Mathf.Max(coolDownTimer - Time.deltaTime, 0f); }
         // if (coolDownTimer == 0)
         // {
@@ -52,13 +56,14 @@ public class BossZombieController : MonoBehaviour
 
         //     }
         // }
+    }
 
-
-        // enemyrb.transform.position = Vector2.MoveTowards(enemyrb.transform.position, desiredPos, frameSpeed);
-
-        if (Input.GetButtonDown("Fire1"))
+    void FixedUpdate()
+    {
+        DeterminePos();
+        if (!movementLock)
         {
-            StartCoroutine(GroundPound());
+            rb.transform.position = Vector2.MoveTowards(rb.transform.position, desiredPos, movementSpeed * Time.deltaTime);
         }
     }
 
@@ -126,22 +131,56 @@ public class BossZombieController : MonoBehaviour
         return state;
     }
 
+    private void DeterminePos()
+    {
+        if (targetLock)
+        {
+
+        }
+        else
+        {
+            desiredPos = player.transform.position;
+        }
+    }
     private IEnumerator GroundPound()
     {
+        movementLock = true;
         Debug.Log("GroundPound");
         animator.Play("boss_zombie_jump");
         Vector2 up = transform.position;
-        up.y+=1.5f;
+        up.y += 1.5f;
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), player.GetComponent<Collider2D>(), true);
         StartCoroutine(MoveWithinTime(transform.position, up, .495f));
         yield return new WaitForSeconds(.495f);
-        up.y-=1.5f;
+        up.y -= 1.5f;
         StartCoroutine(MoveWithinTime(transform.position, up, .165f));
         yield return new WaitForSeconds(.165f);
         groundPoundHitbox.GetComponent<GroundPoundHitbox>().Shockwave();
         yield return new WaitForSeconds(0.65f);
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), player.GetComponent<Collider2D>(), false);
         animator.Play("boss_zombie_idle");
+        movementLock = false;
+    }
+
+    private void Dash()
+    {
+        Debug.Log("Dash");
+        targetLock = true;
+        movementSpeed += dashSpeedIncrease;
+        StartCoroutine(DashEnd());
+    }
+
+    IEnumerator DashEnd()
+    {
+        while (!Mathf.Approximately(Vector2.Distance(rb.transform.position, desiredPos), 0))
+        {
+            Debug.Log("Checking...");
+            yield return null;
+        }
+        Debug.Log("reached position");
+        targetLock = false;
+        movementSpeed -= dashSpeedIncrease;
+        StartCoroutine(GroundPound());
     }
 
     IEnumerator MoveWithinTime(Vector2 startPos, Vector2 endPos, float time)

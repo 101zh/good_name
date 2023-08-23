@@ -190,13 +190,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5312b6d39dca524683f4bdb077e3c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 0
+  movementSpeed: 2
+  dashSpeedIncrease: 4
   player: {fileID: 0}
   coolDown: 2.5
   groundPoundHitbox: {fileID: 5818190271875743336}
   grondPoundRange: 3.5
   rangeAttackRange: 8
   desiredPos: {x: 0, y: 0, z: 0}
+  targetLock: 0
+  movementLock: 0
 --- !u!95 &3344987878987619510
 Animator:
   serializedVersion: 5
