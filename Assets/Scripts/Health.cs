@@ -14,6 +14,8 @@ public class Health : MonoBehaviour
     SpriteRenderer sr;
     public delegate void GetHit();
     public static event GetHit onHitEvent;
+    public delegate void Die();
+    public static event Die OnDie;
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -23,7 +25,7 @@ public class Health : MonoBehaviour
     }
     private void DropCoin()
     {
-        int RNG = Random.Range(coinDropAmount-coinDropVariance, coinDropAmount+coinDropVariance);
+        int RNG = Random.Range(coinDropAmount - coinDropVariance, coinDropAmount + coinDropVariance);
         for (int i = 0; i < RNG; i++)
         {
             float randOffsetX = Random.Range(-2f, 2f);
@@ -57,6 +59,10 @@ public class Health : MonoBehaviour
             Debug.Log("Dead");
             Destroy(gameObject);
             DropCoin();
+            if (OnDie != null)
+            {
+                OnDie();
+            }
         }
     }
     void ResetMaterial()

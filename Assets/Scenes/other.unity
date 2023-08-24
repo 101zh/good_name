@@ -39000,6 +39000,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss Zombie
       objectReference: {fileID: 0}
+    - target: {fileID: 2590554092056598735, guid: 5c345637b691d1248a02d29691a47781, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2801503104919484802, guid: 5c345637b691d1248a02d29691a47781, type: 3}
       propertyPath: m_RootOrder
       value: -1

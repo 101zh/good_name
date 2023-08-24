@@ -44,15 +44,13 @@ public class BossZombieController : MonoBehaviour
         projectileLauncher = transform.GetChild(1);
         projectileLauncherScript = projectileLauncher.GetComponent<BossGunController>();
 
-        healthBar = GameObject.FindGameObjectWithTag("BossHealthBar");
+        healthBar = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(5).gameObject;
         healthBarScript = healthBar.GetComponent<BossHealthBar>();
-        health = GetComponent<Health>();
-        for (int i = 0; i < healthBar.transform.childCount; i++)
-        {
-            healthBar.transform.GetChild(i).gameObject.SetActive(true);
-        }
-        healthBarScript.setMaxValue(health.maxHealth);
 
+        health = GetComponent<Health>();
+
+        healthBar.SetActive(true);
+        healthBarScript.setMaxValue(health.maxHealth);
         desiredPos = transform.position;
     }
     void Update()
@@ -308,20 +306,19 @@ public class BossZombieController : MonoBehaviour
         healthBarScript.setValue(health.currentHealth);
         if (health.currentHealth <= 0)
         {
-            for (int i = 0; i < healthBar.transform.childCount - 1; i++)
-            {
-                healthBar.transform.GetChild(i).gameObject.SetActive(true);
-            }
+            healthBar.SetActive(false);
         }
     }
 
     private void OnEnable()
     {
         Health.onHitEvent += UpdateHealthBar;
+        Health.OnDie += UpdateHealthBar;
     }
 
     private void OnDisable()
     {
         Health.onHitEvent -= UpdateHealthBar;
+        Health.OnDie -= UpdateHealthBar;
     }
 }
