@@ -16,6 +16,8 @@ TagManager:
   - Canvas
   - GroundPound
   - BossZombie
+  - BossHealthBar
+  - WavesText
   layers:
   - Default
   - TransparentFX

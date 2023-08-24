@@ -5,12 +5,10 @@ using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField]
-    public int currentHealth, maxHealth;
+    [SerializeField] public int currentHealth, maxHealth;
+    [SerializeField] private int coinDropAmount, coinDropVariance;
     [SerializeField] private GameObject coinPrefab;
-
-    [SerializeField]
-    private bool isDead = false;
+    [SerializeField] private bool isDead = false;
     private Material matWhite;
     private Material matDefault;
     SpriteRenderer sr;
@@ -25,12 +23,12 @@ public class Health : MonoBehaviour
     }
     private void DropCoin()
     {
-        int RNG = Random.Range(1, 7);
+        int RNG = Random.Range(coinDropAmount-coinDropVariance, coinDropAmount+coinDropVariance);
         for (int i = 0; i < RNG; i++)
         {
             float randOffsetX = Random.Range(-2f, 2f);
             float randOffsetY = Random.Range(-2f, 2f);
-            Vector2 position = new Vector2(transform.position.x+randOffsetX, transform.position.y+randOffsetY);
+            Vector2 position = new Vector2(transform.position.x + randOffsetX, transform.position.y + randOffsetY);
             Instantiate(coinPrefab, position, Quaternion.identity);
         }
     }
@@ -43,23 +41,22 @@ public class Health : MonoBehaviour
 
     public void OnChangeHealth(int amount) /// Negative values increase health, positive values take away health. 
     {
-        if (currentHealth <= 0) 
-        {
-            isDead = true;
-            Destroy(gameObject);
-            Debug.Log(isDead);
-            DropCoin();
-        }
-        else
-        if (!isDead)
-        {
-            currentHealth -= amount;
-            sr.material = matWhite;
-            Invoke("ResetMaterial", .1f);
-        }
-        if (onHitEvent != null) 
+        if (onHitEvent != null)
         {
             onHitEvent();
+        }
+
+        currentHealth -= amount;
+        sr.material = matWhite;
+        Invoke("ResetMaterial", .1f);
+        Debug.Log(gameObject.name + "; " + currentHealth.ToString());
+
+        if (currentHealth <= 0)
+        {
+            isDead = true;
+            Debug.Log("Dead");
+            Destroy(gameObject);
+            DropCoin();
         }
     }
     void ResetMaterial()

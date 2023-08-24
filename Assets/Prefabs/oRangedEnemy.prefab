@@ -120,6 +120,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 2
   maxHealth: 2
+  coinDropAmount: 5
+  coinDropVariance: 2
   coinPrefab: {fileID: 8481823868968492337, guid: 113dcfcb4aaac6f479283d658c200f53, type: 3}
   isDead: 0
 --- !u!50 &6522500781018167238

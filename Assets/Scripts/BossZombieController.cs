@@ -24,20 +24,35 @@ public class BossZombieController : MonoBehaviour
     Animator animator;
     [SerializeField] bool targetLock = false;
     [SerializeField] bool movementLock = false;
-    private bool coolDownLock =false;
+    private bool coolDownLock = false;
     Transform projectileLauncher;
     BossGunController projectileLauncherScript;
     string currentAnimationState;
+    GameObject healthBar;
+    BossHealthBar healthBarScript;
+    Health health;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
+
         animator = GetComponent<Animator>();
-        projectileLauncher = transform.GetChild(1);
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        projectileLauncher = transform.GetChild(1);
         projectileLauncherScript = projectileLauncher.GetComponent<BossGunController>();
+
+        healthBar = GameObject.FindGameObjectWithTag("BossHealthBar");
+        healthBarScript = healthBar.GetComponent<BossHealthBar>();
+        health = GetComponent<Health>();
+        for (int i = 0; i < healthBar.transform.childCount; i++)
+        {
+            healthBar.transform.GetChild(i).gameObject.SetActive(true);
+        }
+        healthBarScript.setMaxValue(health.maxHealth);
+
         desiredPos = transform.position;
     }
     void Update()
@@ -168,7 +183,7 @@ public class BossZombieController : MonoBehaviour
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), player.GetComponent<Collider2D>(), false);
         changeAnimationState("boss_zombie_idle");
         movementLock = false;
-        coolDownLock=false;
+        coolDownLock = false;
     }
 
     private void Dash()
@@ -286,5 +301,27 @@ public class BossZombieController : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, groundPoundRange);
         Gizmos.DrawWireSphere(transform.position, rangeAttackRange);
+    }
+
+    private void UpdateHealthBar()
+    {
+        healthBarScript.setValue(health.currentHealth);
+        if (health.currentHealth <= 0)
+        {
+            for (int i = 0; i < healthBar.transform.childCount - 1; i++)
+            {
+                healthBar.transform.GetChild(i).gameObject.SetActive(true);
+            }
+        }
+    }
+
+    private void OnEnable()
+    {
+        Health.onHitEvent += UpdateHealthBar;
+    }
+
+    private void OnDisable()
+    {
+        Health.onHitEvent -= UpdateHealthBar;
     }
 }
