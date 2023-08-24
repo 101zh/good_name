@@ -7,64 +7,77 @@ public class BossZombieController : MonoBehaviour
 {
 
     [SerializeField] private float movementSpeed;
+    [SerializeField] private float dashSpeedIncrease;
     public GameObject player;
-    private Rigidbody2D enemyrb;
+    private Rigidbody2D rb;
+    SpriteRenderer spriteRenderer;
     [SerializeField] private float coolDown;
     private float coolDownTimer;
     [SerializeField] Transform groundPoundHitbox;
-    [SerializeField] float grondPoundRange;
+    [SerializeField] float groundPoundRange;
     [SerializeField] float rangeAttackRange;
-    [SerializeField] Vector3 desiredPos;
+    [SerializeField] Vector2 desiredPos;
     public enum movementState { sprintAttackRange, rangeAttackRange, groundpoundRange };
-    public static movementState currentRange;
-    attackState currentAttackState;
+    [SerializeField] private movementState currentRange;
+    [SerializeField] attackState currentAttackState;
     public enum attackState { sprintAttack, rangeAttack, groundPound };
+    Animator animator;
+    [SerializeField] bool targetLock = false;
+    [SerializeField] bool movementLock = false;
+    private bool coolDownLock =false;
+    Transform projectileLauncher;
+    BossGunController projectileLauncherScript;
+    string currentAnimationState;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-        enemyrb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        projectileLauncher = transform.GetChild(1);
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        projectileLauncherScript = projectileLauncher.GetComponent<BossGunController>();
         desiredPos = transform.position;
+    }
+    void Update()
+    {
+        if (coolDownTimer > 0 && !coolDownLock) { coolDownTimer = Mathf.Max(coolDownTimer - Time.deltaTime, 0f); }
+        if (coolDownTimer == 0)
+        {
+            coolDownTimer = coolDown;
+            currentAttackState = DetermineAttack();
+            if (currentAttackState == attackState.groundPound)
+            {
+                StartCoroutine(GroundPound());
+            }
+            else if (currentAttackState == attackState.rangeAttack)
+            {
+                StartCoroutine(ThrowDirtBall());
+            }
+            else
+            {
+                Dash();
+            }
+        }
+        updateAnimation();
     }
 
     void FixedUpdate()
     {
-        // float frameSpeed = movementSpeed * Time.deltaTime;
-        // desiredPos = transform.position;
-        // if (coolDownTimer > 0) { coolDownTimer = Mathf.Max(coolDownTimer - Time.deltaTime, 0f); }
-        // if (coolDownTimer == 0)
-        // {
-        //     coolDownTimer = coolDown;
-        //     currentAttackState = DetermineAttack();
-        //     if (currentAttackState == attackState.groundPound)
-        //     {
-
-        //     }
-        //     else if (currentAttackState == attackState.rangeAttack)
-        //     {
-
-        //     }
-        //     else
-        //     {
-
-        //     }
-        // }
-
-
-        // enemyrb.transform.position = Vector2.MoveTowards(enemyrb.transform.position, desiredPos, frameSpeed);
-
-        if (Input.GetButtonDown("Fire1")){
-            
+        DeterminePos();
+        if (!movementLock)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, desiredPos, movementSpeed * Time.deltaTime);
         }
     }
 
     private void DetermineRange()
     {
-        float distanceFromPlayer = Vector2.Distance(player.transform.position, enemyrb.transform.position);
+        float distanceFromPlayer = Vector2.Distance(player.transform.position, transform.position);
 
         movementState state;
-        if (distanceFromPlayer <= grondPoundRange)
+        if (distanceFromPlayer <= groundPoundRange)
         {
             state = movementState.groundpoundRange;
         }
@@ -89,23 +102,24 @@ public class BossZombieController : MonoBehaviour
         attackState state;
         if (currentRange == movementState.groundpoundRange)
         {
-            groundPoundParam = 75;
-            rangeAttackParam = 100;
-            sprintAttackParam = 101;
+            groundPoundParam = 80;
+            rangeAttackParam = 85;
+            sprintAttackParam = 100;
         }
         else if (currentRange == movementState.rangeAttackRange)
         {
-            groundPoundParam = 20;
+            groundPoundParam = 10;
             rangeAttackParam = 70;
             sprintAttackParam = 100;
         }
         else
         {
-            groundPoundParam = 10;
-            rangeAttackParam = 35;
+            groundPoundParam = 5;
+            rangeAttackParam = 50;
             sprintAttackParam = 100;
         }
-        int rand = Random.Range(0, 101);
+        int rand = Random.Range(1, 101);
+
 
         if (rand <= groundPoundParam)
         {
@@ -123,19 +137,154 @@ public class BossZombieController : MonoBehaviour
         return state;
     }
 
-    private void GroundPound(){
+    private void DeterminePos()
+    {
+        if (targetLock)
+        {
+
+        }
+        else
+        {
+            desiredPos = player.transform.position;
+        }
+    }
+    private IEnumerator GroundPound()
+    {
+        movementLock = true;
+        coolDownLock = true;
+        changeAnimationState("boss_zombie_jump");
+        Vector2 up = transform.position;
+        up.y += 1.5f;
+        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), player.GetComponent<Collider2D>(), true);
+        StartCoroutine(MoveWithinTime(transform.position, up, .495f));
+        yield return new WaitForSeconds(.495f);
+        up.y -= 1.5f;
+        StartCoroutine(MoveWithinTime(transform.position, up, .165f));
+        yield return new WaitForSeconds(.165f);
         groundPoundHitbox.GetComponent<GroundPoundHitbox>().Shockwave();
-        Debug.Log("GroundPound");
+        float[] angles = { 0f, 45f, 90f, 135f, 180f, -135, -90f, -45f };
+        projectileLauncherScript.shootBulletToAngles(angles);
+        yield return new WaitForSeconds(0.65f);
+        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), player.GetComponent<Collider2D>(), false);
+        changeAnimationState("boss_zombie_idle");
+        movementLock = false;
+        coolDownLock=false;
     }
 
-    private void ThrowDirtBall(){
-        
+    private void Dash()
+    {
+        coolDownLock = true;
+        targetLock = true;
+        movementSpeed += dashSpeedIncrease;
+        StartCoroutine(DashEnd());
+    }
+
+    bool check;
+    IEnumerator DashEnd()
+    {
+        check = Vector2.Distance((Vector2)transform.position, desiredPos) > 1.2;
+        StartCoroutine(ThrowDirtBallsPerpendicular());
+        while (check)
+        {
+            check = Vector2.Distance((Vector2)transform.position, desiredPos) > 1.2;
+            yield return null;
+        }
+        targetLock = false;
+        movementSpeed -= dashSpeedIncrease;
+        StartCoroutine(GroundPound());
+    }
+
+    IEnumerator ThrowDirtBallsPerpendicular()
+    {
+        while (check)
+        {
+            Vector2 dir = desiredPos - (Vector2)transform.position;
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            float[] angles = { angle - 90f, angle + 90f };
+            projectileLauncherScript.shootBulletToAngles(angles);
+            yield return new WaitForSeconds(.75f);
+        }
+    }
+
+    IEnumerator MoveWithinTime(Vector2 startPos, Vector2 endPos, float time)
+    {
+        for (float t = 0; t < 1; t += Time.deltaTime / time)
+        {
+            transform.position = Vector2.Lerp(startPos, endPos, t);
+            yield return null;
+        }
+    }
+
+    private IEnumerator ThrowDirtBall()
+    {
+        movementLock = true;
+        coolDownLock = true;
+        changeAnimationState("BossZombieThrow");
+        yield return new WaitForSeconds(0.2f);
+        projectileLauncherScript.shootBulletAtPlayer();
+        changeAnimationState("boss_zombie_idle");
+        movementLock = false;
+        coolDownLock = false;
+    }
+
+    Health healthScript;
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag.Equals("Player"))
+        {
+            healthScript = collision.gameObject.GetComponent<Health>();
+            healthScript.OnChangeHealth(1);
+
+        }
+    }
+
+    private void updateAnimation()
+    {
+        string state;
+        if (currentAnimationState == "BossZombieThrow" || currentAnimationState == "boss_zombie_jump")
+        {
+            state = currentAnimationState;
+        }
+        else if (targetLock)
+        {
+            state = "BossZombieSprint";
+        }
+        else if (!movementLock)
+        {
+            state = "BossZombieWalk";
+        }
+        else
+        {
+            state = "boss_zombie_idle";
+        }
+
+        changeAnimationState(state);
+
+        if (transform.position.x < desiredPos.x)
+        {
+            spriteRenderer.flipX = false;
+            projectileLauncher.position = new Vector2(transform.position.x + 1.35f, transform.position.y);
+        }
+        else
+        {
+            spriteRenderer.flipX = true;
+            projectileLauncher.position = new Vector2(transform.position.x - 1.35f, transform.position.y);
+        }
+    }
+
+    private void changeAnimationState(string newState)
+    {
+        if (currentAnimationState == newState) return;
+
+        animator.Play(newState);
+
+        currentAnimationState = newState;
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, grondPoundRange);
+        Gizmos.DrawWireSphere(transform.position, groundPoundRange);
         Gizmos.DrawWireSphere(transform.position, rangeAttackRange);
     }
 }

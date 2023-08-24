@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class bullet : MonoBehaviour
 {
-    Health healthscript;
+    Health healthScript;
     Animator animator;
     Rigidbody2D rb;
 
@@ -15,10 +15,10 @@ public class bullet : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.tag.Equals("Enemy") || collision.collider.tag.Equals("Player"))
+        if (collision.gameObject.layer==10 || collision.collider.tag.Equals("Player"))
         {
-            healthscript = collision.gameObject.GetComponent<Health>();
-            healthscript.OnChangeHealth(1);
+            healthScript = collision.gameObject.GetComponent<Health>();
+            healthScript.OnChangeHealth(1);
             Debug.Log("I've been hit!");
         }
         rb.constraints = RigidbodyConstraints2D.FreezePosition;

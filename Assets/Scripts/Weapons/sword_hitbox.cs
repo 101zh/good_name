@@ -13,7 +13,7 @@ public class sword_hitbox : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.tag.Equals("Enemy") || collider.tag.Equals("Player"))
+        if (collider.gameObject.layer==10 || collider.tag.Equals("Player"))
         {
             healthscript = collider.gameObject.GetComponent<Health>();
             healthscript.OnChangeHealth(1);
