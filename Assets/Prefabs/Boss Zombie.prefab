@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2801503104919484802}
   - component: {fileID: 6377150090493548522}
   - component: {fileID: 4839788742822501842}
+  - component: {fileID: 690617606469275477}
   - component: {fileID: 6976942623222897483}
   - component: {fileID: 8037091158189220863}
-  - component: {fileID: 690617606469275477}
   - component: {fileID: 3344987878987619510}
   m_Layer: 10
   m_Name: Boss Zombie
@@ -37,7 +37,7 @@ Transform:
   - {fileID: 5818190271875743336}
   - {fileID: 2588350900709615615}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6377150090493548522
 SpriteRenderer:
@@ -103,10 +103,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b671530cbc42c21468d6eec3345f1975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 5
-  maxHealth: 5
+  currentHealth: 50
+  maxHealth: 50
   coinPrefab: {fileID: 8481823868968492337, guid: 113dcfcb4aaac6f479283d658c200f53, type: 3}
   isDead: 0
+--- !u!114 &690617606469275477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2590554092056598735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5312b6d39dca524683f4bdb077e3c9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 2.25
+  dashSpeedIncrease: 4.25
+  player: {fileID: 0}
+  coolDown: 2.5
+  groundPoundHitbox: {fileID: 5818190271875743336}
+  groundPoundRange: 5.5
+  rangeAttackRange: 10
+  desiredPos: {x: 0, y: 0}
+  currentRange: 0
+  currentAttackState: 0
+  targetLock: 0
+  movementLock: 0
 --- !u!50 &6976942623222897483
 Rigidbody2D:
   serializedVersion: 4
@@ -179,28 +203,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.9058466, y: 2.2972002}
   m_EdgeRadius: 0
---- !u!114 &690617606469275477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2590554092056598735}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5312b6d39dca524683f4bdb077e3c9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 2
-  dashSpeedIncrease: 4
-  player: {fileID: 0}
-  coolDown: 2.5
-  groundPoundHitbox: {fileID: 5818190271875743336}
-  groundPoundRange: 5.5
-  rangeAttackRange: 10
-  desiredPos: {x: 0, y: 0}
-  targetLock: 0
-  movementLock: 0
 --- !u!95 &3344987878987619510
 Animator:
   serializedVersion: 5
