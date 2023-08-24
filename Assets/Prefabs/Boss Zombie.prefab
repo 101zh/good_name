@@ -196,9 +196,9 @@ MonoBehaviour:
   player: {fileID: 0}
   coolDown: 2.5
   groundPoundHitbox: {fileID: 5818190271875743336}
-  grondPoundRange: 3.5
-  rangeAttackRange: 8
-  desiredPos: {x: 0, y: 0, z: 0}
+  groundPoundRange: 5.5
+  rangeAttackRange: 10
+  desiredPos: {x: 0, y: 0}
   targetLock: 0
   movementLock: 0
 --- !u!95 &3344987878987619510

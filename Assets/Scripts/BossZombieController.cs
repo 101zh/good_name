@@ -14,16 +14,17 @@ public class BossZombieController : MonoBehaviour
     [SerializeField] private float coolDown;
     private float coolDownTimer;
     [SerializeField] Transform groundPoundHitbox;
-    [SerializeField] float grondPoundRange;
+    [SerializeField] float groundPoundRange;
     [SerializeField] float rangeAttackRange;
     [SerializeField] Vector2 desiredPos;
     public enum movementState { sprintAttackRange, rangeAttackRange, groundpoundRange };
-    public static movementState currentRange;
-    attackState currentAttackState;
+    [SerializeField] private movementState currentRange;
+    [SerializeField] attackState currentAttackState;
     public enum attackState { sprintAttack, rangeAttack, groundPound };
     Animator animator;
     [SerializeField] bool targetLock = false;
     [SerializeField] bool movementLock = false;
+    private bool coolDownLock =false;
     Transform projectileLauncher;
     BossGunController projectileLauncherScript;
     string currentAnimationState;
@@ -41,18 +42,18 @@ public class BossZombieController : MonoBehaviour
     }
     void Update()
     {
-        if (coolDownTimer > 0) { coolDownTimer = Mathf.Max(coolDownTimer - Time.deltaTime, 0f); }
+        if (coolDownTimer > 0 && !coolDownLock) { coolDownTimer = Mathf.Max(coolDownTimer - Time.deltaTime, 0f); }
         if (coolDownTimer == 0)
         {
             coolDownTimer = coolDown;
             currentAttackState = DetermineAttack();
             if (currentAttackState == attackState.groundPound)
             {
-                GroundPound();
+                StartCoroutine(GroundPound());
             }
             else if (currentAttackState == attackState.rangeAttack)
             {
-                ThrowDirtBall();
+                StartCoroutine(ThrowDirtBall());
             }
             else
             {
@@ -76,7 +77,7 @@ public class BossZombieController : MonoBehaviour
         float distanceFromPlayer = Vector2.Distance(player.transform.position, transform.position);
 
         movementState state;
-        if (distanceFromPlayer <= grondPoundRange)
+        if (distanceFromPlayer <= groundPoundRange)
         {
             state = movementState.groundpoundRange;
         }
@@ -101,23 +102,24 @@ public class BossZombieController : MonoBehaviour
         attackState state;
         if (currentRange == movementState.groundpoundRange)
         {
-            groundPoundParam = 75;
-            rangeAttackParam = 100;
-            sprintAttackParam = 101;
+            groundPoundParam = 80;
+            rangeAttackParam = 85;
+            sprintAttackParam = 100;
         }
         else if (currentRange == movementState.rangeAttackRange)
         {
-            groundPoundParam = 20;
+            groundPoundParam = 10;
             rangeAttackParam = 70;
             sprintAttackParam = 100;
         }
         else
         {
-            groundPoundParam = 10;
-            rangeAttackParam = 35;
+            groundPoundParam = 5;
+            rangeAttackParam = 50;
             sprintAttackParam = 100;
         }
-        int rand = Random.Range(0, 101);
+        int rand = Random.Range(1, 101);
+
 
         if (rand <= groundPoundParam)
         {
@@ -149,7 +151,7 @@ public class BossZombieController : MonoBehaviour
     private IEnumerator GroundPound()
     {
         movementLock = true;
-        Debug.Log("GroundPound");
+        coolDownLock = true;
         changeAnimationState("boss_zombie_jump");
         Vector2 up = transform.position;
         up.y += 1.5f;
@@ -166,11 +168,12 @@ public class BossZombieController : MonoBehaviour
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), player.GetComponent<Collider2D>(), false);
         changeAnimationState("boss_zombie_idle");
         movementLock = false;
+        coolDownLock=false;
     }
 
     private void Dash()
     {
-        Debug.Log("Dash");
+        coolDownLock = true;
         targetLock = true;
         movementSpeed += dashSpeedIncrease;
         StartCoroutine(DashEnd());
@@ -183,11 +186,9 @@ public class BossZombieController : MonoBehaviour
         StartCoroutine(ThrowDirtBallsPerpendicular());
         while (check)
         {
-            Debug.Log("Checking...");
             check = Vector2.Distance((Vector2)transform.position, desiredPos) > 1.2;
             yield return null;
         }
-        Debug.Log("reached position");
         targetLock = false;
         movementSpeed -= dashSpeedIncrease;
         StartCoroutine(GroundPound());
@@ -217,11 +218,13 @@ public class BossZombieController : MonoBehaviour
     private IEnumerator ThrowDirtBall()
     {
         movementLock = true;
+        coolDownLock = true;
         changeAnimationState("BossZombieThrow");
         yield return new WaitForSeconds(0.2f);
         projectileLauncherScript.shootBulletAtPlayer();
         changeAnimationState("boss_zombie_idle");
         movementLock = false;
+        coolDownLock = false;
     }
 
     Health healthScript;
@@ -231,14 +234,13 @@ public class BossZombieController : MonoBehaviour
         {
             healthScript = collision.gameObject.GetComponent<Health>();
             healthScript.OnChangeHealth(1);
-            Debug.Log("I've been hit!");
+
         }
     }
 
     private void updateAnimation()
     {
         string state;
-        // Debug.Log("Updated!");
         if (currentAnimationState == "BossZombieThrow" || currentAnimationState == "boss_zombie_jump")
         {
             state = currentAnimationState;
@@ -282,7 +284,7 @@ public class BossZombieController : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, grondPoundRange);
+        Gizmos.DrawWireSphere(transform.position, groundPoundRange);
         Gizmos.DrawWireSphere(transform.position, rangeAttackRange);
     }
 }

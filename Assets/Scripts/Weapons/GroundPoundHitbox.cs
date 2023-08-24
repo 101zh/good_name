@@ -88,20 +88,17 @@ public class GroundPoundHitbox : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log("triggered");
     
         if (collider.tag.Equals("Player"))
         {
             healthScript = collider.gameObject.GetComponent<Health>();
             healthScript.OnChangeHealth(1);
-            Debug.Log("I've been hit!");
 
             Rigidbody2D playerRb = collider.GetComponent<Rigidbody2D>();
             Vector2 dir = hitbox.transform.position - playerRb.transform.position;
             dir = -dir.normalized;
             StartCoroutine(OverrideMovement(playerRb));
             playerRb.AddForce(dir * knockbackForce, ForceMode2D.Impulse);
-            Debug.Log("Made it to end");
 
         }
     }
@@ -110,10 +107,8 @@ public class GroundPoundHitbox : MonoBehaviour
     {
         player_controller script = rb.GetComponent<player_controller>();
         script.movmentOverride = true;
-        Debug.Log("Överride");
         yield return new WaitForSeconds(0.25f);
         script.movmentOverride = false;
-        Debug.Log("Returned perms");
     }
 
 }
