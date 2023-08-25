@@ -7,6 +7,7 @@ public class Health : MonoBehaviour
 {
     [SerializeField] public int currentHealth, maxHealth;
     [SerializeField] private int coinDropAmount, coinDropVariance;
+    [SerializeField] public int currentDefense, maxDefense;
     [SerializeField] private GameObject coinPrefab;
     [SerializeField] private bool isDead = false;
     private Material matWhite;
@@ -22,6 +23,7 @@ public class Health : MonoBehaviour
         matWhite = Resources.Load("WhiteFlash", typeof(Material)) as Material;
         matDefault = sr.material;
         InitializeHealth(maxHealth);
+        StartCoroutine(InitializeDefense(maxDefense));
     }
     private void DropCoin()
     {
@@ -65,6 +67,22 @@ public class Health : MonoBehaviour
             }
         }
     }
+
+    IEnumerator InitializeDefense(int defenseValue)
+    {
+        currentDefense = defenseValue;
+        maxDefense = defenseValue;
+
+        while (!isDead)
+        {
+            yield return new WaitForSeconds(4f);
+            if (currentDefense != maxDefense)
+            {
+                currentDefense += 1;
+            }
+        }
+    }
+
     void ResetMaterial()
     {
         sr.material = matDefault;
