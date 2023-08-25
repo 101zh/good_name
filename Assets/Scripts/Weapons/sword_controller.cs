@@ -46,7 +46,7 @@ public class sword_controller : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (!pause_menu.gamePaused)
+        if (!pause_menu.gamePaused || pause_menu.playerDead)
         {
             if (coolDownTimer > 0) { coolDownTimer = Mathf.Max(coolDownTimer - Time.deltaTime, 0f); }
             if (nearTo && Input.GetButtonDown("Interact")) { PickUpsword(); }

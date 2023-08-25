@@ -17,6 +17,8 @@ public class Health : MonoBehaviour
     public static event GetHit onHitEvent;
     public delegate void Die();
     public static event Die OnDie;
+    public delegate void PlayerDie();
+    public static event Die OnPlayerDie;
     bool recoveringDefense = false;
     void Start()
     {
@@ -67,10 +69,8 @@ public class Health : MonoBehaviour
             if (gameObject.tag.Equals("Player"))
             {
                 isDead = true;
-                gameObject.GetComponent<BoxCollider2D>().enabled=false;
-                gameObject.GetComponent<player_controller>().enabled=false;
-                pause_menu pauseMenuControls=GameObject.FindWithTag("Canvas").GetComponent<pause_menu>();
-                pauseMenuControls.deathScreenUI.SetActive(true);
+                OnPlayerDie?.Invoke();
+                pause_menu.playerDead=true;
             }
             else
             {

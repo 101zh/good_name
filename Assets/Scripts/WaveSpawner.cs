@@ -17,7 +17,7 @@ public class WaveSpawner : MonoBehaviour
     }
 
     public Wave[] waves;
-    private int nextWave = 0;
+    [SerializeField]private int nextWave = 0;
     public int NextWave
     {
         get { return nextWave + 1; }
@@ -94,6 +94,7 @@ public class WaveSpawner : MonoBehaviour
 
         if (nextWave + 1 > waves.Length - 1)
         {
+            // This is where thanks for playing should happen
             nextWave = 0;
             Debug.Log("ALL WAVES COMPLETE! Looping...");
         }
@@ -117,7 +118,13 @@ public class WaveSpawner : MonoBehaviour
         return true;
     }
 
-    public void KillAllEnemies()
+    public void ResetWave(){
+        KillAllEnemies();
+        WaveCompleted();
+        nextWave--;
+    }
+
+    private void KillAllEnemies()
     {
         GameObject[] bosses = GameObject.FindGameObjectsWithTag("Boss");
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -154,5 +161,16 @@ public class WaveSpawner : MonoBehaviour
         Transform _sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
         Instantiate(_enemy, _sp.position, _sp.rotation);
     }
+
+    private void OnEnable()
+    {
+        pause_menu.OnRetry += ResetWave;
+    }
+
+    private void OnDisable()
+    {
+        pause_menu.OnRetry -= ResetWave;
+    }
+
 
 }

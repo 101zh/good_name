@@ -88,6 +88,13 @@ public class player_controller : MonoBehaviour
         currentState = newState;
     }
 
+    private void Die()
+    {
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        gameObject.GetComponent<player_controller>().enabled = false;
+        rb.velocity = new Vector2(0, 0);
+    }
+
     public void incrementCoins(int amount)
     {
         coins += amount;
@@ -103,11 +110,13 @@ public class player_controller : MonoBehaviour
     private void OnEnable()
     {
         Health.onHitEvent += updateHUD;
+        Health.OnPlayerDie += Die;
     }
 
     private void OnDisable()
     {
         Health.onHitEvent -= updateHUD;
+        Health.OnPlayerDie -= Die;
     }
 
 }

@@ -6,9 +6,13 @@ using UnityEngine.SceneManagement;
 public class pause_menu : MonoBehaviour
 {
     public static bool gamePaused = false;
+    public static bool playerDead = false;
     public GameObject pauseMenuUI;
     public GameObject optionsMenuUI;
     public GameObject deathScreenUI;
+
+    public delegate void Retry();
+    public static event Retry OnRetry;
 
     // Update is called once per frame
     void Update()
@@ -53,12 +57,14 @@ public class pause_menu : MonoBehaviour
         gamePaused = true;
     }
 
-    void Retry()
+    void RetryWave()
     {
-        GameObject GM = GameObject.FindWithTag("GM");
-        WaveSpawner WavesController = GM.GetComponent<WaveSpawner>();
-        WavesController.KillAllEnemies();
-        
+        OnRetry?.Invoke();
+    }
+
+    private void PlayerDeath()
+    {
+        deathScreenUI.SetActive(true);
     }
 
     public void LoadMenu()
@@ -71,5 +77,15 @@ public class pause_menu : MonoBehaviour
     {
         Debug.Log("Quitting game...");
         Application.Quit();
+    }
+
+    private void OnEnable()
+    {
+        Health.OnPlayerDie += PlayerDeath;
+    }
+
+    private void OnDisable()
+    {
+        Health.OnPlayerDie -= PlayerDeath;
     }
 }
