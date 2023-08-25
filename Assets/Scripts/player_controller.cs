@@ -12,6 +12,7 @@ public class player_controller : MonoBehaviour
     private enum animState { witch_idle, witch_walk };
     private string currentState = "";
     [SerializeField] private HUD_bar healthBar;
+    [SerializeField] private HUD_bar defenseBar;
     private Health health;
     public int coins;
     coinText coinTextScript;
@@ -96,6 +97,7 @@ public class player_controller : MonoBehaviour
     private void updateHUD()
     {
         healthBar.setValue(health.currentHealth, health.maxHealth);
+        defenseBar.setValue(health.currentDefense, health.maxDefense);
     }
 
     private void OnEnable()

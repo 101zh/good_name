@@ -270,7 +270,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.7578125
+  orthographic size: 7.2916665
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -443,6 +443,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 476944228589235723, guid: aacb9e7e3a02bd849a68eef25427d231, type: 3}
   m_PrefabInstance: {fileID: 320278639}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &369024933 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3050931530058826169, guid: 14a4b0c141841db4e9837bda35c548e2, type: 3}
+  m_PrefabInstance: {fileID: 6280178790217041701}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea45e8db6e8c13441be6e19b24db273e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &579446814
 GameObject:
   m_ObjectHideFlags: 0
@@ -38467,9 +38478,21 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1048709223}
+    - target: {fileID: 6706363112934519951, guid: 79b19eb4e00a64c43b4ff62335c1c447, type: 3}
+      propertyPath: defenseBar
+      value: 
+      objectReference: {fileID: 369024933}
     - target: {fileID: 7761284378859072885, guid: 79b19eb4e00a64c43b4ff62335c1c447, type: 3}
       propertyPath: m_Name
       value: oWitch
+      objectReference: {fileID: 0}
+    - target: {fileID: 8053231539200959239, guid: 79b19eb4e00a64c43b4ff62335c1c447, type: 3}
+      propertyPath: maxDefense
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8053231539200959239, guid: 79b19eb4e00a64c43b4ff62335c1c447, type: 3}
+      propertyPath: currentDefense
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -38821,6 +38844,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 803671694692697295, guid: 14a4b0c141841db4e9837bda35c548e2, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 803671694692697295, guid: 14a4b0c141841db4e9837bda35c548e2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1392491735165039598, guid: 14a4b0c141841db4e9837bda35c548e2, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

@@ -17,13 +17,14 @@ public class Health : MonoBehaviour
     public static event GetHit onHitEvent;
     public delegate void Die();
     public static event Die OnDie;
+    bool recoveringDefense = false;
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         matWhite = Resources.Load("WhiteFlash", typeof(Material)) as Material;
         matDefault = sr.material;
         InitializeHealth(maxHealth);
-        StartCoroutine(InitializeDefense(maxDefense));
+        InitializeDefense(maxDefense);
     }
     private void DropCoin()
     {
@@ -45,15 +46,21 @@ public class Health : MonoBehaviour
 
     public void OnChangeHealth(int amount) /// Negative values increase health, positive values take away health. 
     {
-        if (onHitEvent != null)
+        if (currentDefense <= 0)
         {
-            onHitEvent();
+            RestartDefenseRecover();
+            currentHealth -= amount;
+            sr.material = matWhite;
+            Invoke("ResetMaterial", .1f);
+            Debug.Log(gameObject.name + "; " + currentHealth.ToString());
         }
-
-        currentHealth -= amount;
-        sr.material = matWhite;
-        Invoke("ResetMaterial", .1f);
-        Debug.Log(gameObject.name + "; " + currentHealth.ToString());
+        else
+        {
+            RestartDefenseRecover();
+            currentDefense -= amount;
+            sr.material = matWhite;
+            Invoke("ResetMaterial", .1f);
+        }
 
         if (currentHealth <= 0)
         {
@@ -66,20 +73,40 @@ public class Health : MonoBehaviour
                 OnDie();
             }
         }
+
+        if (onHitEvent != null)
+        {
+            onHitEvent();
+        }
     }
 
-    IEnumerator InitializeDefense(int defenseValue)
+    private void InitializeDefense(int defenseValue)
     {
         currentDefense = defenseValue;
         maxDefense = defenseValue;
+    }
 
-        while (!isDead)
+    IEnumerator RecoverDefense()
+    {
+        recoveringDefense = true;
+        bool recoveredAllDefense = currentDefense == maxDefense;
+        while (!isDead && !recoveredAllDefense)
         {
             yield return new WaitForSeconds(4f);
-            if (currentDefense != maxDefense)
-            {
-                currentDefense += 1;
-            }
+            currentDefense += 1;
+            Debug.Log("+1 Defense");
+            onHitEvent?.Invoke();
+            recoveredAllDefense = currentDefense == maxDefense;
+        }
+        recoveringDefense = false;
+    }
+
+    private void RestartDefenseRecover()
+    {
+        if (!recoveringDefense)
+        {
+            Debug.Log("Recovering");
+            StartCoroutine(RecoverDefense());
         }
     }
 
