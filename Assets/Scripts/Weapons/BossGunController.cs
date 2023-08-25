@@ -17,7 +17,7 @@ public class BossGunController : MonoBehaviour
     BossZombieController BossScript;
     private void Awake()
     {
-        if (Boss.tag.Equals("BossZombie")) BossScript = Boss.GetComponent<BossZombieController>();
+        if (Boss.GetComponent<BossZombieController>()!=null) BossScript = Boss.GetComponent<BossZombieController>();
     }
 
     private void gunRotateToPlayer()

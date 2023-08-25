@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3344987878987619510}
   m_Layer: 10
   m_Name: Boss Zombie
-  m_TagString: BossZombie
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,6 +107,8 @@ MonoBehaviour:
   maxHealth: 50
   coinDropAmount: 35
   coinDropVariance: 5
+  currentDefense: 0
+  maxDefense: 0
   coinPrefab: {fileID: 8481823868968492337, guid: 113dcfcb4aaac6f479283d658c200f53, type: 3}
   isDead: 0
 --- !u!114 &690617606469275477

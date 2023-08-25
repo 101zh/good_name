@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 2495638379216056588}
   m_Layer: 10
   m_Name: Boss
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,6 +123,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 1
   maxHealth: 1
+  coinDropAmount: 0
+  coinDropVariance: 0
+  currentDefense: 0
+  maxDefense: 0
   coinPrefab: {fileID: 8481823868968492337, guid: 113dcfcb4aaac6f479283d658c200f53, type: 3}
   isDead: 0
 --- !u!50 &104310046221577903

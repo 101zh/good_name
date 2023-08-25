@@ -8,11 +8,12 @@ public class pause_menu : MonoBehaviour
     public static bool gamePaused = false;
     public GameObject pauseMenuUI;
     public GameObject optionsMenuUI;
+    public GameObject deathScreenUI;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !deathScreenUI.activeSelf)
         {
             if (gamePaused && optionsMenuUI.activeSelf)
             {
@@ -26,6 +27,14 @@ public class pause_menu : MonoBehaviour
             else
             {
                 pause();
+            }
+        }
+        else
+        {
+            if (optionsMenuUI.activeSelf)
+            {
+                optionsMenuUI.SetActive(false);
+                deathScreenUI.SetActive(true);
             }
         }
     }
@@ -42,6 +51,14 @@ public class pause_menu : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         gamePaused = true;
+    }
+
+    void Retry()
+    {
+        GameObject GM = GameObject.FindWithTag("GM");
+        WaveSpawner WavesController = GM.GetComponent<WaveSpawner>();
+        WavesController.KillAllEnemies();
+        
     }
 
     public void LoadMenu()
