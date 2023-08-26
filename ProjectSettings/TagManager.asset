@@ -18,6 +18,7 @@ TagManager:
   - BossHealthBar
   - WavesText
   - Boss
+  - Projectile
   layers:
   - Default
   - TransparentFX

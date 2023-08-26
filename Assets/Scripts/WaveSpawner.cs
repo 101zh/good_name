@@ -17,7 +17,7 @@ public class WaveSpawner : MonoBehaviour
     }
 
     public Wave[] waves;
-    [SerializeField]private int nextWave = 0;
+    [SerializeField] private int nextWave = 0;
     public int NextWave
     {
         get { return nextWave + 1; }
@@ -42,6 +42,7 @@ public class WaveSpawner : MonoBehaviour
 
     public UnityEvent OnWaveComplete;
     public UnityEvent OnWaveStart;
+    private Coroutine Spawning;
 
     void Start()
     {
@@ -61,7 +62,7 @@ public class WaveSpawner : MonoBehaviour
         {
             if (!EnemyIsAlive())
             {
-                script.currentTime = 20;
+                script.currentTime = timeBetweenWaves;
                 WaveCompleted();
             }
             else
@@ -75,7 +76,7 @@ public class WaveSpawner : MonoBehaviour
             if (state != SpawnState.SPAWNING)
             {
                 OnWaveStart.Invoke();
-                StartCoroutine(SpawnWave(waves[nextWave]));
+                Spawning = StartCoroutine(SpawnWave(waves[nextWave]));
             }
         }
         else
@@ -118,10 +119,14 @@ public class WaveSpawner : MonoBehaviour
         return true;
     }
 
-    public void ResetWave(){
+    public void ResetWave()
+    {
+        StopCoroutine(Spawning);
         KillAllEnemies();
-        WaveCompleted();
-        nextWave--;
+        state = SpawnState.COUNTING;
+        OnWaveComplete?.Invoke();
+        waveCountdown = timeBetweenWaves;
+        script.currentTime = waveCountdown;
     }
 
     private void KillAllEnemies()

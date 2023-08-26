@@ -11,8 +11,8 @@ public class pause_menu : MonoBehaviour
     public GameObject optionsMenuUI;
     public GameObject deathScreenUI;
 
-    public delegate void Retry();
-    public static event Retry OnRetry;
+    public delegate void RetryButton();
+    public static event RetryButton OnRetry;
 
     // Update is called once per frame
     void Update()
@@ -54,8 +54,11 @@ public class pause_menu : MonoBehaviour
         gameIsPaused = true;
     }
 
-    void RetryWave()
+    public void Retry()
     {
+        deathScreenUI.SetActive(false);
+        DestroyAllProjectiles();
+        playerIsDead = false;
         OnRetry?.Invoke();
     }
 
@@ -76,6 +79,15 @@ public class pause_menu : MonoBehaviour
         {
             pauseMenuUI.SetActive(true);
             optionsMenuUI.SetActive(false);
+        }
+    }
+
+    private void DestroyAllProjectiles()
+    {
+        GameObject[] projectiles = GameObject.FindGameObjectsWithTag("Projectile");
+        for (int i = 0; i < projectiles.Length; i++)
+        {
+            Destroy(projectiles[i]);
         }
     }
 

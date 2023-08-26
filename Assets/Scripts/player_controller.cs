@@ -31,6 +31,8 @@ public class player_controller : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (pause_menu.gameIsPaused || pause_menu.playerIsDead) return;
+
         bool moving = Input.GetButton("Horizontal") || Input.GetButton("Vertical");
         float movementX = Input.GetAxisRaw("Horizontal");
         float movementY = Input.GetAxisRaw("Vertical");
@@ -91,8 +93,18 @@ public class player_controller : MonoBehaviour
     private void Die()
     {
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
-        gameObject.GetComponent<player_controller>().enabled = false;
+        movmentOverride = true;
         rb.velocity = new Vector2(0, 0);
+    }
+
+    private void Revive()
+    {
+        gameObject.GetComponent<BoxCollider2D>().enabled = true;
+        health.InitializeHealth(health.maxHealth);
+        health.InitializeDefense(health.maxDefense);
+        updateHUD();
+        movmentOverride = false;
+        transform.position = new Vector2(0, -2);
     }
 
     public void incrementCoins(int amount)
@@ -111,12 +123,14 @@ public class player_controller : MonoBehaviour
     {
         Health.onHitEvent += updateHUD;
         Health.OnPlayerDie += Die;
+        pause_menu.OnRetry += Revive;
     }
 
     private void OnDisable()
     {
         Health.onHitEvent -= updateHUD;
         Health.OnPlayerDie -= Die;
+        pause_menu.OnRetry -= Revive;
     }
 
 }

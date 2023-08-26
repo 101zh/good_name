@@ -70,7 +70,7 @@ public class Health : MonoBehaviour
             {
                 isDead = true;
                 OnPlayerDie?.Invoke();
-                pause_menu.playerIsDead=true;
+                pause_menu.playerIsDead = true;
             }
             else
             {
@@ -93,7 +93,7 @@ public class Health : MonoBehaviour
         }
     }
 
-    private void InitializeDefense(int defenseValue)
+    public void InitializeDefense(int defenseValue)
     {
         currentDefense = defenseValue;
         maxDefense = defenseValue;
@@ -102,13 +102,13 @@ public class Health : MonoBehaviour
     IEnumerator RecoverDefense()
     {
         recoveringDefense = true;
-        bool recoveredAllDefense = currentDefense == maxDefense;
+        bool recoveredAllDefense = currentDefense >= maxDefense;
         while (!isDead && !recoveredAllDefense)
         {
             yield return new WaitForSeconds(4f);
             currentDefense += 1;
             onHitEvent?.Invoke();
-            recoveredAllDefense = currentDefense == maxDefense;
+            recoveredAllDefense = currentDefense >= maxDefense;
         }
         recoveringDefense = false;
     }
@@ -126,4 +126,5 @@ public class Health : MonoBehaviour
     {
         sr.material = matDefault;
     }
+
 }
