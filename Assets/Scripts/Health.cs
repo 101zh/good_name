@@ -70,7 +70,7 @@ public class Health : MonoBehaviour
             {
                 isDead = true;
                 OnPlayerDie?.Invoke();
-                pause_menu.playerDead=true;
+                pause_menu.playerIsDead=true;
             }
             else
             {

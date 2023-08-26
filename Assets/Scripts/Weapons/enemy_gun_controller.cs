@@ -30,7 +30,7 @@ public class enemy_gun_controller : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (!pause_menu.gamePaused && !passive)
+        if (!pause_menu.gameIsPaused && !passive)
         {
             if (coolDownTimer > 0) { coolDownTimer = Mathf.Max(coolDownTimer - Time.deltaTime, 0f); }
             if (held)

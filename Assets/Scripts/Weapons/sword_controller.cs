@@ -46,18 +46,17 @@ public class sword_controller : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (!pause_menu.gamePaused || pause_menu.playerDead)
+        if (pause_menu.gameIsPaused || pause_menu.playerIsDead) return;
+
+        if (coolDownTimer > 0) { coolDownTimer = Mathf.Max(coolDownTimer - Time.deltaTime, 0f); }
+        if (nearTo && Input.GetButtonDown("Interact")) { PickUpsword(); }
+        if (held)
         {
-            if (coolDownTimer > 0) { coolDownTimer = Mathf.Max(coolDownTimer - Time.deltaTime, 0f); }
-            if (nearTo && Input.GetButtonDown("Interact")) { PickUpsword(); }
-            if (held)
+            Rotate();
+            if (Input.GetButtonDown("Fire1") && coolDownTimer == 0) //checks if player has pressed the shoot button
             {
-                Rotate();
-                if (Input.GetButtonDown("Fire1") && coolDownTimer == 0) //checks if player has pressed the shoot button
-                {
-                    Swinging();
-                    coolDownTimer = coolDown;
-                }
+                Swinging();
+                coolDownTimer = coolDown;
             }
         }
     }

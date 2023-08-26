@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class pause_menu : MonoBehaviour
 {
-    public static bool gamePaused = false;
-    public static bool playerDead = false;
+    public static bool gameIsPaused = false;
+    public static bool playerIsDead = false;
     public GameObject pauseMenuUI;
     public GameObject optionsMenuUI;
     public GameObject deathScreenUI;
@@ -17,14 +17,19 @@ public class pause_menu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !deathScreenUI.activeSelf)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (gamePaused && optionsMenuUI.activeSelf)
+            if (optionsMenuUI.activeSelf && playerIsDead)
+            {
+                optionsMenuUI.SetActive(false);
+                deathScreenUI.SetActive(true);
+            }
+            else if (gameIsPaused && optionsMenuUI.activeSelf)
             {
                 optionsMenuUI.SetActive(false);
                 pauseMenuUI.SetActive(true);
             }
-            else if (gamePaused)
+            else if (gameIsPaused)
             {
                 resume();
             }
@@ -33,28 +38,20 @@ public class pause_menu : MonoBehaviour
                 pause();
             }
         }
-        else
-        {
-            if (optionsMenuUI.activeSelf)
-            {
-                optionsMenuUI.SetActive(false);
-                deathScreenUI.SetActive(true);
-            }
-        }
     }
 
     public void resume()
     {
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
-        gamePaused = false;
+        gameIsPaused = false;
     }
 
     void pause()
     {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
-        gamePaused = true;
+        gameIsPaused = true;
     }
 
     void RetryWave()
@@ -65,6 +62,21 @@ public class pause_menu : MonoBehaviour
     private void PlayerDeath()
     {
         deathScreenUI.SetActive(true);
+        playerIsDead = true;
+    }
+
+    public void BackToLastMenu()
+    {
+        if (playerIsDead)
+        {
+            deathScreenUI.SetActive(true);
+            optionsMenuUI.SetActive(false);
+        }
+        else
+        {
+            pauseMenuUI.SetActive(true);
+            optionsMenuUI.SetActive(false);
+        }
     }
 
     public void LoadMenu()

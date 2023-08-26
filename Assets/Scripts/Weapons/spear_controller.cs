@@ -36,18 +36,17 @@ public class spear_controller : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (!pause_menu.gamePaused || !pause_menu.playerDead)
+        if (pause_menu.gameIsPaused || pause_menu.playerIsDead) return;
+
+        if (coolDownTimer > 0) { coolDownTimer = Mathf.Max(coolDownTimer - Time.deltaTime, 0f); }
+        if (nearTo && Input.GetButtonDown("Interact")) { PickUpGun(playerTransform); }
+        if (held)
         {
-            if (coolDownTimer > 0) { coolDownTimer = Mathf.Max(coolDownTimer - Time.deltaTime, 0f); }
-            if (nearTo && Input.GetButtonDown("Interact")) { PickUpGun(playerTransform); }
-            if (held)
+            Rotate();
+            if (Input.GetButtonDown("Fire1") && coolDownTimer == 0) //checks if player has pressed the shoot button
             {
-                Rotate();
-                if (Input.GetButtonDown("Fire1") && coolDownTimer == 0) //checks if player has pressed the shoot button
-                {
-                    Thrust();
-                    coolDownTimer = coolDown;
-                }
+                Thrust();
+                coolDownTimer = coolDown;
             }
         }
     }
@@ -127,10 +126,11 @@ public class spear_controller : MonoBehaviour
     private IEnumerator Thrust()
     {
         Debug.Log("Thrust");
-        var radians = angle*Mathf.Deg2Rad;
+        var radians = angle * Mathf.Deg2Rad;
         Vector2 destination = new Vector2(Mathf.Cos(radians), Mathf.Sin(radians));
-        destination*=thrustLength;
-        while(new Vector2(transform.position.x, transform.position.y)==destination){
+        destination *= thrustLength;
+        while (new Vector2(transform.position.x, transform.position.y) == destination)
+        {
             transform.position = Vector2.Lerp(transform.position, destination, thrustSpeed);
             yield return null;
         }

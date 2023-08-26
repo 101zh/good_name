@@ -15,6 +15,8 @@ public class weapon_switching : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (pause_menu.gameIsPaused || pause_menu.playerIsDead) return;
+
         int previousHeldWeaponIndex = heldWeaponIndex;
 
         if (Input.GetButtonDown("GunCycleClockwise"))

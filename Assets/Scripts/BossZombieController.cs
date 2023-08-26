@@ -55,7 +55,7 @@ public class BossZombieController : MonoBehaviour
     }
     void Update()
     {
-        if (pause_menu.gamePaused) return;
+        if (pause_menu.gameIsPaused) return;
         if (coolDownTimer > 0 && !coolDownLock) { coolDownTimer = Mathf.Max(coolDownTimer - Time.deltaTime, 0f); }
         if (coolDownTimer == 0)
         {
