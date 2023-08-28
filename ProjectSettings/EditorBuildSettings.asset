@@ -7,11 +7,20 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/Start Menu.unity
-    guid: 094b89d6acf6c4747875c219dc4c6f33
+    guid: 42fa5ff63c569134c9d8578472392e3d
+  - enabled: 0
+    path: Assets/Scenes/test.unity
+    guid: 2251b23de79998d46a4821c0c29fb7df
   - enabled: 1
+    path: Assets/Scenes/Arena.unity
+    guid: f75a4d45f481c3b459f004053dc21076
+  - enabled: 0
     path: Assets/Scenes/Hunter's Playground.unity
     guid: 09a9e6c48eee34b499013c810cb8e3fb
   - enabled: 1
-    path: Assets/Scenes/First World.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Credits.unity
+    guid: c67c56fd7bcbc844ebfd69b575653ebe
+  - enabled: 1
+    path: Assets/Scenes/End Menu.unity
+    guid: 094b89d6acf6c4747875c219dc4c6f33
   m_configObjects: {}
