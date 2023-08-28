@@ -79,6 +79,7 @@ public class BossZombieController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (pause_menu.gameIsPaused) return;
         DeterminePos();
         if (!movementLock)
         {

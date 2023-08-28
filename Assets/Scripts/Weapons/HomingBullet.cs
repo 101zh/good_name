@@ -2,16 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class bullet : MonoBehaviour
+public class HomingBullet : MonoBehaviour
 {
     Health healthScript;
     Animator animator;
     Rigidbody2D rb;
+    [SerializeField] float speed;
+    [SerializeField] float rotateSpeed;
+    [SerializeField] string targetTag;
+    [SerializeField] Transform target;
 
     void Start(){
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        Destroy(gameObject, 5f);
+        target = GameObject.FindWithTag(targetTag).transform;
+    }
+    
+    void FixedUpdate(){
+        Vector2 dir = (Vector2)target.position - rb.position;
+        dir.Normalize();
+
+        float rotateAmount = Vector3.Cross(dir, transform.up).z;
+
+        rb.angularVelocity =-rotateAmount * rotateSpeed;
+        rb.velocity = transform.up * speed;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -26,6 +40,4 @@ public class bullet : MonoBehaviour
         animator.Play("bullet_impact");
         Destroy(gameObject, 0.4f);
     }
-
 }
-
