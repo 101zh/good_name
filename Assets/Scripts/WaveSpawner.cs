@@ -4,6 +4,7 @@ using UnityEngine.Events;
 
 public class WaveSpawner : MonoBehaviour
 {
+    [SerializeField] GameObject hope;
     public CountdownTimer script;
     public enum SpawnState { SPAWNING, WAITING, COUNTING };
 
@@ -95,9 +96,7 @@ public class WaveSpawner : MonoBehaviour
 
         if (nextWave + 1 > waves.Length - 1)
         {
-            // This is where thanks for playing should happen
-            nextWave = 0;
-            Debug.Log("ALL WAVES COMPLETE! Looping...");
+            Instantiate(hope, new Vector2(0, -5), hope.transform.rotation);
         }
         else
         {

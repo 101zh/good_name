@@ -34,7 +34,7 @@ public class credits : MonoBehaviour
 
     IEnumerator WaitGoToNextScene()
     {
-        yield return new WaitForSeconds(35f);
+        yield return new WaitForSeconds(37f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
 }

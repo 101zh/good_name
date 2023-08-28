@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 420487502b583204c88587d276e9b52b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hope: {fileID: 2185389877210642614, guid: 142eb801e2fcada45814aa37f2797db4, type: 3}
   script: {fileID: 0}
   waves:
   - name: Wave 1
@@ -169,6 +170,7 @@ MonoBehaviour:
     enemy: {fileID: 6597655696149719535, guid: 7d1abdd11828782428c7e52498e7fbf1, type: 3}
     count: 300
     rate: 3
+  nextWave: 0
   spawnPoints:
   - {fileID: 1347198890642267615}
   - {fileID: 6327516753275816399}
@@ -177,7 +179,7 @@ MonoBehaviour:
   OnWaveComplete:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 455330878452943317, guid: ed04517a1cb571b459866ec3e580f8e1, type: 3}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: shop_controller, Assembly-CSharp
         m_MethodName: SetUpShop
         m_Mode: 1
@@ -192,7 +194,7 @@ MonoBehaviour:
   OnWaveStart:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 455330878452943317, guid: ed04517a1cb571b459866ec3e580f8e1, type: 3}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: shop_controller, Assembly-CSharp
         m_MethodName: TakeDownShop
         m_Mode: 1
