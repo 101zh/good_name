@@ -297,7 +297,7 @@ Transform:
   - {fileID: 6142828668319179547}
   - {fileID: 1260002864130104397}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6374057691924123381
 SpriteRenderer:
@@ -363,7 +363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31dbb0818af8ea945951d48e09b55a0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7
+  moveSpeed: 7.5
   healthBar: {fileID: 0}
   defenseBar: {fileID: 0}
   coins: 0

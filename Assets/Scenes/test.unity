@@ -9320,10 +9320,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shop
       objectReference: {fileID: 0}
-    - target: {fileID: 6462758909428343079, guid: ed04517a1cb571b459866ec3e580f8e1, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6853046694003017996, guid: ed04517a1cb571b459866ec3e580f8e1, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -38357,10 +38353,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1048709223}
     - target: {fileID: 6706363112934519951, guid: 79b19eb4e00a64c43b4ff62335c1c447, type: 3}
-      propertyPath: moveSpeed
-      value: 7.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6706363112934519951, guid: 79b19eb4e00a64c43b4ff62335c1c447, type: 3}
       propertyPath: defenseBar
       value: 
       objectReference: {fileID: 369024933}
@@ -38534,6 +38526,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2716190251166367881, guid: 63c956cc11527a54bb5224817962cb1e, type: 3}
+      propertyPath: waves.Array.data[1].name
+      value: Wave Last
+      objectReference: {fileID: 0}
+    - target: {fileID: 2716190251166367881, guid: 63c956cc11527a54bb5224817962cb1e, type: 3}
+      propertyPath: waves.Array.data[1].rate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2716190251166367881, guid: 63c956cc11527a54bb5224817962cb1e, type: 3}
       propertyPath: waves.Array.data[17].name
       value: Wave 19
       objectReference: {fileID: 0}
@@ -38544,6 +38544,10 @@ PrefabInstance:
     - target: {fileID: 2716190251166367881, guid: 63c956cc11527a54bb5224817962cb1e, type: 3}
       propertyPath: waves.Array.data[19].name
       value: Wave 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 2716190251166367881, guid: 63c956cc11527a54bb5224817962cb1e, type: 3}
+      propertyPath: waves.Array.data[1].count
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2716190251166367881, guid: 63c956cc11527a54bb5224817962cb1e, type: 3}
       propertyPath: waves.Array.data[20].name

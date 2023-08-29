@@ -170,6 +170,10 @@ MonoBehaviour:
     enemy: {fileID: 6597655696149719535, guid: 7d1abdd11828782428c7e52498e7fbf1, type: 3}
     count: 300
     rate: 3
+  - name: Waves End
+    enemy: {fileID: 6597655696149719535, guid: 7d1abdd11828782428c7e52498e7fbf1, type: 3}
+    count: 0
+    rate: 1
   nextWave: 0
   spawnPoints:
   - {fileID: 1347198890642267615}
