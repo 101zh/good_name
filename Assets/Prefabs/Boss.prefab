@@ -21,7 +21,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2457979869689399682
 Transform:
   m_ObjectHideFlags: 0
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationRadius: 8
-  angularSpeed: 1.5
+  angularSpeed: 1.25
   coolDown: 2.5
   coolDownLock: 0
   preFireWall: {fileID: 597595096050260461, guid: e5d5b8e6bf3846949a435683dc113473, type: 3}

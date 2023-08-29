@@ -14,6 +14,7 @@ public class Leave : MonoBehaviour
     {
         if (canLeave && Input.GetButtonDown("Interact"))
         {
+            GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(7).gameObject.SetActive(true);
             onFadeOut?.Invoke();
             StartCoroutine(WaitForFadeOut());
             Debug.Log("leaving");

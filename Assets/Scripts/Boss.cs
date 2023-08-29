@@ -13,8 +13,10 @@ public class Boss : MonoBehaviour
     [SerializeField] bool coolDownLock;
     Transform projectileLauncher;
     BossGunController projectileLauncherScript;
-
     SpriteRenderer spriteRenderer;
+    GameObject healthBar;
+    BossHealthBar healthBarScript;
+    Health health;
 
     private void Start()
     {
@@ -22,6 +24,15 @@ public class Boss : MonoBehaviour
         projectileLauncherScript = projectileLauncher.GetComponent<BossGunController>();
 
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        healthBar = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(5).gameObject;
+        healthBarScript = healthBar.GetComponent<BossHealthBar>();
+
+        health = GetComponent<Health>();
+
+        healthBar.SetActive(true);
+        healthBarScript.setMaxValue(health.maxHealth);
+        healthBarScript.setValue(health.currentHealth);
 
         rotationCenter = GameObject.FindGameObjectWithTag("Player").transform;
         coolDownTimer = coolDown;
@@ -48,7 +59,7 @@ public class Boss : MonoBehaviour
                 {
                     StartCoroutine(Invisibility());
                 }
-                else if (fireWallCount <= 1)
+                else if (fireWallCount < 1)
                 {
                     StartCoroutine(FireWall());
                 }
@@ -133,7 +144,29 @@ public class Boss : MonoBehaviour
     private void EmitFireBalls()
     {
         projectileLauncherScript.bulletSpeed = 7f;
-        float[] angles = { 0, 15, 30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180, 195, 210, 225, 240, 255, 270, 285, 300, 315, 330, 345, 360 };
+        float[] angles = { 0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330, 360 };
         projectileLauncherScript.shootBulletToAngles(angles);
     }
+
+    private void UpdateHealthBar()
+    {
+        healthBarScript.setValue(health.currentHealth);
+        if (health.currentHealth <= 0)
+        {
+            healthBar.SetActive(false);
+        }
+    }
+
+    private void OnEnable()
+    {
+        Health.onHitEvent += UpdateHealthBar;
+        Health.OnDie += UpdateHealthBar;
+    }
+
+    private void OnDisable()
+    {
+        Health.onHitEvent -= UpdateHealthBar;
+        Health.OnDie -= UpdateHealthBar;
+    }
+
 }

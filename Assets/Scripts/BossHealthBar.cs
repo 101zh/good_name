@@ -4,13 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class BossHealthBar : MonoBehaviour
 {
-    Slider fill;
-
-    private void Start()
-    {
-        fill = GetComponent<Slider>();
-    }
-
+    [SerializeField] Slider fill;
     public void setMaxValue(int maxHealth)
     {
         fill.maxValue = maxHealth;

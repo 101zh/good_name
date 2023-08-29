@@ -51,6 +51,7 @@ public class BossZombieController : MonoBehaviour
 
         healthBar.SetActive(true);
         healthBarScript.setMaxValue(health.maxHealth);
+        healthBarScript.setValue(health.currentHealth);
         desiredPos = transform.position;
     }
     void Update()
