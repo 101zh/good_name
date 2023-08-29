@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 4003618269591118655}
   m_Layer: 6
   m_Name: HealthPotion
-  m_TagString: Gun
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -237,7 +237,7 @@ Transform:
   - {fileID: 2258017480975287971}
   - {fileID: 5855911927278625679}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7063584119878737615
 SpriteRenderer:

@@ -53,7 +53,6 @@ public class WaveSpawner : MonoBehaviour
             Debug.LogError("No spawn points referenced.");
 
         }
-
         waveCountdown = timeBetweenWaves;
     }
 
@@ -76,7 +75,6 @@ public class WaveSpawner : MonoBehaviour
         {
             if (state != SpawnState.SPAWNING)
             {
-                OnWaveStart.Invoke();
                 Spawning = StartCoroutine(SpawnWave(waves[nextWave]));
             }
         }
@@ -142,8 +140,33 @@ public class WaveSpawner : MonoBehaviour
         }
     }
 
+    private void DestroyAllItemsOnGround()
+    {
+        GameObject[] guns = GameObject.FindGameObjectsWithTag("Gun");
+        GameObject[] swords = GameObject.FindGameObjectsWithTag("Sword");
+        for (int i = 0; i < guns.Length; i++)
+        {
+            if (!guns[i].GetComponent<gun_controller>().held)
+            {
+                Destroy(guns[i]);
+            }
+
+        }
+        for (int i = 0; i < swords.Length; i++)
+        {
+            if (!swords[i].GetComponent<sword_controller>().held)
+            {
+                Destroy(swords[i]);
+            }
+
+        }
+    }
+
     IEnumerator SpawnWave(Wave _wave)
     {
+        DestroyAllItemsOnGround();
+        yield return null;
+        OnWaveStart?.Invoke();
         Debug.Log("Spawning Wave: " + _wave.name);
         state = SpawnState.SPAWNING;
 
