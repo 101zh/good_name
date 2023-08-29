@@ -126,6 +126,8 @@ MonoBehaviour:
   angularSpeed: 1.5
   coolDown: 2.5
   coolDownLock: 0
+  preFireWall: {fileID: 597595096050260461, guid: e5d5b8e6bf3846949a435683dc113473, type: 3}
+  fireWall: {fileID: 8945133251351536126, guid: 9b291d19cbf10cb40b186046632a77d5, type: 3}
 --- !u!50 &104310046221577903
 Rigidbody2D:
   serializedVersion: 4

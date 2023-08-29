@@ -24,7 +24,7 @@ public class Boss : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         rotationCenter = GameObject.FindGameObjectWithTag("Player").transform;
-        coolDownTimer=coolDown;
+        coolDownTimer = coolDown;
     }
     void Update()
     {
@@ -35,7 +35,7 @@ public class Boss : MonoBehaviour
             int rand = Random.Range(1, 11);
             if (rand <= 11)
             {
-                ThrowHomingFireBall();
+                StartCoroutine(FireWall());
             }
             else if (rand <= 8)
             {
@@ -45,7 +45,7 @@ public class Boss : MonoBehaviour
             {
                 StartCoroutine(Invisibility());
             }
-            coolDownTimer=coolDown;
+            coolDownTimer = coolDown;
         }
     }
 
@@ -83,7 +83,7 @@ public class Boss : MonoBehaviour
     IEnumerator ThrowFireBallsMadly()
     {
         yield return new WaitForSeconds(.5f);
-        projectileLauncherScript.bulletSpeed=15f;
+        projectileLauncherScript.bulletSpeed = 15f;
         while (true)
         {
             ThrowFireBall();
@@ -91,8 +91,24 @@ public class Boss : MonoBehaviour
         }
     }
 
+    [SerializeField] GameObject preFireWall;
+    [SerializeField] GameObject fireWall;
+    private int fireWallCount;
+    private IEnumerator FireWall()
+    {
+        Vector2 location = rotationCenter.position;
+        location.x = 0;
+        fireWallCount+=1;
+        GameObject preFireWallInstance = Instantiate(preFireWall, location, preFireWall.transform.rotation);
+        yield return new WaitForSeconds(1.5f);
+        Instantiate(fireWall, location, fireWall.transform.rotation);
+        yield return new WaitForSeconds(5.6f);
+        fireWallCount-=1;
+        Destroy(preFireWallInstance);
+    }
+
     private void ThrowFireBall()
-    {  
+    {
         projectileLauncherScript.shootBulletAtPlayer();
     }
 
@@ -103,7 +119,7 @@ public class Boss : MonoBehaviour
 
     private void EmitFireBalls()
     {
-        projectileLauncherScript.bulletSpeed=7f;
+        projectileLauncherScript.bulletSpeed = 7f;
         float[] angles = { 0, 15, 30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180, 195, 210, 225, 240, 255, 270, 285, 300, 315, 330, 345, 360 };
         projectileLauncherScript.shootBulletToAngles(angles);
     }
