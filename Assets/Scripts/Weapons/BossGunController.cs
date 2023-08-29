@@ -6,7 +6,7 @@ public class BossGunController : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    [SerializeField] private float bulletSpeed;
+    [SerializeField] public float bulletSpeed;
     [SerializeField] private int bulletsPerShot;
     [SerializeField] private float bulletSpread;
     [SerializeField] private Transform firePoint;

@@ -11,11 +11,10 @@ GameObject:
   - component: {fileID: 2457979869689399682}
   - component: {fileID: 3938193548595141978}
   - component: {fileID: 2886917100708905082}
+  - component: {fileID: 2296198213209480223}
   - component: {fileID: 104310046221577903}
   - component: {fileID: 6661793369473291979}
   - component: {fileID: 3001401598695830155}
-  - component: {fileID: 2296198213209480223}
-  - component: {fileID: 2495638379216056588}
   m_Layer: 10
   m_Name: Boss
   m_TagString: Boss
@@ -111,6 +110,22 @@ MonoBehaviour:
   maxDefense: 0
   coinPrefab: {fileID: 8481823868968492337, guid: 113dcfcb4aaac6f479283d658c200f53, type: 3}
   isDead: 0
+--- !u!114 &2296198213209480223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366545871192281393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6526e65d5fadc6342bf8b74ba95c9df1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationRadius: 8
+  angularSpeed: 1.5
+  coolDown: 2.5
+  coolDownLock: 0
 --- !u!50 &104310046221577903
 Rigidbody2D:
   serializedVersion: 4
@@ -204,34 +219,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2296198213209480223
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 366545871192281393}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6526e65d5fadc6342bf8b74ba95c9df1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationRadius: 8
-  angularSpeed: 2
-  coolDown: 2.5
-  coolDownLock: 0
---- !u!114 &2495638379216056588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 366545871192281393}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3031361957117b94a861e57feacfb9a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &5509567997978257147
 PrefabInstance:
   m_ObjectHideFlags: 0

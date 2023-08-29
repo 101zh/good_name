@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4202692071908735505}
   - component: {fileID: 3918443062022841648}
+  - component: {fileID: 5545144181434800087}
   - component: {fileID: 8696867778751932284}
   - component: {fileID: 4925070560839218308}
   - component: {fileID: 2386465268747041018}
-  - component: {fileID: 5545144181434800087}
   m_Layer: 7
   m_Name: Homing
   m_TagString: Projectile
@@ -89,6 +89,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5545144181434800087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5230360683322279350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30ef8d36d0a96ad488fb2129889054a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 7
+  rotateSpeed: 180
+  targetTag: Player
+  target: {fileID: 0}
 --- !u!50 &8696867778751932284
 Rigidbody2D:
   serializedVersion: 4
@@ -102,7 +118,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -115,7 +131,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!58 &4925070560839218308
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -172,22 +188,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5545144181434800087
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5230360683322279350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30ef8d36d0a96ad488fb2129889054a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 8
-  rotateSpeed: 200
-  targetTag: Player
-  target: {fileID: 0}
 --- !u!1 &7824892044099364340
 GameObject:
   m_ObjectHideFlags: 0

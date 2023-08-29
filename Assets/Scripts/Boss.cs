@@ -83,6 +83,7 @@ public class Boss : MonoBehaviour
     IEnumerator ThrowFireBallsMadly()
     {
         yield return new WaitForSeconds(.5f);
+        projectileLauncherScript.bulletSpeed=15f;
         while (true)
         {
             ThrowFireBall();
@@ -91,7 +92,7 @@ public class Boss : MonoBehaviour
     }
 
     private void ThrowFireBall()
-    {
+    {  
         projectileLauncherScript.shootBulletAtPlayer();
     }
 
@@ -102,6 +103,7 @@ public class Boss : MonoBehaviour
 
     private void EmitFireBalls()
     {
+        projectileLauncherScript.bulletSpeed=7f;
         float[] angles = { 0, 15, 30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180, 195, 210, 225, 240, 255, 270, 285, 300, 315, 330, 345, 360 };
         projectileLauncherScript.shootBulletToAngles(angles);
     }

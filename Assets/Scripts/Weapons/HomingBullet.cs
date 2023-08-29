@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class HomingBullet : MonoBehaviour
 {
     Health healthScript;
@@ -17,7 +18,7 @@ public class HomingBullet : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.FindWithTag(targetTag).transform;
     }
-    
+
     void FixedUpdate(){
         Vector2 dir = (Vector2)target.position - rb.position;
         dir.Normalize();
