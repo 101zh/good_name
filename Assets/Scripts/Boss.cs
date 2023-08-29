@@ -32,18 +32,31 @@ public class Boss : MonoBehaviour
         if (coolDownTimer > 0 && !coolDownLock) { coolDownTimer = Mathf.Max(coolDownTimer - Time.deltaTime, 0f); }
         if (coolDownTimer == 0)
         {
-            int rand = Random.Range(1, 11);
-            if (rand <= 11)
+            bool foundAttack = false;
+            while (!foundAttack)
             {
-                StartCoroutine(FireWall());
-            }
-            else if (rand <= 8)
-            {
-                EmitFireBalls();
-            }
-            else
-            {
-                StartCoroutine(Invisibility());
+                int rand = Random.Range(1, 11);
+                if (rand <= 3)
+                {
+                    ThrowHomingFireBall();
+                }
+                else if (rand <= 5)
+                {
+                    EmitFireBalls();
+                }
+                else if (rand <= 7)
+                {
+                    StartCoroutine(Invisibility());
+                }
+                else if (fireWallCount <= 1)
+                {
+                    StartCoroutine(FireWall());
+                }
+                else
+                {
+                    foundAttack = false; // b/c it gets flipped later making it true
+                }
+                foundAttack = !foundAttack;
             }
             coolDownTimer = coolDown;
         }
@@ -98,12 +111,12 @@ public class Boss : MonoBehaviour
     {
         Vector2 location = rotationCenter.position;
         location.x = 0;
-        fireWallCount+=1;
+        fireWallCount += 1;
         GameObject preFireWallInstance = Instantiate(preFireWall, location, preFireWall.transform.rotation);
         yield return new WaitForSeconds(1.5f);
         Instantiate(fireWall, location, fireWall.transform.rotation);
         yield return new WaitForSeconds(5.6f);
-        fireWallCount-=1;
+        fireWallCount -= 1;
         Destroy(preFireWallInstance);
     }
 
