@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.CodeEditor;
 
 public class shop_controller : MonoBehaviour
 {
@@ -26,7 +27,11 @@ public class shop_controller : MonoBehaviour
         Debug.Log("Setting Up Shop");
         for (int i = 0; i < 3; i++)
         {
-            Destroy(displayTables.GetChild(i).GetChild(0).gameObject);
+            try
+            {
+                Destroy(displayTables.GetChild(i).GetChild(0).gameObject);
+            }
+            catch { }
             SpawnRandom(displayTables.GetChild(i));
         }
     }
