@@ -66,8 +66,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.002849996, y: 0.0015000105, z: 0}
-    m_Extent: {x: 1.00595, y: 0.9986, z: 0}
+    m_Center: {x: 0.0022999942, y: 0.0024999976, z: 0}
+    m_Extent: {x: 0.99399996, y: 1.0055001, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -145,7 +145,7 @@ Transform:
   - {fileID: 1371683660666859403}
   - {fileID: 8353751597483562890}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &2470781522377046892
 CapsuleCollider2D:
@@ -261,8 +261,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -2.99525, y: 7.1134005, z: 0}
-    m_Extent: {x: 3.50225, y: 11.6193, z: 0}
+    m_Center: {x: -3.0063, y: 7.1193504, z: 0}
+    m_Extent: {x: 3.4973001, y: 11.62075, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -515,8 +515,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.00085002184, y: -0.00044998527, z: 0}
-    m_Extent: {x: 1.0034499, y: 0.99805, z: 0}
+    m_Center: {x: 0.00069999695, y: 0.0038499832, z: 0}
+    m_Extent: {x: 1.0044, y: 1.00025, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0

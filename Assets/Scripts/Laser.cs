@@ -6,6 +6,11 @@ public class Laser : MonoBehaviour
 {
     float timePassed = 0f; 
     Health healthScript;
+    private Transform Player;
+    void Start()
+    {
+        Player= GameObject.FindGameObjectWithTag("Player").transform;
+    }
     void Update()
     {
         timePassed += Time.deltaTime;
@@ -13,9 +18,11 @@ public class Laser : MonoBehaviour
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
         if(timePassed > 6f)
         {
+            
             gameObject.GetComponent<SpriteRenderer>().enabled = true;
             gameObject.GetComponent<BoxCollider2D>().enabled = true;
             Debug.Log("Laser BEAM");
+            
             
         }
         if(timePassed > 8f)
