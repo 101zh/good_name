@@ -15,6 +15,7 @@ public class sword_controller : MonoBehaviour
     [SerializeField] private float swingTime; // amount of time sword is swinging
     [SerializeField] private float coolDown; //after each click
     [SerializeField] private int cost;
+    [SerializeField] private bool coolDownLock;
     [SerializeField] private bool sold;
     [SerializeField] private string swordName;
     [SerializeField] private string idleAnimName = "blood_blade_idle";
@@ -40,7 +41,6 @@ public class sword_controller : MonoBehaviour
         nameText = nameTransform.GetComponent<TMP_Text>();
         hitBox = transform.GetChild(0);
         animator = GetComponent<Animator>();
-        swingDelay += swingTime;
     }
 
     // Update is called once per frame
@@ -48,14 +48,14 @@ public class sword_controller : MonoBehaviour
     {
         if (pause_menu.gameIsPaused || pause_menu.playerIsDead) return;
 
-        if (coolDownTimer > 0) { coolDownTimer = Mathf.Max(coolDownTimer - Time.deltaTime, 0f); }
+        if (coolDownTimer > 0 && !coolDownLock) { coolDownTimer = Mathf.Max(coolDownTimer - Time.deltaTime, 0f); }
         if (nearTo && Input.GetButtonDown("Interact")) { PickUpsword(); }
         if (held)
         {
             Rotate();
             if (Input.GetButtonDown("Fire1") && coolDownTimer == 0) //checks if player has pressed the shoot button
             {
-                Swinging();
+                StartCoroutine(Swing());
                 coolDownTimer = coolDown;
             }
         }
@@ -166,25 +166,19 @@ public class sword_controller : MonoBehaviour
         }
     }
 
-    private void Swinging()
+    IEnumerator Swing()
     {
+        coolDownLock=true;
         for (int i = 0; i < swingsPerClick; i++)
         {
-            Invoke("Swing", swingDelay * i);
+            hitBox.gameObject.SetActive(true);
+            animator.Play(swingAnimName);
+            yield return new WaitForSeconds(swingTime);
+            animator.Play(idleAnimName);
+            hitBox.gameObject.SetActive(false);
+            yield return new WaitForSeconds(swingDelay);
         }
-    }
-
-    private void Swing()
-    {
-        hitBox.gameObject.SetActive(true);
-        Invoke("Hold", swingTime);
-        animator.Play(swingAnimName);
-    }
-
-    private void Hold()
-    {
-        animator.Play(idleAnimName);
-        hitBox.gameObject.SetActive(false);
+        coolDownLock=false;
     }
 
     private void HideName()

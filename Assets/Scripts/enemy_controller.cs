@@ -12,7 +12,7 @@ public class enemy_controller : MonoBehaviour
     [SerializeField] private float dangerRange;
     [SerializeField] Vector3 desiredPos;
     public enum movementState { chase, safe, runAway };
-    public static movementState currentMovementState;
+    public movementState currentMovementState;
 
     // Start is called before the first frame update
     void Start()
