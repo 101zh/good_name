@@ -21,6 +21,7 @@ public class HUD_bar : MonoBehaviour
 
     public void setValue(int health, int maxHealth)
     {
+        fill.maxValue = maxHealth;
         fill.value = health;
         text.text = health.ToString() + "/" + maxHealth.ToString();
     }

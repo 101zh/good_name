@@ -6,7 +6,7 @@ public class player_controller : MonoBehaviour
 {
     // Start is called before the first frame update
     private Rigidbody2D rb;
-    [SerializeField] private float moveSpeed;
+    [SerializeField] public float moveSpeed;
     private Animator animator;
     private SpriteRenderer sprite;
     private enum animState { witch_idle, witch_walk };
@@ -16,6 +16,8 @@ public class player_controller : MonoBehaviour
     private Health health;
     public int coins;
     coinText coinTextScript;
+    public float FireRateDecrease;
+
     public bool movmentOverride = false;
 
     void Start()
@@ -25,6 +27,7 @@ public class player_controller : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         health = GetComponent<Health>();
         coinTextScript = GameObject.FindWithTag("CoinUI").GetComponentInChildren<coinText>();
+        
         // rb.GetComponent<PhysicsMaterial2D>().bounciness=1;
     }
 

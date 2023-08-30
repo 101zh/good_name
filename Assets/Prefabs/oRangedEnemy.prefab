@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 8010ad330ba5a5a48a9020504e239878, type: 3}
+  m_Sprite: {fileID: -634301655, guid: 980210a667bfaf74e857be4fe1ee5ef7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -118,10 +118,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b671530cbc42c21468d6eec3345f1975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 2
-  maxHealth: 2
+  currentHealth: 20
+  maxHealth: 20
   coinDropAmount: 5
   coinDropVariance: 2
+  currentDefense: 0
+  maxDefense: 0
   coinPrefab: {fileID: 8481823868968492337, guid: 113dcfcb4aaac6f479283d658c200f53, type: 3}
   isDead: 0
 --- !u!50 &6522500781018167238

@@ -5,7 +5,7 @@ public class InstantiationExample : MonoBehaviour
     public GameObject myPrefab;
 
     // This script will simply instantiate the Prefab when the game starts.
-    void Start()
+    public void SwordAttack()
     {
         for (var i = 0; i < 10; i++)
         {

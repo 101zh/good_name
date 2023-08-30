@@ -58,7 +58,8 @@ public class HealthPotion : MonoBehaviour
                 playerScript.incrementCoins(-cost);
             }
 
-            healthtesting.OnChangeHealth(-5);
+            healthtesting.currentHealth += 5;
+            healthtesting.OnChangeHealth(0);
             Destroy(gameObject);
         }
     }

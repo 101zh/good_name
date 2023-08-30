@@ -112,25 +112,23 @@ public class BossZombieController : MonoBehaviour
         DetermineRange();
         int groundPoundParam;
         int rangeAttackParam;
-        int sprintAttackParam;
         attackState state;
         if (currentRange == movementState.groundpoundRange)
         {
             groundPoundParam = 80;
             rangeAttackParam = 85;
-            sprintAttackParam = 100;
+            
         }
         else if (currentRange == movementState.rangeAttackRange)
         {
             groundPoundParam = 10;
             rangeAttackParam = 70;
-            sprintAttackParam = 100;
+            
         }
         else
         {
             groundPoundParam = 5;
             rangeAttackParam = 50;
-            sprintAttackParam = 100;
         }
         int rand = Random.Range(1, 101);
 

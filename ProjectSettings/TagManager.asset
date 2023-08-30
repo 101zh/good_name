@@ -19,6 +19,7 @@ TagManager:
   - WavesText
   - Boss
   - Projectile
+  - Instantiator
   layers:
   - Default
   - TransparentFX

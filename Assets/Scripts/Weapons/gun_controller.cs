@@ -37,6 +37,7 @@ public class gun_controller : MonoBehaviour
         gameObjects = GameObject.FindGameObjectWithTag("GameObjects").GetComponent<Transform>();
         nameTransform = transform.GetChild(1);
         nameText = nameTransform.GetComponent<TMP_Text>();
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
@@ -49,10 +50,10 @@ public class gun_controller : MonoBehaviour
         if (held)
         {
             gunRotate();
-            if (Input.GetButtonDown("Fire1") && coolDownTimer == 0) //checks if player has pressed the shoot button
+            if (Input.GetButtonDown("Fire1") && coolDownTimer <= 0) //checks if player has pressed the shoot button
             {
                 shootBullet();
-                coolDownTimer = coolDown;
+                coolDownTimer = coolDown - playerTransform.GetComponent<player_controller>().FireRateDecrease;
             }
         }
 
@@ -132,7 +133,7 @@ public class gun_controller : MonoBehaviour
         {
             currentHeldWeapon.gameObject.SetActive(false);
         }
-
+        
         //Makes Gun follow the player, so it looks like the player is always holding it
         transform.SetParent(weaponInventory, true);
         script.heldWeaponIndex = transform.GetSiblingIndex();
