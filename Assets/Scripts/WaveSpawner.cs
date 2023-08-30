@@ -12,9 +12,9 @@ public class WaveSpawner : MonoBehaviour
     public class Wave
     {
         public string name;
-        public Transform enemy;
-        public int count;
-        public float rate;
+        public Transform[] enemy;
+        public int[] count;
+        public float[] rate;
     }
 
     public Wave[] waves;
@@ -35,7 +35,7 @@ public class WaveSpawner : MonoBehaviour
 
     private float searchCountdown = 1f;
 
-    private SpawnState state = SpawnState.COUNTING;
+    [SerializeField] private SpawnState state = SpawnState.COUNTING;
     public SpawnState State
     {
         get { return state; }
@@ -75,6 +75,7 @@ public class WaveSpawner : MonoBehaviour
         {
             if (state != SpawnState.SPAWNING)
             {
+                Debug.Log("Trigger Wave");
                 Spawning = StartCoroutine(SpawnWave(waves[nextWave]));
             }
         }
@@ -162,23 +163,56 @@ public class WaveSpawner : MonoBehaviour
         }
     }
 
+    bool[] allFinished;
     IEnumerator SpawnWave(Wave _wave)
     {
-        DestroyAllItemsOnGround();
-        yield return null;
-        OnWaveStart?.Invoke();
         Debug.Log("Spawning Wave: " + _wave.name);
         state = SpawnState.SPAWNING;
+        DestroyAllItemsOnGround();
+        yield return null;
 
-        for (int i = 0; i < _wave.count; i++)
+        OnWaveStart?.Invoke();
+        allFinished = new bool[_wave.enemy.Length];
+
+        // Spawns each enemy
+        for (int i = 0; i < _wave.enemy.Length; i++)
         {
-            SpawnEnemy(_wave.enemy);
-            yield return new WaitForSeconds(1f / _wave.rate);
+            Debug.Log(i.ToString() + ": Spawn this type");
+            allFinished[i] = false;
+            StartCoroutine(SpawnWaveEnemeies(_wave, i));
+        }
+
+        // Check if all done spawning
+        bool finished = false;
+        while (!finished)
+        {
+            yield return null;
+            finished = AllTrue(allFinished);
         }
 
         state = SpawnState.WAITING;
 
         yield break;
+    }
+
+    IEnumerator SpawnWaveEnemeies(Wave _wave, int index)
+    {
+        for (int i = 0; i < _wave.count[index]; i++)
+        {
+            SpawnEnemy(_wave.enemy[index]);
+            yield return new WaitForSeconds(_wave.rate[index]);
+        }
+        allFinished[index] = true;
+    }
+
+    private bool AllTrue(bool[] list)
+    {
+        bool returnTrue = true;
+        for (int i = 0; i < list.Length; i++)
+        {
+            returnTrue = returnTrue && list[i];
+        }
+        return returnTrue;
     }
 
     void SpawnEnemy(Transform _enemy)
