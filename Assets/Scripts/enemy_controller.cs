@@ -25,6 +25,8 @@ public class enemy_controller : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (pause_menu.gameIsPaused) return;
+        
         currentMovementState = movementLogic();
         float frameSpeed = movementSpeed * Time.deltaTime;
         desiredPos = pickPosition(currentMovementState);

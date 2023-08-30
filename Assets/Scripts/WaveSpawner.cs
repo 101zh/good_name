@@ -58,6 +58,7 @@ public class WaveSpawner : MonoBehaviour
 
     void Update()
     {
+        if(pause_menu.gameIsPaused) return;
         if (state == SpawnState.WAITING)
         {
             if (!EnemyIsAlive())
