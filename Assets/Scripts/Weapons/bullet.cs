@@ -11,6 +11,7 @@ public class bullet : MonoBehaviour
     void Start(){
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        Destroy(gameObject, 5f);
     }
 
     void OnCollisionEnter2D(Collision2D collision)

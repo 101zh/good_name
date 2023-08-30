@@ -38,6 +38,7 @@ public class HealthPotion : MonoBehaviour
     }
     private void Update()
     {
+        if (pause_menu.gameIsPaused) return;
         if (nearTo && Input.GetButtonDown("Interact"))
         {
             player_controller playerScript = playerTransform.GetComponent<player_controller>();

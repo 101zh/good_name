@@ -6,23 +6,23 @@ public class BossGunController : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    [SerializeField] private float bulletSpeed;
+    [SerializeField] public float bulletSpeed;
     [SerializeField] private int bulletsPerShot;
     [SerializeField] private float bulletSpread;
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private GameObject homingBulletPrefab;
     private float angle;
     [SerializeField] private bool bulletSpreadON;
-    [SerializeField] Transform Boss;
-    BossZombieController BossScript;
+    GameObject player;
     private void Awake()
     {
-        if (Boss.GetComponent<BossZombieController>()!=null) BossScript = Boss.GetComponent<BossZombieController>();
+        player = GameObject.FindWithTag("Player");
     }
 
     private void gunRotateToPlayer()
     {
-        Vector2 dir = BossScript.player.transform.position - transform.position;
+        Vector2 dir = player.transform.position - transform.position;
         // Finding the angle to rotate using math
         angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         // Rotates the gun using math
@@ -69,6 +69,16 @@ public class BossGunController : MonoBehaviour
 
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             rb.AddForce(bullet.transform.up * bulletSpeed, ForceMode2D.Impulse);
+        }
+    }
+
+    public void shootHomingBulletAtPlayer()
+    {
+        for (int i = 0; i < bulletsPerShot; i++)
+        {
+            gunRotateToPlayer();
+
+            GameObject bullet = Instantiate(homingBulletPrefab, firePoint.position, firePoint.rotation); //creates/spawns bullet
         }
     }
 

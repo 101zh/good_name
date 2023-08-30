@@ -17,6 +17,7 @@ public class CountdownTimer : MonoBehaviour
     }
     void Update()
     {
+        if (pause_menu.gameIsPaused) return;
         currentTime -= 1 * Time.deltaTime;
         countdownText.text = currentTime.ToString("0");
         if (currentTime <= 0) 
