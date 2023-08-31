@@ -7,6 +7,7 @@ public class Laser : MonoBehaviour
     float timePassed = 0f; 
     Health healthScript;
     private Transform Player;
+    bool inLaser;
     void Start()
     {
         Player= GameObject.FindGameObjectWithTag("Player").transform;
@@ -21,9 +22,6 @@ public class Laser : MonoBehaviour
             
             gameObject.GetComponent<SpriteRenderer>().enabled = true;
             gameObject.GetComponent<BoxCollider2D>().enabled = true;
-            Debug.Log("Laser BEAM");
-            
-            
         }
         if(timePassed > 8f)
         {   
@@ -37,9 +35,24 @@ public class Laser : MonoBehaviour
         if (collider.tag.Equals("Player"))
         {
             healthScript = collider.gameObject.GetComponent<Health>();
+            inLaser = true;      
+            StartCoroutine(TakeDamage());      
+        }
+    }
+    void OnTriggerExit2D(Collider2D collider)
+    {
+        if (collider.tag.Equals("Player"))
+        {
+            inLaser = false;
+        }
+    }
+    IEnumerator TakeDamage()
+    {
+        while (inLaser)
+        {
+            Debug.Log("I've been hit!");
+            yield return new WaitForSeconds(1f);
             healthScript.OnChangeHealth(1);
-            Debug.Log("I've Been Hit!");
-
         }
     }
 }
