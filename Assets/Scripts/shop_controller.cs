@@ -15,10 +15,7 @@ public class shop_controller : MonoBehaviour
 
     void Start()
     {
-        for (int i = 0; i < 3; i++)
-        {
-            SpawnRandom(displayTables.GetChild(i));
-        }
+
     }
 
     public void SetUpShop()

@@ -1,3 +1,7 @@
--0.9300001
-Vector2(-0.930000126,6.42000008)
-Vector3(-0.930000067,6.42000008,-6.67359352)
+Enemy gun doesn't shoot
+Menu screen overlaps with "Next Wave In..." Text
+Shopkeeper doesn't always put 3 items, sometimes only 2 or 1 or 0. 
+Tutorial Shopkeeper text is buggy
+If player chooses to go back to title menu: all progress is lost (replaced w/ warning)
+player can't move after loading into new scene
+Shopkeeper doesn't always put 3 items, sometimes only 2 or 1 or 0

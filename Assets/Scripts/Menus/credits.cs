@@ -17,7 +17,7 @@ public class credits : MonoBehaviour
     {
         if (Input.anyKey && skipMenu.activeSelf)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1, LoadSceneMode.Single);
         }
         else if (Input.anyKey)
         {

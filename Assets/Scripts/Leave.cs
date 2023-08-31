@@ -24,7 +24,7 @@ public class Leave : MonoBehaviour
 
     IEnumerator WaitForFadeOut(){
         yield return new WaitForSeconds(4f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1, LoadSceneMode.Single);
     }
 
     void OnTriggerEnter2D(Collider2D collider)

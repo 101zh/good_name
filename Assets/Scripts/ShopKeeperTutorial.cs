@@ -9,7 +9,8 @@ public class ShopKeeperTutorial : MonoBehaviour
     bool nearTo = false;
     bool canTalk;
     bool talking = false;
-    [SerializeField] TMP_Text dialogueBox;
+    [SerializeField] TMP_Text dialogueBoxText;
+    [SerializeField] GameObject dialogueBox;
     [SerializeField] GameObject gun;
     [SerializeField] Transform playerTransform;
     SpriteRenderer spriteRenderer;
@@ -49,36 +50,38 @@ public class ShopKeeperTutorial : MonoBehaviour
     IEnumerator Talk()
     {
         talking = true;
-        dialogueBox.text = "I saw what you did to my table...";
+        dialogueBoxText.text = "I saw what you did to my table...";
         yield return new WaitForSeconds(4f);
-        dialogueBox.text = "I'm a forgiving person, so here's a gun";
+        dialogueBoxText.text = "I'm a forgiving person, so here's a gun";
         yield return new WaitForSeconds(2.5f);
-        dialogueBox.text = "You won't survive down here without one";
-        Instantiate(gun, new Vector2(transform.position.x, transform.position.y - 2.5f), gun.transform.rotation);
+        dialogueBoxText.text = "You won't survive down here without one";
+        Instantiate(gun, new Vector2(transform.position.x, transform.position.y - 3f), gun.transform.rotation);
         yield return new WaitForSeconds(3.5f);
-        dialogueBox.text = "The first one is free";
+        dialogueBoxText.text = "The first one is free";
         yield return new WaitForSeconds(3.5f);
-        dialogueBox.text = "Talk?";
+        dialogueBoxText.text = "Talk?";
         talking = false;
     }
     IEnumerator IWillNeverForgiveYou()
     {
         talking = true;
-        dialogueBox.text = "I will never forgive you for what you have done to my table";
+        dialogueBoxText.text = "I will never forgive you for what you have done to my table";
         yield return new WaitForSeconds(2.5f);
-        dialogueBox.text = "I'll steal one of your guns later...";
+        dialogueBoxText.text = "I'll steal one of your guns later...";
+        yield return new WaitForSeconds(4f);
+        dialogueBoxText.text = "Talk?";
         talking = false;
     }
 
     private void OnTriggerEnter2D()
     {
-        dialogueBox.text = "Talk?";
+        dialogueBox.SetActive(true);
         nearTo = true;
     }
 
     private void OnTriggerExit2D()
     {
-        dialogueBox.text = "";
+        dialogueBox.SetActive(false);
         nearTo = false;
     }
 }
