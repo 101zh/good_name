@@ -75,7 +75,7 @@ public class Health : MonoBehaviour
             else
             {
                 isDead = true;
-                Destroy(gameObject);
+                Destroy(gameObject, 0.01f);
                 DropCoin();
             }
 
