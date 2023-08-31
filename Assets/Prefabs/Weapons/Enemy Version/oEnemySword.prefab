@@ -443,7 +443,7 @@ MonoBehaviour:
   swingsPerClick: 3
   swingDelay: 0.2
   swingTime: 0.3
-  coolDown: 0.45
+  coolDown: 1
   coolDownLock: 0
   idleAnimName: blood_idle
   swingAnimName: blood_swing
