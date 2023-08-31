@@ -35,7 +35,7 @@ Transform:
   m_Children:
   - {fileID: 7282017598463667452}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &161780308901142802
 SpriteRenderer:
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -634301655, guid: 980210a667bfaf74e857be4fe1ee5ef7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8010ad330ba5a5a48a9020504e239878, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -103,9 +103,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 4
   player: {fileID: 0}
-  attackRange: 8
-  dangerRange: 4
+  attackRange: 6
+  dangerRange: 3
   desiredPos: {x: 0, y: 0, z: 0}
+  currentMovementState: 0
 --- !u!114 &3459352833525201629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,8 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b671530cbc42c21468d6eec3345f1975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 20
-  maxHealth: 20
+  currentHealth: 2
+  maxHealth: 2
   coinDropAmount: 5
   coinDropVariance: 2
   currentDefense: 0
