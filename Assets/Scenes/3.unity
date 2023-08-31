@@ -38302,26 +38302,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1595974677}
     - target: {fileID: 2716190251166367881, guid: 63c956cc11527a54bb5224817962cb1e, type: 3}
-      propertyPath: waves.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2716190251166367881, guid: 63c956cc11527a54bb5224817962cb1e, type: 3}
-      propertyPath: waves.Array.data[26].name
-      value: Wave 28
-      objectReference: {fileID: 0}
-    - target: {fileID: 2716190251166367881, guid: 63c956cc11527a54bb5224817962cb1e, type: 3}
-      propertyPath: waves.Array.data[27].name
-      value: Wave 29
-      objectReference: {fileID: 0}
-    - target: {fileID: 2716190251166367881, guid: 63c956cc11527a54bb5224817962cb1e, type: 3}
-      propertyPath: waves.Array.data[28].name
-      value: Wave 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 2716190251166367881, guid: 63c956cc11527a54bb5224817962cb1e, type: 3}
-      propertyPath: waves.Array.data[29].name
-      value: Waves End
-      objectReference: {fileID: 0}
-    - target: {fileID: 2716190251166367881, guid: 63c956cc11527a54bb5224817962cb1e, type: 3}
       propertyPath: OnWaveStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1340845187}
