@@ -104,7 +104,7 @@ public class gun_controller : MonoBehaviour
             {
                 return;
             }
-            else if (playerScript.coins <= cost)
+            else if (playerScript.coins < cost)
             {
                 nameText.text = "<color=red>Not Enough Money</color>";
                 RevealName();
@@ -120,23 +120,31 @@ public class gun_controller : MonoBehaviour
         }
         Transform weaponInventory = playerTransform.GetChild(2);
         weapon_switching script = weaponInventory.GetComponent<weapon_switching>();
-        Transform currentHeldWeapon = weaponInventory.GetChild(script.heldWeaponIndex);
-        if (weaponInventory.childCount >= 2)
+        try
         {
-            if (currentHeldWeapon.tag.Equals("Gun")) { currentHeldWeapon.GetComponent<gun_controller>().held = false; }
-            else if (currentHeldWeapon.tag.Equals("Spear")) { currentHeldWeapon.GetComponent<spear_controller>().held = false; }
-            else { currentHeldWeapon.GetComponent<sword_controller>().held = false; }
-            currentHeldWeapon.SetParent(gameObjects, true);
-            currentHeldWeapon.GetComponent<SpriteRenderer>().sortingOrder = 0;
+            Transform currentHeldWeapon = weaponInventory.GetChild(script.heldWeaponIndex);
+            if (weaponInventory.childCount >= 2)
+            {
+                if (currentHeldWeapon.tag.Equals("Gun")) { currentHeldWeapon.GetComponent<gun_controller>().held = false; }
+                else if (currentHeldWeapon.tag.Equals("Spear")) { currentHeldWeapon.GetComponent<spear_controller>().held = false; }
+                else { currentHeldWeapon.GetComponent<sword_controller>().held = false; }
+                currentHeldWeapon.SetParent(gameObjects, true);
+                currentHeldWeapon.GetComponent<SpriteRenderer>().sortingOrder = 0;
+            }
+            else
+            {
+                currentHeldWeapon.gameObject.SetActive(false);
+            }
+
+            //Makes Gun follow the player, so it looks like the player is always holding it
+            transform.SetParent(weaponInventory, true);
+            script.heldWeaponIndex = transform.GetSiblingIndex();
         }
-        else
+        catch
         {
-            currentHeldWeapon.gameObject.SetActive(false);
+            transform.SetParent(weaponInventory, true);
         }
-        
-        //Makes Gun follow the player, so it looks like the player is always holding it
-        transform.SetParent(weaponInventory, true);
-        script.heldWeaponIndex = transform.GetSiblingIndex();
+
         held = true;
         sprite.sortingOrder = 2;
         transform.position = new Vector2(playerTransform.position.x, playerTransform.position.y - 0.5f);

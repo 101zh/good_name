@@ -306,7 +306,7 @@ MonoBehaviour:
   bulletSpeed: 5
   bulletsPerShot: 1
   Bulletspread: 0
-  coolDown: 0.5
+  coolDown: 1.5
   firePoint: {fileID: 8822532975527360673}
   bulletPrefab: {fileID: 8518284227580658630, guid: 1480d04e197d18d44867bdf27ec7a296, type: 3}
   held: 1
