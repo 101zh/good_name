@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.CodeEditor;
 
 public class shop_controller : MonoBehaviour
 {
