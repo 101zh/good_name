@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 4455889340713367838}
   - component: {fileID: 24292259096660589}
   - component: {fileID: 1845540141369135721}
-  - component: {fileID: 1300485623175956097}
   - component: {fileID: 1673130954844945406}
+  - component: {fileID: 2770057962919798454}
   m_Layer: 10
   m_Name: oStationaryBoss
   m_TagString: Enemy
@@ -136,8 +136,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!61 &1300485623175956097
-BoxCollider2D:
+--- !u!114 &1673130954844945406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9116533259024325481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1f1b2fbc6fffc34c95d68a197fd525c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preLaser: {fileID: 808748136238798713, guid: f157e897ef83a014a9afa1ab2d583754, type: 3}
+  laser: {fileID: 6734333649970380236, guid: 1936180734f73f64a819f91dfdf4e4e9, type: 3}
+  sword: {fileID: 2349745130034812103, guid: 4bba4d100c3632547baadd2dac1ec665, type: 3}
+  preSword: {fileID: 780006259752655071, guid: 0f02fa4a2fb845e42bfd2a3093599bfa, type: 3}
+  coolDown: 5
+--- !u!60 &2770057962919798454
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -168,7 +185,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.054213792, y: -0.20749116}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -178,26 +195,38 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.5461142, y: 3.4918447}
-  m_EdgeRadius: 0
---- !u!114 &1673130954844945406
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9116533259024325481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1f1b2fbc6fffc34c95d68a197fd525c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  preLaser: {fileID: 808748136238798713, guid: f157e897ef83a014a9afa1ab2d583754, type: 3}
-  laser: {fileID: 6734333649970380236, guid: 1936180734f73f64a819f91dfdf4e4e9, type: 3}
-  sword: {fileID: 2349745130034812103, guid: 4bba4d100c3632547baadd2dac1ec665, type: 3}
-  preSword: {fileID: 780006259752655071, guid: 0f02fa4a2fb845e42bfd2a3093599bfa, type: 3}
-  coolDown: 5
+  m_Points:
+    m_Paths:
+    - - {x: 0.67818445, y: -1.5450329}
+      - {x: 0.61861134, y: -0.48743898}
+      - {x: 1.5508558, y: 0.17861782}
+      - {x: 1.813998, y: 0.662854}
+      - {x: 1.6490335, y: 0.8467456}
+      - {x: 1.3924294, y: 0.8852126}
+      - {x: 0.86900866, y: 0.59885615}
+      - {x: 0.5775499, y: 0.6384902}
+      - {x: 0.5639979, y: 1.3125}
+      - {x: 0.32931647, y: 1.7623231}
+      - {x: 0.10906872, y: 1.8939273}
+      - {x: -0.0435729, y: 1.8764979}
+      - {x: -0.21514161, y: 1.6316042}
+      - {x: -0.38160402, y: 1.2566038}
+      - {x: -0.36417484, y: 0.6213918}
+      - {x: -0.5735857, y: 0.59498453}
+      - {x: -1.1598583, y: 0.8503542}
+      - {x: -1.7884668, y: 1.5654957}
+      - {x: -1.8852125, y: 1.4389979}
+      - {x: -1.72835, y: 0.7514979}
+      - {x: -1.5408498, y: 0.42728758}
+      - {x: -0.43616632, y: -0.48154312}
+      - {x: -0.44756204, y: -1.5505289}
+      - {x: -0.5635042, y: -1.6754296}
+      - {x: -0.92438555, y: -1.693565}
+      - {x: -0.9415169, y: -1.9385042}
+      - {x: 1.1975822, y: -1.9344676}
+      - {x: 1.1663123, y: -1.6965777}
+      - {x: 0.7600819, y: -1.6845071}
+  m_UseDelaunayMesh: 0
 --- !u!1001 &1557466713683920619
 PrefabInstance:
   m_ObjectHideFlags: 0
