@@ -12,14 +12,6 @@ public class shop_controller : MonoBehaviour
         displayTables = transform.GetChild(2);
     }
 
-    void Update()
-    {
-        if(Input.GetButtonDown("Fire1"))
-        {
-            SetUpShop();
-        }
-    }
-
     public void SetUpShop()
     {
         gameObject.SetActive(true);
