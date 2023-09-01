@@ -57,6 +57,7 @@ public class DefensePotion : MonoBehaviour
             }
 
             playerTransform.GetComponent<Health>().maxDefense += 1;
+            playerTransform.GetComponent<Health>().currentDefense = playerTransform.GetComponent<Health>().maxDefense;
             playerTransform.GetComponent<Health>().OnChangeHealth(0);
             Destroy(gameObject);
         }

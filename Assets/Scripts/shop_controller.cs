@@ -12,9 +12,12 @@ public class shop_controller : MonoBehaviour
         displayTables = transform.GetChild(2);
     }
 
-    void Start()
+    void Update()
     {
-
+        if(Input.GetButtonDown("Fire1"))
+        {
+            SetUpShop();
+        }
     }
 
     public void SetUpShop()
@@ -40,7 +43,7 @@ public class shop_controller : MonoBehaviour
 
     private void SpawnRandom(Transform tableTransforms)
     {
-        Object random = prefabs[Random.Range(0, prefabs.Length - 1)];
+        Object random = prefabs[Random.Range(0, prefabs.Length)];
         Instantiate(random, tableTransforms.position, Quaternion.identity, tableTransforms);
     }
 

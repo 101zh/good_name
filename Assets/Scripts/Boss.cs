@@ -17,6 +17,7 @@ public class Boss : MonoBehaviour
     GameObject healthBar;
     BossHealthBar healthBarScript;
     Health health;
+    [SerializeField] int FireWallMaximum;
 
     private void Start()
     {
@@ -59,7 +60,7 @@ public class Boss : MonoBehaviour
                 {
                     StartCoroutine(Invisibility());
                 }
-                else if (fireWallCount < 1)
+                else if (fireWallCount < FireWallMaximum)
                 {
                     StartCoroutine(FireWall());
                 }
@@ -117,6 +118,7 @@ public class Boss : MonoBehaviour
 
     [SerializeField] GameObject preFireWall;
     [SerializeField] GameObject fireWall;
+    [SerializeField] float fireWallAppearanceTime;
     private int fireWallCount;
     private IEnumerator FireWall()
     {
@@ -124,7 +126,7 @@ public class Boss : MonoBehaviour
         location.x = 0;
         fireWallCount += 1;
         GameObject preFireWallInstance = Instantiate(preFireWall, location, preFireWall.transform.rotation);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(fireWallAppearanceTime);
         Instantiate(fireWall, location, fireWall.transform.rotation);
         yield return new WaitForSeconds(5.6f);
         fireWallCount -= 1;

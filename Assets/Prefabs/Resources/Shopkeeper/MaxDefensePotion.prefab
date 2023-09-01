@@ -214,7 +214,6 @@ GameObject:
   - component: {fileID: 1826645091097697945}
   - component: {fileID: 4774357563416344806}
   - component: {fileID: 5099340303280104912}
-  - component: {fileID: 4236586359602347029}
   - component: {fileID: 8973474729631897232}
   m_Layer: 6
   m_Name: MaxDefensePotion
@@ -337,20 +336,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.4078836, y: 2.2310872}
   m_EdgeRadius: 0
---- !u!114 &4236586359602347029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7096815202071064966}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19328dbb6b4db3c46b8a47a2de650bd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cost: 5
-  displayName: Increase Max Defense
 --- !u!114 &8973474729631897232
 MonoBehaviour:
   m_ObjectHideFlags: 0

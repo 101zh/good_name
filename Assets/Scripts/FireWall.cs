@@ -8,11 +8,14 @@ public class FireWall : MonoBehaviour
     Health healthscript;
     bool inFire;
     Animator fireAnimator;
+    [SerializeField] 
+    float fireWallDuration;
 
     void Start()
     {
         fireAnimator = transform.GetChild(0).GetComponent<Animator>();
         StartCoroutine(WaitToDisappear());
+        fireWallDuration += 0.4f; 
     }
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -44,7 +47,7 @@ public class FireWall : MonoBehaviour
     }
 
     IEnumerator WaitToDisappear(){
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(fireWallDuration);
         fireAnimator.SetTrigger("putOutFire");
         yield return new WaitForSeconds(0.5f);
         Destroy(gameObject, 0.1f);
