@@ -26,7 +26,9 @@ public class HealthPotion : MonoBehaviour
         nameTransform = transform.GetChild(1);
         nameText = nameTransform.GetComponent<TMP_Text>();
         healthtesting = GameObject.FindWithTag("Player").GetComponent<Health>();
+        nameText.text += " <color=yellow>" + cost.ToString() + "</color>";
     }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag.Equals("Player"))

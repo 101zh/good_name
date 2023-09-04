@@ -126,11 +126,11 @@ public class Boss : MonoBehaviour
         location.x = 0;
         fireWallCount += 1;
         GameObject preFireWallInstance = Instantiate(preFireWall, location, preFireWall.transform.rotation);
+        Destroy(preFireWallInstance, fireWallAppearanceTime + 5.6f);
         yield return new WaitForSeconds(fireWallAppearanceTime);
         Instantiate(fireWall, location, fireWall.transform.rotation);
         yield return new WaitForSeconds(5.6f);
         fireWallCount -= 1;
-        Destroy(preFireWallInstance);
     }
 
     private void ThrowFireBall()

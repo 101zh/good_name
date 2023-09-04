@@ -11,6 +11,11 @@ public class main_menu : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
     }
 
+    public void LoadScene3(){
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(2, LoadSceneMode.Single);
+    }
+
     public void SkipTheTutorial()
     {
         Time.timeScale = 1f;

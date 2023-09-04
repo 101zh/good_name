@@ -75,13 +75,13 @@ public class ShopKeeperTutorial : MonoBehaviour
 
     private void OnTriggerEnter2D()
     {
-        dialogueBox.SetActive(true);
+        dialogueBox.SetActive(true || talking);
         nearTo = true;
     }
 
     private void OnTriggerExit2D()
     {
-        dialogueBox.SetActive(false);
+        dialogueBox.SetActive(false || talking);
         nearTo = false;
     }
 }

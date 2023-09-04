@@ -44,9 +44,11 @@ public class WaveSpawner : MonoBehaviour
     public UnityEvent OnWaveComplete;
     public UnityEvent OnWaveStart;
     private Coroutine Spawning;
+    Coroutine[] Spawners;
 
     void Start()
     {
+        Spawners = new Coroutine[7];
         script = GameObject.FindWithTag("Canvas").GetComponent<CountdownTimer>();
         if (spawnPoints.Length == 0)
         {
@@ -58,7 +60,7 @@ public class WaveSpawner : MonoBehaviour
 
     void Update()
     {
-        if(pause_menu.gameIsPaused) return;
+        if (pause_menu.gameIsPaused) return;
         if (state == SpawnState.WAITING)
         {
             if (!EnemyIsAlive())
@@ -121,6 +123,14 @@ public class WaveSpawner : MonoBehaviour
     public void ResetWave()
     {
         StopCoroutine(Spawning);
+        for (int i = 0; i < Spawners.Length; i++)
+        {
+            try
+            {
+                StopCoroutine(Spawners[i]);
+            }
+            catch{ }
+        }
         KillAllEnemies();
         state = SpawnState.COUNTING;
         OnWaveComplete?.Invoke();
@@ -180,7 +190,7 @@ public class WaveSpawner : MonoBehaviour
         {
             Debug.Log(i.ToString() + ": Spawn this type");
             allFinished[i] = false;
-            StartCoroutine(SpawnWaveEnemeies(_wave, i));
+            Spawners[i] = StartCoroutine(SpawnWaveEnemeies(_wave, i));
         }
 
         // Check if all done spawning

@@ -24,7 +24,9 @@ public class SpeedPotion : MonoBehaviour
         gameObjects = GameObject.FindGameObjectWithTag("GameObjects").GetComponent<Transform>();
         nameTransform = transform.GetChild(1);
         nameText = nameTransform.GetComponent<TMP_Text>();
+        nameText.text+=" <color=yellow>"+cost.ToString()+"</color>";
     }
+    
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag.Equals("Player"))

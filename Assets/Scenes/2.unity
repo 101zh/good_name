@@ -158,8 +158,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ComponentVersion: 1
   m_AssetsPPU: 16
-  m_RefResolutionX: 320
-  m_RefResolutionY: 180
+  m_RefResolutionX: 416
+  m_RefResolutionY: 234
   m_CropFrame: 0
   m_GridSnapping: 1
   m_FilterMode: 0
@@ -270,7 +270,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7.2083335
+  orthographic size: 10.6875
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -12896,7 +12896,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1533013119
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12937,7 +12937,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: Talk?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3740464e4942cca4cb19c701df1b447a, type: 2}
   m_sharedMaterial: {fileID: 1945599234534507576, guid: 3740464e4942cca4cb19c701df1b447a, type: 2}
