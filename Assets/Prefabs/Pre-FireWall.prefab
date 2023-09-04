@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5733683673532720236
 MonoBehaviour:
@@ -66,8 +66,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.94920063, y: -0.33825004, z: 0}
-    m_Extent: {x: 18.1237, y: 2.02485, z: 0}
+    m_Center: {x: -1.0065994, y: -0.5009499, z: 0}
+    m_Extent: {x: 20.7523, y: 1.75125, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -75,10 +75,10 @@ MonoBehaviour:
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
-  m_ShapeLightFalloffSize: 1
+  m_ShapeLightFalloffSize: 0.75
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
-  - {x: -18.073551, y: -1.2978992, z: 0}
-  - {x: 16.144049, y: -1.3534946, z: 0}
-  - {x: 16.165295, y: 0.68778086, z: 0}
-  - {x: -18.046144, y: 0.5893326, z: 0}
+  - {x: -21, y: -1.5, z: 0}
+  - {x: 19, y: -1.5, z: 0}
+  - {x: 19, y: 0.5, z: 0}
+  - {x: -21, y: 0.5, z: 0}
