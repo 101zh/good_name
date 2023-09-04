@@ -34,7 +34,7 @@ Transform:
   - {fileID: 4856144994371967493}
   - {fileID: 1673769844541712868}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7173290254561340085
 SpriteRenderer:
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37c790b8605895740a6faad511564792, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 5
+  cost: 50
   displayName: Speed Potion
 --- !u!1 &310880836923061027
 GameObject:

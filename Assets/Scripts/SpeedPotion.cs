@@ -56,7 +56,7 @@ public class SpeedPotion : MonoBehaviour
                 playerScript.incrementCoins(-cost);
             }
 
-            playerScript.moveSpeed += 3; 
+            playerScript.moveSpeed += 0.5f; 
             Destroy(gameObject);
         }
     }

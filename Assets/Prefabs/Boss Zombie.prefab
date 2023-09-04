@@ -37,7 +37,7 @@ Transform:
   - {fileID: 5818190271875743336}
   - {fileID: 2588350900709615615}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6377150090493548522
 SpriteRenderer:
@@ -103,8 +103,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b671530cbc42c21468d6eec3345f1975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 50
-  maxHealth: 50
+  currentHealth: 250
+  maxHealth: 250
   coinDropAmount: 35
   coinDropVariance: 5
   currentDefense: 0
@@ -123,12 +123,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5312b6d39dca524683f4bdb077e3c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 2.25
-  dashSpeedIncrease: 4.25
+  movementSpeed: 5.5
+  dashSpeedIncrease: 10
   player: {fileID: 0}
-  coolDown: 2.5
+  coolDown: 1.5
   groundPoundHitbox: {fileID: 5818190271875743336}
-  groundPoundRange: 5.5
+  groundPoundRange: 1.5
   rangeAttackRange: 10
   desiredPos: {x: 0, y: 0}
   currentRange: 0
@@ -362,7 +362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35f93a7e7cd040f4e9c501e36b682451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackForce: 15
+  knockbackForce: 40
 --- !u!95 &715128925002142535
 Animator:
   serializedVersion: 5

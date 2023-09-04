@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class StatBoss : MonoBehaviour
 {
-    float timePassed = 0f;
-    Health statbosshealth;
     BossGunController StatBossGun;
     GameObject healthBar;
     BossHealthBar healthBarScript;

@@ -236,7 +236,7 @@ Transform:
   - {fileID: 8822532975527360673}
   - {fileID: 9010143537543633897}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &5045791610815488085
 BoxCollider2D:
@@ -295,7 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471c80e1848755345b2ae5273f5f3c31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 8
+  bulletSpeed: 4
   bulletsPerShot: 1
   bulletSpread: 360
   firePoint: {fileID: 8822532975527360673}

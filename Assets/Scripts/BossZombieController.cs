@@ -176,7 +176,7 @@ public class BossZombieController : MonoBehaviour
         StartCoroutine(MoveWithinTime(transform.position, up, .165f));
         yield return new WaitForSeconds(.165f);
         groundPoundHitbox.GetComponent<GroundPoundHitbox>().Shockwave();
-        float[] angles = { 0f, 45f, 90f, 135f, 180f, -135, -90f, -45f };
+        float[] angles = { 0f, 24f, 48f, 72f, 96f, 120f, 144f, 168f, 192f, 216f, 240f, 264f, 288f, 312f, 336f, 360f};
         projectileLauncherScript.shootBulletToAngles(angles);
         yield return new WaitForSeconds(0.65f);
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), player.GetComponent<Collider2D>(), false);

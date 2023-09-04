@@ -36,7 +36,7 @@ Transform:
   m_Children:
   - {fileID: 748371290537519803}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3938193548595141978
 SpriteRenderer:
@@ -102,8 +102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b671530cbc42c21468d6eec3345f1975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 35
-  maxHealth: 35
+  currentHealth: 200
+  maxHealth: 200
   coinDropAmount: 35
   coinDropVariance: 5
   currentDefense: 0
@@ -122,8 +122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6526e65d5fadc6342bf8b74ba95c9df1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationRadius: 8
-  angularSpeed: 1.25
+  rotationRadius: 6
+  angularSpeed: 1
   coolDown: 2.5
   coolDownLock: 0
   FireWallMaximum: 4

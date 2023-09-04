@@ -308,7 +308,7 @@ Transform:
   - {fileID: 6090616485559714731}
   - {fileID: 7049535998719448938}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
 --- !u!212 &225442914259106253
 SpriteRenderer:
@@ -423,7 +423,7 @@ MonoBehaviour:
   swingDelay: 0.1
   swingTime: 0.3
   coolDown: 0.2
-  cost: 20
+  cost: 50
   coolDownLock: 0
   sold: 1
   swordName: Blood Katana

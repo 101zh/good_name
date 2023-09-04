@@ -34,7 +34,7 @@ Transform:
   - {fileID: 3796869675427718987}
   - {fileID: 6430588736530190050}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3210380838662897460
 SpriteRenderer:
@@ -105,7 +105,7 @@ MonoBehaviour:
   bulletdelay: 0.05
   Bulletspread: 0
   coolDown: 0.5
-  cost: 20
+  cost: 250
   sold: 0
   gunName: Assault Rifle
   firePoint: {fileID: 3796869675427718987}
