@@ -101,8 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30ef8d36d0a96ad488fb2129889054a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
-  rotateSpeed: 180
+  speed: 6.5
+  rotateSpeed: 175
   targetTag: Player
   target: {fileID: 0}
 --- !u!50 &8696867778751932284

@@ -6,7 +6,7 @@ public class Laser : MonoBehaviour
 {
 
     Health healthscript;
-    bool inLaser;
+    bool inLaser = false;
     [SerializeField] float laserDuration;
 
     void Start()
@@ -28,7 +28,7 @@ public class Laser : MonoBehaviour
     {
         if (collider.tag.Equals("Player"))
         {
-            inLaser=false;
+            inLaser = false;
         }
     }
 
@@ -42,7 +42,8 @@ public class Laser : MonoBehaviour
         }
     }
 
-    IEnumerator WaitToDisappear(){
+    IEnumerator WaitToDisappear()
+    {
         yield return new WaitForSeconds(laserDuration);
         Destroy(gameObject, 0.1f);
         StopAllCoroutines();
