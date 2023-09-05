@@ -348,5 +348,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 303368836f4e2c84686df274bbdf862e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 50
+  cost: 110
   displayName: Firerate Potion

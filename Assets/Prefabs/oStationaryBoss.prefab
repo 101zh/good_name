@@ -35,7 +35,7 @@ Transform:
   m_Children:
   - {fileID: 6019745790743562923}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4455889340713367838
 SpriteRenderer:
@@ -103,8 +103,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 250
   maxHealth: 250
-  coinDropAmount: 100
-  coinDropVariance: 100
+  coinDropAmount: 0
+  coinDropVariance: 0
   currentDefense: 0
   maxDefense: 0
   coinPrefab: {fileID: 8481823868968492337, guid: 113dcfcb4aaac6f479283d658c200f53, type: 3}

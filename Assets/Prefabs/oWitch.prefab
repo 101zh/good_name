@@ -363,10 +363,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31dbb0818af8ea945951d48e09b55a0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5.5
+  moveSpeed: 6.5
   healthBar: {fileID: 0}
   defenseBar: {fileID: 0}
-  coins: 45
+  coins: 10
   FireRateDecrease: 0
   movmentOverride: 0
 --- !u!50 &5687900742699007702

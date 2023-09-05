@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f7f6cdd7414064e964d45a968b634f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 50
+  cost: 110
   displayName: Max Health Potion
 --- !u!1 &5030811715919001201
 GameObject:

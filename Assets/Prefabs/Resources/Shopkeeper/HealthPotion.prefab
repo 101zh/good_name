@@ -348,5 +348,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19328dbb6b4db3c46b8a47a2de650bd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 50
+  cost: 80
   displayName: Potion of Health

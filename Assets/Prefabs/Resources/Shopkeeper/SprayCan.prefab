@@ -105,7 +105,7 @@ MonoBehaviour:
   bulletdelay: 0
   Bulletspread: 15
   coolDown: 3
-  cost: 25
+  cost: 50
   sold: 0
   gunName: Spray Can
   firePoint: {fileID: 2260364973606526495}

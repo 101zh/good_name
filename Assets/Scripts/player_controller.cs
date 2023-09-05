@@ -103,9 +103,11 @@ public class player_controller : MonoBehaviour
 
     private void Revive()
     {
+        coins = (int)((float)coins * 0.8f);
         gameObject.GetComponent<BoxCollider2D>().enabled = true;
         health.InitializeHealth(health.maxHealth);
         health.InitializeDefense(health.maxDefense);
+        coinTextScript.UpdateCoins(coins);
         updateHUD();
         movmentOverride = false;
         transform.position = new Vector2(0, -2);

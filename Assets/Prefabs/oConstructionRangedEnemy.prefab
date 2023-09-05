@@ -21,7 +21,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4152401226023889132
 Transform:
   m_ObjectHideFlags: 0
@@ -102,10 +102,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3265191363b3d244ad8ef36f8d9a410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 2
+  movementSpeed: 4.5
   player: {fileID: 0}
   attackRange: 4
-  dangerRange: 1
+  dangerRange: 0.5
   desiredPos: {x: 0, y: 0, z: 0}
   currentMovementState: 0
 --- !u!114 &8129382235155239739
@@ -120,10 +120,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b671530cbc42c21468d6eec3345f1975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 10
-  maxHealth: 10
+  currentHealth: 5
+  maxHealth: 5
   coinDropAmount: 3
-  coinDropVariance: 3
+  coinDropVariance: 0
   currentDefense: 0
   maxDefense: 0
   coinPrefab: {fileID: 8481823868968492337, guid: 113dcfcb4aaac6f479283d658c200f53, type: 3}

@@ -308,7 +308,7 @@ MonoBehaviour:
   bulletdelay: 0
   Bulletspread: 20
   coolDown: 1
-  cost: 150
+  cost: 275
   sold: 0
   gunName: Shotgun
   firePoint: {fileID: 8822532975527360673}
