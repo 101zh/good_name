@@ -15,6 +15,7 @@ public class StatBoss : MonoBehaviour
     [SerializeField] GameObject preSword;
     float coolDownTimer;
     [SerializeField] float coolDown;
+    [SerializeField] AudioSource deathSound;
 
     // Update is called once per frame
     void Start()
@@ -135,17 +136,23 @@ public class StatBoss : MonoBehaviour
         Debug.Log("stopped all coroutines");
     }
 
+    private void WhenDying()
+    {
+        UpdateHealthBar();
+        deathSound.Play();
+    }
+
     private void OnEnable()
     {
         Health.onHitEvent += UpdateHealthBar;
-        Health.OnDie += UpdateHealthBar;
+        Health.OnDie += WhenDying;
         Health.OnDie += DisableCoroutines;
     }
 
     private void OnDisable()
     {
         Health.onHitEvent -= UpdateHealthBar;
-        Health.OnDie -= UpdateHealthBar;
+        Health.OnDie -= WhenDying;
         Health.OnDie -= DisableCoroutines;
     }
 

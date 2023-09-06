@@ -18,6 +18,7 @@ public class Boss : MonoBehaviour
     BossHealthBar healthBarScript;
     Health health;
     [SerializeField] int FireWallMaximum;
+    [SerializeField] AudioSource deathSound;
 
     private void Start()
     {
@@ -159,16 +160,30 @@ public class Boss : MonoBehaviour
         }
     }
 
+    private void DisableCoroutines()
+    {
+        StopAllCoroutines();
+        Debug.Log("stopped all coroutines");
+    }
+
+    private void WhenDying()
+    {
+        UpdateHealthBar();
+        deathSound.Play();
+    }
+
     private void OnEnable()
     {
         Health.onHitEvent += UpdateHealthBar;
-        Health.OnDie += UpdateHealthBar;
+        Health.OnDie += WhenDying;
+        Health.OnDie += DisableCoroutines;
     }
 
     private void OnDisable()
     {
         Health.onHitEvent -= UpdateHealthBar;
-        Health.OnDie -= UpdateHealthBar;
+        Health.OnDie -= WhenDying;
+        Health.OnDie -= DisableCoroutines;
     }
 
 }

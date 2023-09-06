@@ -314,6 +314,7 @@ MonoBehaviour:
   firePoint: {fileID: 8822532975527360673}
   bulletPrefab: {fileID: 8518284227580658630, guid: 93de7c8ee0fa6c24696106fc1a993ba3, type: 3}
   held: 0
+  gunShotSound: {fileID: 7297805933865370381, guid: efa4e9bcf8771e34ea7f21a46cfae5e5, type: 3}
 --- !u!61 &5045791610815488085
 BoxCollider2D:
   m_ObjectHideFlags: 0

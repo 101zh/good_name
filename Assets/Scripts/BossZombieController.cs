@@ -31,6 +31,7 @@ public class BossZombieController : MonoBehaviour
     GameObject healthBar;
     BossHealthBar healthBarScript;
     Health health;
+    [SerializeField] AudioSource deathSound;
 
     // Start is called before the first frame update
     void Start()
@@ -119,13 +120,13 @@ public class BossZombieController : MonoBehaviour
         {
             groundPoundParam = 80;
             rangeAttackParam = 85;
-            
+
         }
         else if (currentRange == movementState.rangeAttackRange)
         {
             groundPoundParam = 10;
             rangeAttackParam = 70;
-            
+
         }
         else
         {
@@ -176,7 +177,7 @@ public class BossZombieController : MonoBehaviour
         StartCoroutine(MoveWithinTime(transform.position, up, .132f));
         yield return new WaitForSeconds(.132f);
         groundPoundHitbox.GetComponent<GroundPoundHitbox>().Shockwave();
-        float[] angles = { 0f, 24f, 48f, 72f, 96f, 120f, 144f, 168f, 192f, 216f, 240f, 264f, 288f, 312f, 336f, 360f};
+        float[] angles = { 0f, 24f, 48f, 72f, 96f, 120f, 144f, 168f, 192f, 216f, 240f, 264f, 288f, 312f, 336f, 360f };
         projectileLauncherScript.shootBulletToAngles(angles);
         yield return new WaitForSeconds(0.65f);
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), player.GetComponent<Collider2D>(), false);
@@ -310,16 +311,29 @@ public class BossZombieController : MonoBehaviour
             healthBar.SetActive(false);
         }
     }
+    private void DisableCoroutines()
+    {
+        StopAllCoroutines();
+        Debug.Log("stopped all coroutines");
+    }
+
+    private void WhenDying()
+    {
+        UpdateHealthBar();
+        deathSound.Play();
+    }
 
     private void OnEnable()
     {
         Health.onHitEvent += UpdateHealthBar;
-        Health.OnDie += UpdateHealthBar;
+        Health.OnDie += WhenDying;
+        Health.OnDie += DisableCoroutines;
     }
 
     private void OnDisable()
     {
         Health.onHitEvent -= UpdateHealthBar;
-        Health.OnDie -= UpdateHealthBar;
+        Health.OnDie -= WhenDying;
+        Health.OnDie -= DisableCoroutines;
     }
 }

@@ -71,6 +71,7 @@ public class Health : MonoBehaviour
             {
                 isDead = true;
                 OnPlayerDie?.Invoke();
+                FindObjectOfType<AudioManager>().Play("PlayerDeath");
                 pause_menu.playerIsDead = true;
             }
             else

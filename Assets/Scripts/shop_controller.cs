@@ -15,7 +15,6 @@ public class shop_controller : MonoBehaviour
     public void SetUpShop()
     {
         gameObject.SetActive(true);
-        Debug.Log("Setting Up Shop");
         for (int i = 0; i < 3; i++)
         {
             try
@@ -29,7 +28,6 @@ public class shop_controller : MonoBehaviour
 
     public void TakeDownShop()
     {
-        Debug.Log("Taking Down Shop");
         gameObject.SetActive(false);
     }
 

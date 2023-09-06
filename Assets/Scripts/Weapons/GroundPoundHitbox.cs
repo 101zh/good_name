@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class GroundPoundHitbox : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class GroundPoundHitbox : MonoBehaviour
     Health healthScript;
     [SerializeField] float knockbackForce;
     SpriteRenderer spriteRenderer;
+    [SerializeField] AudioSource groundPoundSound;
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -23,6 +25,7 @@ public class GroundPoundHitbox : MonoBehaviour
     {
         EnableShockWave();
         animator.Play("shockwave");
+        groundPoundSound.Play();
         AdjustShockWaveHitbox(ShockwaveStage1Hitbox, 0f);
         AdjustShockWaveHitbox(ShockwaveStage2Hitbox, 0.1f);
         AdjustShockWaveHitbox(ShockwaveStage3Hitbox, 0.2f);

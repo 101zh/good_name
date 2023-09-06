@@ -6,6 +6,7 @@ public class sword_hitbox : MonoBehaviour
 {
     Health healthscript;
     Rigidbody2D rb;
+    [SerializeField] AudioSource swingSound;
     bool hit;
 
     void Start()
@@ -16,6 +17,7 @@ public class sword_hitbox : MonoBehaviour
     void OnEnable()
     {
         hit = false;
+        swingSound.Play();
     }
 
     void OnTriggerEnter2D(Collider2D collider)
