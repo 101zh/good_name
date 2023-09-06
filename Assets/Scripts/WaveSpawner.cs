@@ -122,14 +122,14 @@ public class WaveSpawner : MonoBehaviour
 
     public void ResetWave()
     {
-        StopCoroutine(Spawning);
+        try { StopCoroutine(Spawning); } catch { }
         for (int i = 0; i < Spawners.Length; i++)
         {
             try
             {
                 StopCoroutine(Spawners[i]);
             }
-            catch{ }
+            catch { }
         }
         KillAllEnemies();
         state = SpawnState.COUNTING;
