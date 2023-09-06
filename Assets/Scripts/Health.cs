@@ -20,6 +20,7 @@ public class Health : MonoBehaviour
     public delegate void PlayerDie();
     public static event Die OnPlayerDie;
     bool recoveringDefense = false;
+    Coroutine recoverDefenseCoroutine;
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -98,6 +99,10 @@ public class Health : MonoBehaviour
     {
         currentDefense = defenseValue;
         maxDefense = defenseValue;
+        if (recoverDefenseCoroutine != null)
+        {
+            StopCoroutine(recoverDefenseCoroutine);
+        }
     }
 
     IEnumerator RecoverDefense()
@@ -119,7 +124,7 @@ public class Health : MonoBehaviour
         if (!recoveringDefense)
         {
             Debug.Log("Recovering");
-            StartCoroutine(RecoverDefense());
+            recoverDefenseCoroutine = StartCoroutine(RecoverDefense());
         }
     }
 
