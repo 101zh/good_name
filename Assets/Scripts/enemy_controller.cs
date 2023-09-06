@@ -13,6 +13,7 @@ public class enemy_controller : MonoBehaviour
     [SerializeField] Vector3 desiredPos;
     public enum movementState { chase, safe, runAway };
     public movementState currentMovementState;
+    [SerializeField] AudioSource DeathSound;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +27,7 @@ public class enemy_controller : MonoBehaviour
     void FixedUpdate()
     {
         if (pause_menu.gameIsPaused) return;
-        
+
         currentMovementState = movementLogic();
         float frameSpeed = movementSpeed * Time.deltaTime;
         desiredPos = pickPosition(currentMovementState);
@@ -91,6 +92,22 @@ public class enemy_controller : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.DrawWireSphere(transform.position, dangerRange);
+    }
+
+    private void PlayDeathSound()
+    {
+        DeathSound.Play();
+    }
+
+    private void OnEnable()
+    {
+        Health.OnDie += PlayDeathSound;
+    }
+
+    private void OnDisable()
+    {
+
+        Health.OnDie -= PlayDeathSound;
     }
 }
 

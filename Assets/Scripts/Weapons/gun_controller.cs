@@ -21,7 +21,7 @@ public class gun_controller : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     public bool held; //is hte player holding the gun
     float angle;
-    private float coolDownTimer;
+    private float coolDownTimer; 
     private Renderer gunRenderer;
     Transform playerTransform;
     bool nearTo;
@@ -29,6 +29,7 @@ public class gun_controller : MonoBehaviour
     Transform nameTransform;
     TMP_Text nameText;
     private bool isErrorMessage;
+    [SerializeField] AudioSource gunShotSound;
     private void Start()
     {
         mainCam = Camera.main;
@@ -171,6 +172,7 @@ public class gun_controller : MonoBehaviour
 
     private void shootBullet()
     {
+        gunShotSound.Play();
         for (int i = 0; i < bulletsPerShot; i++)
         {
             Invoke("FireBullet", bulletdelay * i);

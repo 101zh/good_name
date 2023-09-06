@@ -7,6 +7,7 @@ public class bullet : MonoBehaviour
     Health healthScript;
     Animator animator;
     Rigidbody2D rb;
+    [SerializeField] AudioSource bulletCollisionSound;
 
     void Start(){
         animator = GetComponent<Animator>();
@@ -16,7 +17,7 @@ public class bullet : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(collision.gameObject.name);
+        bulletCollisionSound.Play();
         if (collision.gameObject.layer==10 || collision.collider.tag.Equals("Player"))
         {
             healthScript = collision.gameObject.GetComponent<Health>();
