@@ -58,6 +58,7 @@ public class MaxHealthPotion : MonoBehaviour
             else
             {
                 playerScript.incrementCoins(-cost);
+                FindObjectOfType<AudioManager>().Play("PotionDrink");
             }
 
             healthtesting.maxHealth += 5;

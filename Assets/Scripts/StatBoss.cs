@@ -17,6 +17,8 @@ public class StatBoss : MonoBehaviour
     [SerializeField] float coolDown;
     [SerializeField] AudioSource deathSound;
 
+    private bool attackLock = false;
+
     // Update is called once per frame
     void Start()
     {
@@ -26,6 +28,7 @@ public class StatBoss : MonoBehaviour
 
         health = GetComponent<Health>();
 
+        health.timeToDestroy = deathSound.clip.length;
         healthBar.SetActive(true);
         healthBarScript.setMaxValue(health.maxHealth);
         healthBarScript.setValue(health.currentHealth);
@@ -37,6 +40,8 @@ public class StatBoss : MonoBehaviour
 
     void Update()
     {
+        if (pause_menu.gameIsPaused || !attackLock) return;
+
         if (coolDownTimer > 0) { coolDownTimer = Mathf.Max(coolDownTimer - Time.deltaTime, 0f); }
         if (coolDownTimer == 0)
         {
@@ -140,6 +145,7 @@ public class StatBoss : MonoBehaviour
     {
         UpdateHealthBar();
         deathSound.Play();
+        attackLock = true;
     }
 
     private void OnEnable()

@@ -17,7 +17,7 @@ public class bullet : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        bulletCollisionSound.Play();
+        // bulletCollisionSound.Play();
         if (collision.gameObject.layer==10 || collision.collider.tag.Equals("Player"))
         {
             healthScript = collision.gameObject.GetComponent<Health>();

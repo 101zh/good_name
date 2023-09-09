@@ -50,6 +50,7 @@ public class BossZombieController : MonoBehaviour
 
         health = GetComponent<Health>();
 
+        health.timeToDestroy = deathSound.clip.length;
         healthBar.SetActive(true);
         healthBarScript.setMaxValue(health.maxHealth);
         healthBarScript.setValue(health.currentHealth);
@@ -245,7 +246,7 @@ public class BossZombieController : MonoBehaviour
     Health healthScript;
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.tag.Equals("Player"))
+        if (collision.collider.tag.Equals("Player") && !movementLock)
         {
             healthScript = collision.gameObject.GetComponent<Health>();
             healthScript.OnChangeHealth(1);
@@ -321,6 +322,7 @@ public class BossZombieController : MonoBehaviour
     {
         UpdateHealthBar();
         deathSound.Play();
+        movementLock = true;
     }
 
     private void OnEnable()

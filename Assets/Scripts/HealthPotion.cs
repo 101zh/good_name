@@ -59,6 +59,7 @@ public class HealthPotion : MonoBehaviour
             else
             {
                 playerScript.incrementCoins(-cost);
+                FindObjectOfType<AudioManager>().Play("PotionDrink");
             }
 
             healthtesting.currentHealth += 5;

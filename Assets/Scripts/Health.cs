@@ -9,7 +9,8 @@ public class Health : MonoBehaviour
     [SerializeField] private int coinDropAmount, coinDropVariance;
     [SerializeField] public int currentDefense, maxDefense;
     [SerializeField] private GameObject coinPrefab;
-    [SerializeField] private bool isDead = false;
+    private bool isDead = false;
+    [HideInInspector] public float timeToDestroy = 0.01f;
     private Material matWhite;
     private Material matDefault;
     SpriteRenderer sr;
@@ -77,7 +78,7 @@ public class Health : MonoBehaviour
             else
             {
                 isDead = true;
-                Destroy(gameObject, 0.01f);
+                Destroy(gameObject, timeToDestroy);
                 DropCoin();
             }
 

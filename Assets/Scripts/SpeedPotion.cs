@@ -56,6 +56,7 @@ public class SpeedPotion : MonoBehaviour
             else
             {
                 playerScript.incrementCoins(-cost);
+                FindObjectOfType<AudioManager>().Play("PotionDrink");
             }
 
             playerScript.moveSpeed += 0.5f; 

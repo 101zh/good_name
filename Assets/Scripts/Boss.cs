@@ -32,6 +32,7 @@ public class Boss : MonoBehaviour
 
         health = GetComponent<Health>();
 
+        health.timeToDestroy = deathSound.clip.length;
         healthBar.SetActive(true);
         healthBarScript.setMaxValue(health.maxHealth);
         healthBarScript.setValue(health.currentHealth);
