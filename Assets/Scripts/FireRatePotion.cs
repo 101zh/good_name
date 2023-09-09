@@ -55,6 +55,7 @@ public class FireRatePotion : MonoBehaviour
             else
             {
                 playerScript.incrementCoins(-cost);
+                FindObjectOfType<AudioManager>().Play("PotionDrink");
             }
             playerScript.FireRateDecrease += 0.05f; 
             Destroy(gameObject);

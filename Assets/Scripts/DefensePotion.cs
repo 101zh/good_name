@@ -55,8 +55,9 @@ public class DefensePotion : MonoBehaviour
             else
             {
                 playerScript.incrementCoins(-cost);
+                FindObjectOfType<AudioManager>().Play("PotionDrink");
             }
-
+            
             playerTransform.GetComponent<Health>().maxDefense += 1;
             playerTransform.GetComponent<Health>().currentDefense = playerTransform.GetComponent<Health>().maxDefense;
             playerTransform.GetComponent<Health>().OnChangeHealth(0);
