@@ -37,7 +37,7 @@ Transform:
   m_Children:
   - {fileID: 748371290537519803}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3938193548595141978
 SpriteRenderer:
@@ -236,8 +236,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2f5b86b942257534a8283ba2d2935b39, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -337,6 +337,10 @@ PrefabInstance:
       propertyPath: homingBulletPrefab
       value: 
       objectReference: {fileID: 5230360683322279350, guid: c78aecf6223e0f14891185dcb39728d7, type: 3}
+    - target: {fileID: 2350138962741261741, guid: 412028d7bf81efe4f987ee2bb02048f9, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5050599371445128256, guid: 412028d7bf81efe4f987ee2bb02048f9, type: 3}
       propertyPath: m_RootOrder
       value: -1

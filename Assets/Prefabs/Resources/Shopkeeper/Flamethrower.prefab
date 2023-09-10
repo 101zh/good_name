@@ -35,7 +35,7 @@ Transform:
   - {fileID: 8241504971680343800}
   - {fileID: 4726344713787801227}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4814329205503942673
 SpriteRenderer:
@@ -107,7 +107,7 @@ MonoBehaviour:
   Bulletspread: 0
   coolDown: 0
   cost: 600
-  sold: 0
+  sold: 1
   gunName: Flamethrower
   firePoint: {fileID: 8241504971680343800}
   bulletPrefab: {fileID: 8010834554138298158, guid: 546ab5786327e674096ecb50d856ff98, type: 3}
@@ -169,8 +169,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 54cbed23899c60248bd34acc07e6787e, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0

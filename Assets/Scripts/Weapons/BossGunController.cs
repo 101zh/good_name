@@ -12,6 +12,7 @@ public class BossGunController : MonoBehaviour
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private GameObject homingBulletPrefab;
+    [SerializeField] AudioSource projectileSound;
     private float angle;
     [SerializeField] private bool bulletSpreadON;
     GameObject player;
@@ -34,8 +35,9 @@ public class BossGunController : MonoBehaviour
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
-    public void shootBulletToAngles(float[] angles)
+    public void shootBulletToAngles(float[] angles, bool playSounds)
     {
+        PlayBulletSound(playSounds);
         for (int i = 0; i < angles.Length; i++)
         {
             float RNG = 0;
@@ -53,8 +55,9 @@ public class BossGunController : MonoBehaviour
         }
     }
 
-    public void shootBulletAtPlayer()
+    public void shootBulletAtPlayer(bool playSounds)
     {
+        PlayBulletSound(playSounds);
         for (int i = 0; i < bulletsPerShot; i++)
         {
             float RNG = 0;
@@ -72,8 +75,14 @@ public class BossGunController : MonoBehaviour
         }
     }
 
-    public void shootHomingBulletAtPlayer()
+    private void PlayBulletSound(bool playSounds){
+        if (!playSounds) return;
+        projectileSound.Play();
+    }
+
+    public void shootHomingBulletAtPlayer(bool playSounds)
     {
+        PlayBulletSound(playSounds);
         for (int i = 0; i < bulletsPerShot; i++)
         {
             gunRotateToPlayer();

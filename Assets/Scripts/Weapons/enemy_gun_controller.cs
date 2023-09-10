@@ -10,15 +10,18 @@ public class enemy_gun_controller : MonoBehaviour
     [SerializeField] private float bulletSpeed;
     [SerializeField] private int bulletsPerShot;
     [SerializeField] private float Bulletspread;
+    [SerializeField] private float bulletdelay;
     [SerializeField] private float coolDown; //after each shot
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private bool held = true;
     [SerializeField] private bool passive;
+
     float angle;
     private float coolDownTimer;
     enemy_controller enemyControllerScript;
     GameObject player;
+    [SerializeField] AudioSource gunShotSound;
     private void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
@@ -64,13 +67,24 @@ public class enemy_gun_controller : MonoBehaviour
 
     private void shootBullet()
     {
+        PlayBulletSound();
         for (int i = 0; i < bulletsPerShot; i++)
         {
-            float RNG = Random.Range(-Bulletspread, Bulletspread);
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation); //creates/spawns bullet
-            bullet.transform.Rotate(bullet.transform.rotation.x, bullet.transform.rotation.y, bullet.transform.rotation.z + RNG, Space.Self);
-            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-            rb.AddForce(bullet.transform.up * bulletSpeed, ForceMode2D.Impulse);
+            Invoke("FireBullet", bulletdelay * i);
         }
     }
+
+    private void PlayBulletSound(){
+        if(!gunShotSound.isPlaying) gunShotSound.Play();
+    }
+
+    private void FireBullet()
+    {
+        float RNG = Random.Range(-Bulletspread, Bulletspread);
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation); //creates/spawns bullet
+        bullet.transform.Rotate(bullet.transform.rotation.x, bullet.transform.rotation.y, bullet.transform.rotation.z + RNG, Space.Self);
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        rb.AddForce(bullet.transform.up * bulletSpeed, ForceMode2D.Impulse);
+    }
+
 }
