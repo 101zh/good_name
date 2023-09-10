@@ -106,7 +106,7 @@ MonoBehaviour:
   bulletdelay: 0.05
   Bulletspread: 0
   coolDown: 0.5
-  cost: 350
+  cost: 300
   sold: 1
   gunName: Assault Rifle
   firePoint: {fileID: 3796869675427718987}

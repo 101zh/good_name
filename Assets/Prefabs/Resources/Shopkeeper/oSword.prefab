@@ -425,7 +425,7 @@ MonoBehaviour:
   swingDelay: 0.1
   swingTime: 0.3
   coolDown: 0.2
-  cost: 275
+  cost: 235
   coolDownLock: 0
   sold: 0
   swordName: Blood Katana
