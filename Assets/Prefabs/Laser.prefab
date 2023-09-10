@@ -143,4 +143,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21d8d0be421b06e449649481891a2a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserDuration: 3
+  laserDuration: 2
