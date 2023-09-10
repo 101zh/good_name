@@ -16,6 +16,7 @@ public class StatBoss : MonoBehaviour
     float coolDownTimer;
     [SerializeField] float coolDown;
     [SerializeField] AudioSource deathSound;
+    [SerializeField] AudioSource laserChargeUpSound;
 
     private bool attackLock = false;
 
@@ -75,8 +76,11 @@ public class StatBoss : MonoBehaviour
     IEnumerator Lasers()
     {
         InstantiatePreLasers();
+        laserChargeUpSound.Play();
         yield return new WaitForSeconds(.75f);
         InstantiateLasers();
+        yield return new WaitForSeconds(2f);
+        laserChargeUpSound.Stop();
     }
 
     IEnumerator Swords()
