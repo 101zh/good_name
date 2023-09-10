@@ -8,7 +8,6 @@ public class StatBoss : MonoBehaviour
     GameObject healthBar;
     BossHealthBar healthBarScript;
     Health health;
-
     [SerializeField] GameObject preLaser;
     [SerializeField] GameObject laser;
     [SerializeField] GameObject sword;
@@ -17,6 +16,8 @@ public class StatBoss : MonoBehaviour
     [SerializeField] float coolDown;
     [SerializeField] AudioSource deathSound;
     [SerializeField] AudioSource laserChargeUpSound;
+    [SerializeField] AudioSource swordUnsheatheSound;
+
 
     private bool attackLock = false;
 
@@ -77,7 +78,7 @@ public class StatBoss : MonoBehaviour
     {
         InstantiatePreLasers();
         laserChargeUpSound.Play();
-        yield return new WaitForSeconds(.75f);
+        yield return new WaitForSeconds(1f);
         InstantiateLasers();
         yield return new WaitForSeconds(2f);
         laserChargeUpSound.Stop();
@@ -86,6 +87,7 @@ public class StatBoss : MonoBehaviour
     IEnumerator Swords()
     {
         InstantiatePreSwords();
+        swordUnsheatheSound.Play();
         yield return new WaitForSeconds(.5f);
         InstantiateSwords();
     }
@@ -95,8 +97,8 @@ public class StatBoss : MonoBehaviour
         Instantiate(preLaser, new Vector2(0, 0), preLaser.transform.rotation);
         for (int i = 0; i < 5; i++)
         {
-            Instantiate(preLaser, new Vector2(6 * i, 0), preLaser.transform.rotation);
-            Instantiate(preLaser, new Vector2(-6 * i, 0), preLaser.transform.rotation);
+            Instantiate(preLaser, new Vector2(6.5f * i, 0), preLaser.transform.rotation);
+            Instantiate(preLaser, new Vector2(-6.5f * i, 0), preLaser.transform.rotation);
         }
     }
 
@@ -105,8 +107,8 @@ public class StatBoss : MonoBehaviour
         Instantiate(laser, new Vector2(0, 0), laser.transform.rotation);
         for (int i = 0; i < 5; i++)
         {
-            Instantiate(laser, new Vector2(6 * i, 0), laser.transform.rotation);
-            Instantiate(laser, new Vector2(-6 * i, 0), laser.transform.rotation);
+            Instantiate(laser, new Vector2(6.5f * i, 0), laser.transform.rotation);
+            Instantiate(laser, new Vector2(-6.5f * i, 0), laser.transform.rotation);
         }
     }
 
@@ -115,8 +117,8 @@ public class StatBoss : MonoBehaviour
         Instantiate(sword, new Vector2(-25, 0), sword.transform.rotation);
         for (int i = 0; i < 4; i++)
         {
-            Instantiate(sword, new Vector2(-25, 5.5f * i), sword.transform.rotation);
-            Instantiate(sword, new Vector2(-25, -5.5f * i), sword.transform.rotation);
+            Instantiate(sword, new Vector2(-25, 6f * i), sword.transform.rotation);
+            Instantiate(sword, new Vector2(-25, -6f * i), sword.transform.rotation);
         }
     }
 
@@ -125,8 +127,8 @@ public class StatBoss : MonoBehaviour
         Instantiate(preSword, new Vector2(0, 0), preSword.transform.rotation);
         for (int i = 0; i < 4; i++)
         {
-            Instantiate(preSword, new Vector2(0, 5.5f * i), preSword.transform.rotation);
-            Instantiate(preSword, new Vector2(0, -5.5f * i), preSword.transform.rotation);
+            Instantiate(preSword, new Vector2(0, 6f * i), preSword.transform.rotation);
+            Instantiate(preSword, new Vector2(0, -6f * i), preSword.transform.rotation);
         }
     }
 
