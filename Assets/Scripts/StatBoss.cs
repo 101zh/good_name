@@ -40,7 +40,7 @@ public class StatBoss : MonoBehaviour
 
     void Update()
     {
-        if (pause_menu.gameIsPaused || !attackLock) return;
+        if (pause_menu.gameIsPaused || attackLock) return;
 
         if (coolDownTimer > 0) { coolDownTimer = Mathf.Max(coolDownTimer - Time.deltaTime, 0f); }
         if (coolDownTimer == 0)
@@ -68,7 +68,7 @@ public class StatBoss : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(3.25f);
-            StatBossGun.shootHomingBulletAtPlayer();
+            StatBossGun.shootHomingBulletAtPlayer(true);
         }
     }
 
@@ -143,6 +143,8 @@ public class StatBoss : MonoBehaviour
 
     private void WhenDying()
     {
+        if (pause_menu.playerIsDead) return;
+        DisableCoroutines();
         UpdateHealthBar();
         deathSound.Play();
         attackLock = true;

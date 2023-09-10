@@ -32,6 +32,7 @@ public class BossZombieController : MonoBehaviour
     BossHealthBar healthBarScript;
     Health health;
     [SerializeField] AudioSource deathSound;
+    bool dead;
 
     // Start is called before the first frame update
     void Start()
@@ -58,7 +59,7 @@ public class BossZombieController : MonoBehaviour
     }
     void Update()
     {
-        if (pause_menu.gameIsPaused) return;
+        if (pause_menu.gameIsPaused || dead) return;
         if (coolDownTimer > 0 && !coolDownLock) { coolDownTimer = Mathf.Max(coolDownTimer - Time.deltaTime, 0f); }
         if (coolDownTimer == 0)
         {
@@ -84,6 +85,7 @@ public class BossZombieController : MonoBehaviour
     {
         if (pause_menu.gameIsPaused) return;
         DeterminePos();
+        movementLock = movementLock || dead;
         if (!movementLock)
         {
             transform.position = Vector2.MoveTowards(transform.position, desiredPos, movementSpeed * Time.deltaTime);
@@ -179,7 +181,7 @@ public class BossZombieController : MonoBehaviour
         yield return new WaitForSeconds(.132f);
         groundPoundHitbox.GetComponent<GroundPoundHitbox>().Shockwave();
         float[] angles = { 0f, 24f, 48f, 72f, 96f, 120f, 144f, 168f, 192f, 216f, 240f, 264f, 288f, 312f, 336f, 360f };
-        projectileLauncherScript.shootBulletToAngles(angles);
+        projectileLauncherScript.shootBulletToAngles(angles, false);
         yield return new WaitForSeconds(0.65f);
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), player.GetComponent<Collider2D>(), false);
         changeAnimationState("boss_zombie_idle");
@@ -217,7 +219,7 @@ public class BossZombieController : MonoBehaviour
             Vector2 dir = desiredPos - (Vector2)transform.position;
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             float[] angles = { angle - 90f, angle + 90f };
-            projectileLauncherScript.shootBulletToAngles(angles);
+            projectileLauncherScript.shootBulletToAngles(angles, false);
             yield return new WaitForSeconds(.75f);
         }
     }
@@ -237,7 +239,7 @@ public class BossZombieController : MonoBehaviour
         coolDownLock = true;
         changeAnimationState("BossZombieThrow");
         yield return new WaitForSeconds(0.2f);
-        projectileLauncherScript.shootBulletAtPlayer();
+        projectileLauncherScript.shootBulletAtPlayer(true);
         changeAnimationState("boss_zombie_idle");
         movementLock = false;
         coolDownLock = false;
@@ -320,9 +322,12 @@ public class BossZombieController : MonoBehaviour
 
     private void WhenDying()
     {
+        if (pause_menu.playerIsDead) return;
+        check = false;
+        DisableCoroutines();
         UpdateHealthBar();
         deathSound.Play();
-        movementLock = true;
+        dead = true;
     }
 
     private void OnEnable()

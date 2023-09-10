@@ -172,11 +172,15 @@ public class gun_controller : MonoBehaviour
 
     private void shootBullet()
     {
-        gunShotSound.Play();
+        PlayBulletSound();
         for (int i = 0; i < bulletsPerShot; i++)
         {
             Invoke("FireBullet", bulletdelay * i);
         }
+    }
+
+    private void PlayBulletSound(){
+        if(!gunShotSound.isPlaying) gunShotSound.Play();
     }
 
     private void FireBullet()

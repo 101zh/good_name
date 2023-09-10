@@ -137,19 +137,19 @@ public class Boss : MonoBehaviour
 
     private void ThrowFireBall()
     {
-        projectileLauncherScript.shootBulletAtPlayer();
+        projectileLauncherScript.shootBulletAtPlayer(true);
     }
 
     private void ThrowHomingFireBall()
     {
-        projectileLauncherScript.shootHomingBulletAtPlayer();
+        projectileLauncherScript.shootHomingBulletAtPlayer(true);
     }
 
     private void EmitFireBalls()
     {
         projectileLauncherScript.bulletSpeed = 7f;
         float[] angles = { 0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330, 360 };
-        projectileLauncherScript.shootBulletToAngles(angles);
+        projectileLauncherScript.shootBulletToAngles(angles, true);
     }
 
     private void UpdateHealthBar()
@@ -169,8 +169,11 @@ public class Boss : MonoBehaviour
 
     private void WhenDying()
     {
+        if (pause_menu.playerIsDead) return;
+        DisableCoroutines();
         UpdateHealthBar();
         deathSound.Play();
+        GetComponent<BoxCollider2D>().enabled = false;
     }
 
     private void OnEnable()
