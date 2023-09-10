@@ -93,22 +93,7 @@ public class enemy_controller : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.DrawWireSphere(transform.position, dangerRange);
     }
-
-    private void PlayDeathSound()
-    {
-        DeathSound.Play();
-    }
-
-    private void OnEnable()
-    {
-        Health.OnDie += PlayDeathSound;
-    }
-
-    private void OnDisable()
-    {
-
-        Health.OnDie -= PlayDeathSound;
-    }
+    
 }
 
 

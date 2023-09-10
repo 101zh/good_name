@@ -67,7 +67,7 @@ public class enemy_gun_controller : MonoBehaviour
 
     private void shootBullet()
     {
-        PlayBulletSound();
+        // PlayBulletSound();
         for (int i = 0; i < bulletsPerShot; i++)
         {
             Invoke("FireBullet", bulletdelay * i);
