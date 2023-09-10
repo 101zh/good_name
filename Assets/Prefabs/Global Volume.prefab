@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1644717307777852700
 MonoBehaviour:
@@ -68,10 +68,12 @@ MonoBehaviour:
     volume: 0.5
     pitch: 1
     loop: 0
+    output: {fileID: 24300002, guid: 37a002b83dbba08409333763c5c112c4, type: 2}
     source: {fileID: 0}
   - name: PotionDrink
     clip: {fileID: 8300000, guid: 9c1952a4a39ec8e4b9fa3afe1cabc790, type: 3}
     volume: 0.75
     pitch: 1
     loop: 0
+    output: {fileID: 24300002, guid: 37a002b83dbba08409333763c5c112c4, type: 2}
     source: {fileID: 0}
