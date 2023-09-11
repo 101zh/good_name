@@ -107,7 +107,7 @@ MonoBehaviour:
   Bulletspread: 0
   coolDown: 0
   cost: 510
-  sold: 1
+  sold: 0
   gunName: Flamethrower
   firePoint: {fileID: 8241504971680343800}
   bulletPrefab: {fileID: 8010834554138298158, guid: 546ab5786327e674096ecb50d856ff98, type: 3}

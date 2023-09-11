@@ -107,7 +107,7 @@ MonoBehaviour:
   Bulletspread: 0
   coolDown: 0.5
   cost: 300
-  sold: 1
+  sold: 0
   gunName: Assault Rifle
   firePoint: {fileID: 3796869675427718987}
   bulletPrefab: {fileID: 8518284227580658630, guid: 93de7c8ee0fa6c24696106fc1a993ba3, type: 3}
