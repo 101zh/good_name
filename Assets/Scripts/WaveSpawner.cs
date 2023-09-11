@@ -5,6 +5,7 @@ using UnityEngine.Events;
 public class WaveSpawner : MonoBehaviour
 {
     [SerializeField] GameObject hope;
+    bool wavesEnded = false;
     public CountdownTimer script;
     public enum SpawnState { SPAWNING, WAITING, COUNTING };
 
@@ -60,7 +61,7 @@ public class WaveSpawner : MonoBehaviour
 
     void Update()
     {
-        if (pause_menu.gameIsPaused) return;
+        if (pause_menu.gameIsPaused || wavesEnded) return;
         if (state == SpawnState.WAITING)
         {
             if (!EnemyIsAlive())
@@ -99,6 +100,7 @@ public class WaveSpawner : MonoBehaviour
         if (nextWave + 1 > waves.Length - 1)
         {
             Instantiate(hope, new Vector2(0, -5), hope.transform.rotation);
+            wavesEnded=true;
         }
         else
         {
