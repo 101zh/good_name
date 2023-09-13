@@ -102,9 +102,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3265191363b3d244ad8ef36f8d9a410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 4.5
+  movementSpeed: 5
   player: {fileID: 0}
-  attackRange: 4
+  attackRange: 3.5
   dangerRange: 0.5
   desiredPos: {x: 0, y: 0, z: 0}
   currentMovementState: 0
@@ -121,8 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b671530cbc42c21468d6eec3345f1975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 5
-  maxHealth: 5
+  currentHealth: 3
+  maxHealth: 3
   coinDropAmount: 3
   coinDropVariance: 0
   currentDefense: 0

@@ -273,11 +273,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa2706544bde39d46978b98084e643b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 8
+  bulletSpeed: 7
   bulletsPerShot: 3
   Bulletspread: 0
-  bulletdelay: 0
-  coolDown: 1
+  bulletdelay: 0.05
+  coolDown: 1.75
   firePoint: {fileID: 3792724862295078672}
   bulletPrefab: {fileID: 8518284227580658630, guid: 1480d04e197d18d44867bdf27ec7a296, type: 3}
   held: 1

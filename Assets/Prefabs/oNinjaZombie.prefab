@@ -107,6 +107,7 @@ MonoBehaviour:
   dangerRange: 0
   desiredPos: {x: 0, y: 0, z: 0}
   currentMovementState: 0
+  DeathSound: {fileID: 0}
 --- !u!114 &2584681876153323580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,14 +120,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b671530cbc42c21468d6eec3345f1975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 3
-  maxHealth: 3
+  currentHealth: 2
+  maxHealth: 2
   coinDropAmount: 3
   coinDropVariance: 0
   currentDefense: 0
   maxDefense: 0
   coinPrefab: {fileID: 8481823868968492337, guid: 113dcfcb4aaac6f479283d658c200f53, type: 3}
-  isDead: 0
+  timeToDestroy: 0.01
 --- !u!50 &511635126912549241
 Rigidbody2D:
   serializedVersion: 4

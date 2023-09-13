@@ -101,11 +101,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa2706544bde39d46978b98084e643b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 3
+  bulletSpeed: 4.5
   bulletsPerShot: 5
-  Bulletspread: 10
+  Bulletspread: 12.5
   bulletdelay: 0
-  coolDown: 1
+  coolDown: 1.5
   firePoint: {fileID: 1393708422897291681}
   bulletPrefab: {fileID: 8518284227580658630, guid: 1480d04e197d18d44867bdf27ec7a296, type: 3}
   held: 1
@@ -167,7 +167,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 37a002b83dbba08409333763c5c112c4, type: 2}
   m_audioClip: {fileID: 8300000, guid: 80cc03f6f0a05024a86fd32ace4151b4, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.1
   m_Pitch: 1
   Loop: 0

@@ -310,7 +310,7 @@ Transform:
   - {fileID: 5149114330956149802}
   - {fileID: 6062137908086752140}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
 --- !u!212 &1475221672424447601
 SpriteRenderer:
@@ -445,7 +445,7 @@ MonoBehaviour:
   swingsPerClick: 3
   swingDelay: 0.2
   swingTime: 0.3
-  coolDown: 1
+  coolDown: 2.5
   coolDownLock: 0
   idleAnimName: blood_idle
   swingAnimName: blood_swing
