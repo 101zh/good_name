@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5894714841714741473}
   - component: {fileID: 2052450956726315291}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: CoinCollector
   m_TagString: CoinCollector
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7127535254576705758}
   - component: {fileID: 7797903617677872878}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,7 +168,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6142828668319179547}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: CoinHitBoxes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4654920736706143824}
   - component: {fileID: 5585283595611928493}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Coin Magnet
   m_TagString: Magnet
   m_Icon: {fileID: 0}
@@ -366,7 +366,7 @@ MonoBehaviour:
   moveSpeed: 6.5
   healthBar: {fileID: 0}
   defenseBar: {fileID: 0}
-  coins: 10
+  coins: 0
   FireRateDecrease: 0
   movmentOverride: 0
 --- !u!50 &5687900742699007702
@@ -381,7 +381,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1.5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -481,7 +481,7 @@ MonoBehaviour:
   currentDefense: 3
   maxDefense: 3
   coinPrefab: {fileID: 0}
-  isDead: 0
+  timeToDestroy: 0.01
 --- !u!1 &8563274730852146762
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,7 +492,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1260002864130104397}
   - component: {fileID: 2054224276076193996}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Weapons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -536,6 +536,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1260002864130104397}
     m_Modifications:
+    - target: {fileID: 1248298187306175457, guid: a94bfd572a1a3904294343c40ca3661f, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5050599371445128256, guid: a94bfd572a1a3904294343c40ca3661f, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -591,6 +595,10 @@ PrefabInstance:
     - target: {fileID: 9218684162023930184, guid: a94bfd572a1a3904294343c40ca3661f, type: 3}
       propertyPath: m_Name
       value: oBadGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 9218684162023930184, guid: a94bfd572a1a3904294343c40ca3661f, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

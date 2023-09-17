@@ -9,7 +9,7 @@ public class GroundPoundHitbox : MonoBehaviour
     Animator animator;
     CapsuleCollider2D hitbox;
     Health healthScript;
-    [SerializeField] float knockbackForce;
+    [SerializeField] float knockbackForce=20;
     SpriteRenderer spriteRenderer;
     [SerializeField] AudioSource groundPoundSound;
     private void Awake()
