@@ -442,8 +442,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfad302636d1c734eadb55e43eef3a56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swingsPerClick: 3
-  swingDelay: 0.2
+  swingsPerClick: 2
+  swingDelay: 0.35
   swingTime: 0.3
   coolDown: 2.5
   coolDownLock: 0
