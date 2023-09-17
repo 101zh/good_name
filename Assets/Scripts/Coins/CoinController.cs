@@ -12,6 +12,7 @@ public class CoinController : MonoBehaviour
     float timeStamp;
     bool flyToPlayer;
     player_controller player_script;
+    [SerializeField] AudioSource PickUpSound;
 
     void Start()
     {
@@ -40,7 +41,10 @@ public class CoinController : MonoBehaviour
         else if (collider.gameObject.tag.Equals("CoinCollector"))
         {
             player_script.incrementCoins(1);
-            Destroy(gameObject);
+            PickUpSound.Play();
+            GetComponent<Collider2D>().enabled=false;
+            GetComponent<SpriteRenderer>().enabled=false;
+            Destroy(gameObject,0.2f);
         }
     }
 
