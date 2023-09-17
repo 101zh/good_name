@@ -62,7 +62,6 @@ public class MaxHealthPotion : MonoBehaviour
             }
 
             healthtesting.maxHealth += 5;
-            healthtesting.currentHealth += 5;
             healthtesting.OnChangeHealth(0);
             Destroy(gameObject);
         }
