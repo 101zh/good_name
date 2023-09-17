@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9171081660238975306}
   - component: {fileID: -8842636094673834131}
   m_Layer: 6
-  m_Name: oAssaultRifle
+  m_Name: oRustedRifle
   m_TagString: Gun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: f46e09b713178204db9175d693b07900, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4654d6ed71900714a823609224c54cbf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -102,13 +102,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 20
-  bulletsPerShot: 5
+  bulletsPerShot: 2
   bulletdelay: 0.05
   Bulletspread: 0
-  coolDown: 0.5
-  cost: 300
+  coolDown: 0.35
+  cost: 150
   sold: 0
-  gunName: Assault Rifle
+  gunName: Rustic Assault Rifle
   firePoint: {fileID: 3796869675427718987}
   bulletPrefab: {fileID: 8518284227580658630, guid: 93de7c8ee0fa6c24696106fc1a993ba3, type: 3}
   held: 0
