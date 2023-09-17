@@ -179,15 +179,15 @@ public class Boss : MonoBehaviour
     private void OnEnable()
     {
         Health.onHitEvent += UpdateHealthBar;
-        Health.OnDie += WhenDying;
-        Health.OnDie += DisableCoroutines;
+        Health.OnBossDeath += WhenDying;
+        Health.OnBossDeath += DisableCoroutines;
     }
 
     private void OnDisable()
     {
         Health.onHitEvent -= UpdateHealthBar;
-        Health.OnDie -= WhenDying;
-        Health.OnDie -= DisableCoroutines;
+        Health.OnBossDeath -= WhenDying;
+        Health.OnBossDeath -= DisableCoroutines;
     }
 
 }

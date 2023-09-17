@@ -17,8 +17,7 @@ public class Health : MonoBehaviour
     public delegate void GetHit();
     public static event GetHit onHitEvent;
     public delegate void Die();
-    public static event Die OnDie;
-    public delegate void PlayerDie();
+    public static event Die OnBossDeath;
     public static event Die OnPlayerDie;
     bool recoveringDefense = false;
     Coroutine recoverDefenseCoroutine;
@@ -90,9 +89,9 @@ public class Health : MonoBehaviour
 
             Debug.Log("Dead");
 
-            if (OnDie != null)
+            if (OnBossDeath != null && gameObject.tag=="Boss")
             {
-                OnDie();
+                OnBossDeath();
             }
         }
 
