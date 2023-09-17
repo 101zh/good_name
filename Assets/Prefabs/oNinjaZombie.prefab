@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3265191363b3d244ad8ef36f8d9a410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5.5
+  movementSpeed: 5
   player: {fileID: 0}
   attackRange: 3
   dangerRange: 0
@@ -208,6 +208,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3608543293873209904}
     m_Modifications:
+    - target: {fileID: 2199715054790406028, guid: 810c8fad3dee9e841b1bcc90f4ae23b4, type: 3}
+      propertyPath: swingDelay
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 2199715054790406028, guid: 810c8fad3dee9e841b1bcc90f4ae23b4, type: 3}
+      propertyPath: swingsPerClick
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6821316983841028109, guid: 810c8fad3dee9e841b1bcc90f4ae23b4, type: 3}
       propertyPath: m_RootOrder
       value: -1
