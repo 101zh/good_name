@@ -101,9 +101,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa2706544bde39d46978b98084e643b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 4.5
+  bulletSpeed: 6
   bulletsPerShot: 5
-  Bulletspread: 12.5
+  Bulletspread: 30
   bulletdelay: 0
   coolDown: 1.5
   firePoint: {fileID: 1393708422897291681}
