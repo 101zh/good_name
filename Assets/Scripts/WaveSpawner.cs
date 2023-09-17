@@ -181,7 +181,7 @@ public class WaveSpawner : MonoBehaviour
     {
         Debug.Log("Spawning Wave: " + _wave.name);
         state = SpawnState.SPAWNING;
-        DestroyAllItemsOnGround();
+        Invoke("DestroyAllItemsOnGround", 0.15f); 
         yield return null;
 
         OnWaveStart?.Invoke();
