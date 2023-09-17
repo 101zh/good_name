@@ -22,6 +22,7 @@ public class Health : MonoBehaviour
     public static event Die OnPlayerDie;
     bool recoveringDefense = false;
     Coroutine recoverDefenseCoroutine;
+    bool canTakeDamage = true;
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -50,20 +51,25 @@ public class Health : MonoBehaviour
 
     public void OnChangeHealth(int amount) /// Negative values increase health, positive values take away health. 
     {
-        if (currentDefense <= 0)
+        if (!canTakeDamage)
         {
-            RestartDefenseRecover();
-            currentHealth -= amount;
-            sr.material = matWhite;
-            Invoke("ResetMaterial", .1f);
-            Debug.Log(gameObject.name + "; " + currentHealth.ToString());
+            return;
         }
         else
         {
             RestartDefenseRecover();
-            currentDefense -= amount;
+            EnableInvincibilityFrames();
             sr.material = matWhite;
             Invoke("ResetMaterial", .1f);
+            if (currentDefense <= 0)
+            {
+                currentHealth -= amount;
+                Debug.Log(gameObject.name + "; " + currentHealth.ToString());
+            }
+            else
+            {
+                currentDefense -= amount;
+            }
         }
 
         if (currentHealth <= 0)
@@ -118,6 +124,33 @@ public class Health : MonoBehaviour
             recoveredAllDefense = currentDefense >= maxDefense;
         }
         recoveringDefense = false;
+    }
+
+    private void EnableInvincibilityFrames()
+    {
+        if (canTakeDamage && gameObject.tag.Equals("Player"))
+        {
+            StartCoroutine(InvincibilityFrames());
+        }
+    }
+
+    IEnumerator InvincibilityFrames()
+    {
+        canTakeDamage = false;
+        for (int i = 0; i <= 5; i++)
+        {
+
+            if (i % 2 == 0)
+            {
+                sr.material = matWhite;
+            }
+            else
+            {
+                sr.material = matDefault;
+            }
+            yield return new WaitForSeconds(.1f);
+        }
+        canTakeDamage = true;
     }
 
     private void RestartDefenseRecover()
