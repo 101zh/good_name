@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3265191363b3d244ad8ef36f8d9a410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
+  movementSpeed: 5.5
   player: {fileID: 0}
   attackRange: 3
   dangerRange: 0
@@ -150,7 +150,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 320
+    m_Bits: 1344
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
