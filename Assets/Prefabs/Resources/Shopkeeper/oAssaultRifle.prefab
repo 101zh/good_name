@@ -101,12 +101,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a17cd3c1e75a7764ba5581271c9f65be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 20
-  bulletsPerShot: 5
+  bulletSpeed: 18
+  bulletsPerShot: 4
   bulletdelay: 0.05
   Bulletspread: 0
   coolDown: 0.5
-  cost: 300
+  cost: 350
   sold: 0
   gunName: Assault Rifle
   firePoint: {fileID: 3796869675427718987}
