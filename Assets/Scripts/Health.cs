@@ -136,9 +136,8 @@ public class Health : MonoBehaviour
     IEnumerator InvincibilityFrames()
     {
         canTakeDamage = false;
-        for (int i = 0; i <= 5; i++)
+        for (int i = 0; i <= 3; i++)
         {
-
             if (i % 2 == 0)
             {
                 sr.material = matWhite;
@@ -147,8 +146,9 @@ public class Health : MonoBehaviour
             {
                 sr.material = matDefault;
             }
-            yield return new WaitForSeconds(.1f);
+            yield return new WaitForSeconds(.075f);
         }
+        sr.material = matDefault;
         canTakeDamage = true;
     }
 
