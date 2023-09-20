@@ -72767,6 +72767,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 260780293349706563, guid: db588f6d1fb9540428eea5b45a677be2, type: 3}
+      propertyPath: Bulletspread
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 260780293349706563, guid: db588f6d1fb9540428eea5b45a677be2, type: 3}
+      propertyPath: bulletsPerShot
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4152401226023889132, guid: db588f6d1fb9540428eea5b45a677be2, type: 3}
       propertyPath: m_RootOrder
       value: 1

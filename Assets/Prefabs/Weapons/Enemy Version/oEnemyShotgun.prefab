@@ -102,8 +102,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 6
-  bulletsPerShot: 5
-  Bulletspread: 30
+  bulletsPerShot: 6
+  Bulletspread: 35
   bulletdelay: 0
   coolDown: 1.5
   firePoint: {fileID: 1393708422897291681}
