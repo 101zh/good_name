@@ -238,7 +238,7 @@ Transform:
   - {fileID: 8822532975527360673}
   - {fileID: 5313172143628124872}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3313102175204865517
 SpriteRenderer:
@@ -307,7 +307,7 @@ MonoBehaviour:
   bulletSpeed: 15
   bulletsPerShot: 5
   bulletdelay: 0
-  Bulletspread: 20
+  Bulletspread: 25
   coolDown: 1
   cost: 260
   sold: 0
