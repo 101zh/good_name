@@ -91,10 +91,11 @@ public class pause_menu : MonoBehaviour
         }
     }
 
-    public void LoadMenu()
+    public void LoadTitleMenu()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(0, LoadSceneMode.Single);
+        playerIsDead=false;
     }
 
     public void QuitGame()

@@ -5270,7 +5270,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4098306233549551866}
         m_TargetAssemblyTypeName: pause_menu, Assembly-CSharp
-        m_MethodName: LoadMenu
+        m_MethodName: LoadTitleMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6735,7 +6735,7 @@ RectTransform:
   - {fileID: 4566624801736794175}
   - {fileID: 1735516642959259463}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
